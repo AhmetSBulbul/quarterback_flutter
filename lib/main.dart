@@ -1,36 +1,102 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:quarterback_flutter/core/theme/app_colors.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
+  Future.delayed(Duration(seconds: 3), () {
+    FlutterNativeSplash.remove();
+  });
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'quarterback',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
+        colorScheme: const ColorScheme(
+          primary: AppColors.primary,
+          secondary: AppColors.secondary,
+          surface: AppColors.grey,
+          background: AppColors.black,
+          error: Colors.red,
+          onPrimary: AppColors.white,
+          onSecondary: AppColors.white,
+          onSurface: AppColors.lightGrey,
+          onBackground: AppColors.white,
+          onError: AppColors.white,
+          brightness: Brightness.dark,
+        ),
+        scaffoldBackgroundColor: AppColors.black,
+        brightness: Brightness.dark,
         fontFamily: 'Mulish',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.w800,
+          ),
+          displayMedium: TextStyle(
+            fontSize: 36,
+            fontWeight: FontWeight.w800,
+          ),
+          displaySmall: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w800,
+          ),
+          headlineLarge: TextStyle(
+            fontSize: 48,
+            fontWeight: FontWeight.w800,
+          ),
+          headlineMedium: TextStyle(
+            fontSize: 36,
+            fontWeight: FontWeight.w800,
+          ),
+          headlineSmall: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w800,
+          ),
+          titleLarge: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
+          ),
+          titleMedium: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w800,
+          ),
+          titleSmall: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w800,
+          ),
+          bodyLarge: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+          ),
+          bodySmall: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
+          labelLarge: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+          labelMedium: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+          labelSmall: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),

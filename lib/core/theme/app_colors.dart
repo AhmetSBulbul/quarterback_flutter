@@ -8,4 +8,7 @@ abstract final class AppColors {
   static const Color grey = Color(0xFF5D5C64);
   static const Color lightGrey = Color(0xFFB6B6B6);
   static const Color surface = Color(0xFF1E1E1E);
+  static const Color success500 = Color(0xFF12B76A);
+  static const Color success700 = Color(0xFF027A48);
+  static const Color success50 = Color(0xFFECFDF3);
 }
