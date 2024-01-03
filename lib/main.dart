@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:quarterback_flutter/app/screens/auth/login_screen.dart';
+import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/core/theme/app_colors.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
-  Future.delayed(Duration(seconds: 3), () {
+  Future.delayed(Duration(seconds: 2), () {
     FlutterNativeSplash.remove();
   });
 }

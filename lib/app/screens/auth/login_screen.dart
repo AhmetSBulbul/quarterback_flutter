@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grpc/grpc.dart';
-import 'package:quarterback_flutter/features/auth/data/auth_repository.dart';
-import 'package:quarterback_flutter/generated/protos/authpb.pbgrpc.dart';
+import 'package:quarterback_flutter/core/locator/injectable.dart';
+import 'package:quarterback_flutter/features/region/data/region_repository.dart';
+import 'package:quarterback_flutter/generated/protos/commonpb.pb.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,19 +11,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late final AuthRepository _authRepository;
   @override
   void initState() {
     super.initState();
-    final channel = ClientChannel(
-      '192.168.8.173',
-      port: 50000,
-      options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
-    );
-
-    final authClient = AuthServiceClient(channel);
-
-    _authRepository = AuthRepository(authServiceClient: authClient);
   }
 
   @override
@@ -33,13 +23,26 @@ class _LoginScreenState extends State<LoginScreen> {
         child: ElevatedButton(
           child: Text("Login"),
           onPressed: () async {
+            final _regionRepository = locator<RegionRepository>();
             try {
-              final credentials = await _authRepository.register(
-                RegisterRequest(
-                  username: 'test@mail.com',
-                  password: 'password',
-                ),
+              final countryList = await _regionRepository.listCountry();
+              print(countryList.countries);
+              final cityList = await _regionRepository.listCity(
+                GetByIdRequest(id: 1),
               );
+              print(cityList.cities);
+              final districtList = await _regionRepository.listDistrict(
+                GetByIdRequest(id: 2),
+              );
+              print(districtList.districts);
+              // final credentials = await _authRepository.login(
+              //   LoginRequest(
+              //     username: 'admin',
+              //     password: '152535',
+              //   ),
+              // );
+              // print(credentials.token);
+              // print(credentials.refreshToken);
             } catch (e) {
               print(e);
             }
