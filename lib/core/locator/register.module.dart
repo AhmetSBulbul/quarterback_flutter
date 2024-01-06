@@ -15,7 +15,8 @@ abstract class RegisterModule {
   @preResolve
   Future<AuthCubit> get authCubit async {
     final authCubit = AuthCubit();
-    await authCubit.login();
+    // await authCubit.login();
+    await Future.delayed(Duration(seconds: 1));
     return authCubit;
   }
   // @singleton

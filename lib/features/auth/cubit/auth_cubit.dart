@@ -12,6 +12,15 @@ class AuthCubit extends Cubit<AuthState> with ChangeNotifier {
     await Future.delayed(const Duration(seconds: 3));
     emit(const AuthAuthenticated('123'));
     notifyListeners();
+
+    //     // final credentials = await _authRepository.login(
+    //     //   LoginRequest(
+    //     //     username: 'admin',
+    //     //     password: '152535',
+    //     //   ),
+    //     // );
+    //     // print(credentials.token);
+    //     // print(credentials.refreshToken);
   }
 
   Future<void> logout() async {
