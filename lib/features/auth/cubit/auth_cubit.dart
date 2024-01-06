@@ -9,7 +9,7 @@ class AuthCubit extends Cubit<AuthState> with ChangeNotifier {
   AuthCubit() : super(AuthInitial());
 
   Future<void> login() async {
-    await Future.delayed(const Duration(seconds: 3));
+    // await Future.delayed(const Duration(seconds: 3));
     emit(const AuthAuthenticated('123'));
     notifyListeners();
 

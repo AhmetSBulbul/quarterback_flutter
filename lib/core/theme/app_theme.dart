@@ -21,15 +21,15 @@ abstract final class AppTheme {
     fontFamily: 'Mulish',
     textTheme: const TextTheme(
       displayLarge: TextStyle(
-        fontSize: 32,
-        fontWeight: FontWeight.w800,
+        fontSize: 48,
+        fontWeight: FontWeight.w700,
       ),
       displayMedium: TextStyle(
         fontSize: 36,
         fontWeight: FontWeight.w800,
       ),
       displaySmall: TextStyle(
-        fontSize: 24,
+        fontSize: 32,
         fontWeight: FontWeight.w800,
       ),
       headlineLarge: TextStyle(
@@ -70,7 +70,7 @@ abstract final class AppTheme {
       ),
       labelLarge: TextStyle(
         fontSize: 18,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w700,
       ),
       labelMedium: TextStyle(
         fontSize: 16,
@@ -82,14 +82,26 @@ abstract final class AppTheme {
       ),
     ),
     useMaterial3: true,
+    //Appbar
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.black,
+      elevation: 0,
+      titleTextStyle: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w800,
+      ),
+      iconTheme: IconThemeData(
+        color: AppColors.white,
+      ),
+    ),
     // Buttons
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.white,
         textStyle: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
         ),
         minimumSize: const Size(54, 54),
         shape: RoundedRectangleBorder(

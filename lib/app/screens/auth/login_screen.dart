@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:quarterback_flutter/app/widgets/animation/fade_in_intro.dart';
+import 'package:quarterback_flutter/app/widgets/brand/logo.dart';
 import 'package:quarterback_flutter/app/widgets/layout/sized_spacer.dart';
 
 import 'package:quarterback_flutter/core/theme/app_colors.dart';
@@ -24,9 +27,9 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Column(
         children: [
           // Logo
-          Expanded(
+          const Expanded(
             child: Center(
-              child: Image.asset('assets/brand/quarterback.png'),
+              child: FadeInIntro(child: Logo.large()),
             ),
           ),
           Container(
