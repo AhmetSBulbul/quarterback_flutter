@@ -5,7 +5,9 @@ import 'package:quarterback_flutter/app/screens/auth/login_screen.dart';
 import 'package:quarterback_flutter/app/screens/auth/onboard_screen.dart';
 import 'package:quarterback_flutter/app/screens/auth/register_screen.dart';
 import 'package:quarterback_flutter/app/screens/error_screen.dart';
+import 'package:quarterback_flutter/app/screens/fixtures/fixtures_screen.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
+import 'package:quarterback_flutter/app/widgets/layout/bottom_navigation_shell.dart';
 import 'package:quarterback_flutter/core/theme/app_theme.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
 
@@ -17,9 +19,32 @@ class QuarterbackApp extends StatelessWidget {
 
   GoRouter _buildRouter(AuthCubit authCubit) => GoRouter(
         routes: [
-          GoRoute(
-            path: '/',
-            builder: (context, state) => const HomeScreen(),
+          ShellRoute(
+            builder: (context, state, child) =>
+                BottomNavigationShell(state: state, child: child),
+            routes: [
+              GoRoute(
+                  path: '/',
+                  builder: (context, state) => const HomeScreen(),
+                  routes: [
+                    GoRoute(
+                      path: 'fixtures',
+                      builder: (context, state) => const FixturesScreen(),
+                    ),
+                    GoRoute(
+                      path: 'team',
+                      builder: (context, state) => const HomeScreen(),
+                    ),
+                    GoRoute(
+                      path: 'chat',
+                      builder: (context, state) => const HomeScreen(),
+                    ),
+                    GoRoute(
+                      path: 'profile',
+                      builder: (context, state) => const HomeScreen(),
+                    ),
+                  ]),
+            ],
           ),
           GoRoute(
             path: '/auth',

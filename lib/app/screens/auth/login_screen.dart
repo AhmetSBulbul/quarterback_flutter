@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:quarterback_flutter/app/widgets/animation/fade_in_intro.dart';
 import 'package:quarterback_flutter/app/widgets/brand/logo.dart';
@@ -28,8 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           // Logo
           const Expanded(
-            child: Center(
-              child: FadeInIntro(child: Logo.large()),
+            child: SafeArea(
+              child: Center(
+                child: FadeInIntro(child: Logo.large()),
+              ),
             ),
           ),
           Container(
@@ -93,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextButton(
                         child: const Text("Sign up"),
-                        onPressed: () {},
+                        onPressed: () => context.go('/auth/register'),
                       ),
                     ],
                   )
