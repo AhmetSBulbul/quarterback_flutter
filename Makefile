@@ -4,3 +4,6 @@ proto:
 
 splash:
 	dart run flutter_native_splash:create
+
+build_runner:
+	flutter pub run build_runner build --delete-conflicting-outputs

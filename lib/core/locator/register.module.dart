@@ -1,5 +1,6 @@
 import 'package:grpc/grpc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
 
 @module
 abstract class RegisterModule {
@@ -10,4 +11,13 @@ abstract class RegisterModule {
         options:
             const ChannelOptions(credentials: ChannelCredentials.insecure()),
       );
+
+  @preResolve
+  Future<AuthCubit> get authCubit async {
+    final authCubit = AuthCubit();
+    await authCubit.login();
+    return authCubit;
+  }
+  // @singleton
+  // AuthCubit get authCubit => AuthCubit();
 }
