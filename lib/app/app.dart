@@ -12,12 +12,75 @@ import 'package:quarterback_flutter/core/theme/app_theme.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
 
 class QuarterbackApp extends StatelessWidget {
-  const QuarterbackApp({super.key, required AuthCubit authCubit})
-      : _authCubit = authCubit;
+  QuarterbackApp({super.key, required AuthCubit authCubit})
+      : _authCubit = authCubit,
+        _router = _buildRouter(authCubit);
 
   final AuthCubit _authCubit;
+  final GoRouter _router;
 
-  GoRouter _buildRouter(AuthCubit authCubit) => GoRouter(
+  // final GoRouter _router = GoRouter(
+  //   routes: [
+  //     ShellRoute(
+  //       builder: (context, state, child) =>
+  //           BottomNavigationShell(state: state, child: child),
+  //       routes: [
+  //         GoRoute(
+  //             path: '/',
+  //             builder: (context, state) => const HomeScreen(),
+  //             routes: [
+  //               GoRoute(
+  //                 path: 'fixtures',
+  //                 builder: (context, state) => const FixturesScreen(),
+  //               ),
+  //               GoRoute(
+  //                 path: 'team',
+  //                 builder: (context, state) => const HomeScreen(),
+  //               ),
+  //               GoRoute(
+  //                 path: 'chat',
+  //                 builder: (context, state) => const HomeScreen(),
+  //               ),
+  //               GoRoute(
+  //                 path: 'profile',
+  //                 builder: (context, state) => const HomeScreen(),
+  //               ),
+  //             ]),
+  //       ],
+  //     ),
+  //     GoRoute(
+  //       path: '/auth',
+  //       builder: (context, state) => const OnboardScreen(),
+  //       routes: [
+  //         GoRoute(
+  //           path: 'login',
+  //           builder: (context, state) => const LoginScreen(),
+  //         ),
+  //         GoRoute(
+  //           path: 'register',
+  //           builder: (context, state) => const RegisterScreen(),
+  //         ),
+  //       ],
+  //     )
+  //   ],
+  //   errorBuilder: (context, state) => const ErrorScreen(),
+  //   refreshListenable: authCubit,
+  //   redirect: (context, state) {
+  //     final authState = authCubit.state;
+  //     final isAuthenticating = state.fullPath?.startsWith('/auth') ?? false;
+  //     if (authState is AuthAuthenticated && isAuthenticating) {
+  //       return '/';
+  //     } else if ((authState is AuthUnauthenticated ||
+  //             authState is AuthInitial) &&
+  //         !isAuthenticating) {
+  //       return '/auth';
+  //     }
+
+  //     return null;
+  //   },
+  // );
+
+  static GoRouter _buildRouter(AuthCubit authCubit) => GoRouter(
         routes: [
           ShellRoute(
             builder: (context, state, child) =>
@@ -56,7 +119,7 @@ class QuarterbackApp extends StatelessWidget {
               ),
               GoRoute(
                 path: 'register',
-                builder: (context, state) => const RegisterScreen(),
+                builder: (context, state) => RegisterScreen(),
               ),
             ],
           )
@@ -92,7 +155,8 @@ class QuarterbackApp extends StatelessWidget {
     return BlocProvider.value(
       value: _authCubit,
       child: MaterialApp.router(
-        routerConfig: _buildRouter(_authCubit),
+        // routerConfig: _buildRouter(_authCubit),
+        routerConfig: _router,
         title: 'quarterback',
         theme: AppTheme.theme,
       ),

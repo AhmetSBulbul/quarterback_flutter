@@ -28,52 +28,41 @@ class LoginRequest extends $pb.GeneratedMessage {
     return $result;
   }
   LoginRequest._() : super();
-  factory LoginRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory LoginRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+  factory LoginRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LoginRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'LoginRequest',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'),
-      createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LoginRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'username')
     ..aOS(2, _omitFieldNames ? '' : 'password')
-    ..hasRequiredFields = false;
+    ..hasRequiredFields = false
+  ;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   LoginRequest clone() => LoginRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  LoginRequest copyWith(void Function(LoginRequest) updates) =>
-      super.copyWith((message) => updates(message as LoginRequest))
-          as LoginRequest;
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LoginRequest copyWith(void Function(LoginRequest) updates) => super.copyWith((message) => updates(message as LoginRequest)) as LoginRequest;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static LoginRequest create() => LoginRequest._();
   LoginRequest createEmptyInstance() => create();
-  static $pb.PbList<LoginRequest> createRepeated() =>
-      $pb.PbList<LoginRequest>();
+  static $pb.PbList<LoginRequest> createRepeated() => $pb.PbList<LoginRequest>();
   @$core.pragma('dart2js:noInline')
-  static LoginRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<LoginRequest>(create);
+  static LoginRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoginRequest>(create);
   static LoginRequest? _defaultInstance;
 
   /// Email or username
   @$pb.TagNumber(1)
   $core.String get username => $_getSZ(0);
   @$pb.TagNumber(1)
-  set username($core.String v) {
-    $_setString(0, v);
-  }
-
+  set username($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasUsername() => $_has(0);
   @$pb.TagNumber(1)
@@ -82,10 +71,7 @@ class LoginRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get password => $_getSZ(1);
   @$pb.TagNumber(2)
-  set password($core.String v) {
-    $_setString(1, v);
-  }
-
+  set password($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasPassword() => $_has(1);
   @$pb.TagNumber(2)
@@ -97,9 +83,8 @@ class RegisterRequest extends $pb.GeneratedMessage {
     $core.String? email,
     $core.String? username,
     $core.String? password,
-    $core.String? passwordValidate,
     $core.String? name,
-    $core.String? lastname,
+    $core.String? lastName,
     $core.int? districtId,
   }) {
     final $result = create();
@@ -112,14 +97,11 @@ class RegisterRequest extends $pb.GeneratedMessage {
     if (password != null) {
       $result.password = password;
     }
-    if (passwordValidate != null) {
-      $result.passwordValidate = passwordValidate;
-    }
     if (name != null) {
       $result.name = name;
     }
-    if (lastname != null) {
-      $result.lastname = lastname;
+    if (lastName != null) {
+      $result.lastName = lastName;
     }
     if (districtId != null) {
       $result.districtId = districtId;
@@ -127,58 +109,44 @@ class RegisterRequest extends $pb.GeneratedMessage {
     return $result;
   }
   RegisterRequest._() : super();
-  factory RegisterRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory RegisterRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+  factory RegisterRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RegisterRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'RegisterRequest',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'),
-      createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RegisterRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'email')
     ..aOS(2, _omitFieldNames ? '' : 'username')
     ..aOS(3, _omitFieldNames ? '' : 'password')
-    ..aOS(4, _omitFieldNames ? '' : 'passwordValidate',
-        protoName: 'passwordValidate')
     ..aOS(5, _omitFieldNames ? '' : 'name')
-    ..aOS(6, _omitFieldNames ? '' : 'lastname')
-    ..a<$core.int>(7, _omitFieldNames ? '' : 'districtId', $pb.PbFieldType.O3,
-        protoName: 'districtId')
-    ..hasRequiredFields = false;
+    ..aOS(6, _omitFieldNames ? '' : 'lastName', protoName: 'lastName')
+    ..a<$core.int>(7, _omitFieldNames ? '' : 'districtId', $pb.PbFieldType.O3, protoName: 'districtId')
+    ..hasRequiredFields = false
+  ;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   RegisterRequest clone() => RegisterRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  RegisterRequest copyWith(void Function(RegisterRequest) updates) =>
-      super.copyWith((message) => updates(message as RegisterRequest))
-          as RegisterRequest;
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  RegisterRequest copyWith(void Function(RegisterRequest) updates) => super.copyWith((message) => updates(message as RegisterRequest)) as RegisterRequest;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static RegisterRequest create() => RegisterRequest._();
   RegisterRequest createEmptyInstance() => create();
-  static $pb.PbList<RegisterRequest> createRepeated() =>
-      $pb.PbList<RegisterRequest>();
+  static $pb.PbList<RegisterRequest> createRepeated() => $pb.PbList<RegisterRequest>();
   @$core.pragma('dart2js:noInline')
-  static RegisterRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<RegisterRequest>(create);
+  static RegisterRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RegisterRequest>(create);
   static RegisterRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get email => $_getSZ(0);
   @$pb.TagNumber(1)
-  set email($core.String v) {
-    $_setString(0, v);
-  }
-
+  set email($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasEmail() => $_has(0);
   @$pb.TagNumber(1)
@@ -187,10 +155,7 @@ class RegisterRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get username => $_getSZ(1);
   @$pb.TagNumber(2)
-  set username($core.String v) {
-    $_setString(1, v);
-  }
-
+  set username($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasUsername() => $_has(1);
   @$pb.TagNumber(2)
@@ -199,60 +164,36 @@ class RegisterRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.String get password => $_getSZ(2);
   @$pb.TagNumber(3)
-  set password($core.String v) {
-    $_setString(2, v);
-  }
-
+  set password($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasPassword() => $_has(2);
   @$pb.TagNumber(3)
   void clearPassword() => clearField(3);
 
-  @$pb.TagNumber(4)
-  $core.String get passwordValidate => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set passwordValidate($core.String v) {
-    $_setString(3, v);
-  }
-
-  @$pb.TagNumber(4)
-  $core.bool hasPasswordValidate() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearPasswordValidate() => clearField(4);
-
   @$pb.TagNumber(5)
-  $core.String get name => $_getSZ(4);
+  $core.String get name => $_getSZ(3);
   @$pb.TagNumber(5)
-  set name($core.String v) {
-    $_setString(4, v);
-  }
-
+  set name($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(5)
-  $core.bool hasName() => $_has(4);
+  $core.bool hasName() => $_has(3);
   @$pb.TagNumber(5)
   void clearName() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get lastname => $_getSZ(5);
+  $core.String get lastName => $_getSZ(4);
   @$pb.TagNumber(6)
-  set lastname($core.String v) {
-    $_setString(5, v);
-  }
-
+  set lastName($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(6)
-  $core.bool hasLastname() => $_has(5);
+  $core.bool hasLastName() => $_has(4);
   @$pb.TagNumber(6)
-  void clearLastname() => clearField(6);
+  void clearLastName() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.int get districtId => $_getIZ(6);
+  $core.int get districtId => $_getIZ(5);
   @$pb.TagNumber(7)
-  set districtId($core.int v) {
-    $_setSignedInt32(6, v);
-  }
-
+  set districtId($core.int v) { $_setSignedInt32(5, v); }
   @$pb.TagNumber(7)
-  $core.bool hasDistrictId() => $_has(6);
+  $core.bool hasDistrictId() => $_has(5);
   @$pb.TagNumber(7)
   void clearDistrictId() => clearField(7);
 }
@@ -268,50 +209,39 @@ class RefreshTokenRequest extends $pb.GeneratedMessage {
     return $result;
   }
   RefreshTokenRequest._() : super();
-  factory RefreshTokenRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory RefreshTokenRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+  factory RefreshTokenRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RefreshTokenRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'RefreshTokenRequest',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'),
-      createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RefreshTokenRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'refreshToken', protoName: 'refreshToken')
-    ..hasRequiredFields = false;
+    ..hasRequiredFields = false
+  ;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   RefreshTokenRequest clone() => RefreshTokenRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  RefreshTokenRequest copyWith(void Function(RefreshTokenRequest) updates) =>
-      super.copyWith((message) => updates(message as RefreshTokenRequest))
-          as RefreshTokenRequest;
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  RefreshTokenRequest copyWith(void Function(RefreshTokenRequest) updates) => super.copyWith((message) => updates(message as RefreshTokenRequest)) as RefreshTokenRequest;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static RefreshTokenRequest create() => RefreshTokenRequest._();
   RefreshTokenRequest createEmptyInstance() => create();
-  static $pb.PbList<RefreshTokenRequest> createRepeated() =>
-      $pb.PbList<RefreshTokenRequest>();
+  static $pb.PbList<RefreshTokenRequest> createRepeated() => $pb.PbList<RefreshTokenRequest>();
   @$core.pragma('dart2js:noInline')
-  static RefreshTokenRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<RefreshTokenRequest>(create);
+  static RefreshTokenRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RefreshTokenRequest>(create);
   static RefreshTokenRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get refreshToken => $_getSZ(0);
   @$pb.TagNumber(1)
-  set refreshToken($core.String v) {
-    $_setString(0, v);
-  }
-
+  set refreshToken($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasRefreshToken() => $_has(0);
   @$pb.TagNumber(1)
@@ -329,51 +259,40 @@ class SendOtpRequest extends $pb.GeneratedMessage {
     return $result;
   }
   SendOtpRequest._() : super();
-  factory SendOtpRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory SendOtpRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+  factory SendOtpRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendOtpRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'SendOtpRequest',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'),
-      createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendOtpRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'username')
-    ..hasRequiredFields = false;
+    ..hasRequiredFields = false
+  ;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   SendOtpRequest clone() => SendOtpRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  SendOtpRequest copyWith(void Function(SendOtpRequest) updates) =>
-      super.copyWith((message) => updates(message as SendOtpRequest))
-          as SendOtpRequest;
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SendOtpRequest copyWith(void Function(SendOtpRequest) updates) => super.copyWith((message) => updates(message as SendOtpRequest)) as SendOtpRequest;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static SendOtpRequest create() => SendOtpRequest._();
   SendOtpRequest createEmptyInstance() => create();
-  static $pb.PbList<SendOtpRequest> createRepeated() =>
-      $pb.PbList<SendOtpRequest>();
+  static $pb.PbList<SendOtpRequest> createRepeated() => $pb.PbList<SendOtpRequest>();
   @$core.pragma('dart2js:noInline')
-  static SendOtpRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<SendOtpRequest>(create);
+  static SendOtpRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendOtpRequest>(create);
   static SendOtpRequest? _defaultInstance;
 
   /// Email or username
   @$pb.TagNumber(1)
   $core.String get username => $_getSZ(0);
   @$pb.TagNumber(1)
-  set username($core.String v) {
-    $_setString(0, v);
-  }
-
+  set username($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasUsername() => $_has(0);
   @$pb.TagNumber(1)
@@ -399,57 +318,41 @@ class ResetPasswordWithOtpRequest extends $pb.GeneratedMessage {
     return $result;
   }
   ResetPasswordWithOtpRequest._() : super();
-  factory ResetPasswordWithOtpRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory ResetPasswordWithOtpRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+  factory ResetPasswordWithOtpRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ResetPasswordWithOtpRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'ResetPasswordWithOtpRequest',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'),
-      createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ResetPasswordWithOtpRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'otp')
     ..aOS(2, _omitFieldNames ? '' : 'password')
-    ..aOS(3, _omitFieldNames ? '' : 'passwordValidate',
-        protoName: 'passwordValidate')
-    ..hasRequiredFields = false;
+    ..aOS(3, _omitFieldNames ? '' : 'passwordValidate', protoName: 'passwordValidate')
+    ..hasRequiredFields = false
+  ;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  ResetPasswordWithOtpRequest clone() =>
-      ResetPasswordWithOtpRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  ResetPasswordWithOtpRequest copyWith(
-          void Function(ResetPasswordWithOtpRequest) updates) =>
-      super.copyWith(
-              (message) => updates(message as ResetPasswordWithOtpRequest))
-          as ResetPasswordWithOtpRequest;
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ResetPasswordWithOtpRequest clone() => ResetPasswordWithOtpRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ResetPasswordWithOtpRequest copyWith(void Function(ResetPasswordWithOtpRequest) updates) => super.copyWith((message) => updates(message as ResetPasswordWithOtpRequest)) as ResetPasswordWithOtpRequest;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ResetPasswordWithOtpRequest create() =>
-      ResetPasswordWithOtpRequest._();
+  static ResetPasswordWithOtpRequest create() => ResetPasswordWithOtpRequest._();
   ResetPasswordWithOtpRequest createEmptyInstance() => create();
-  static $pb.PbList<ResetPasswordWithOtpRequest> createRepeated() =>
-      $pb.PbList<ResetPasswordWithOtpRequest>();
+  static $pb.PbList<ResetPasswordWithOtpRequest> createRepeated() => $pb.PbList<ResetPasswordWithOtpRequest>();
   @$core.pragma('dart2js:noInline')
-  static ResetPasswordWithOtpRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ResetPasswordWithOtpRequest>(create);
+  static ResetPasswordWithOtpRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ResetPasswordWithOtpRequest>(create);
   static ResetPasswordWithOtpRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get otp => $_getSZ(0);
   @$pb.TagNumber(1)
-  set otp($core.String v) {
-    $_setString(0, v);
-  }
-
+  set otp($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasOtp() => $_has(0);
   @$pb.TagNumber(1)
@@ -458,10 +361,7 @@ class ResetPasswordWithOtpRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get password => $_getSZ(1);
   @$pb.TagNumber(2)
-  set password($core.String v) {
-    $_setString(1, v);
-  }
-
+  set password($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasPassword() => $_has(1);
   @$pb.TagNumber(2)
@@ -470,10 +370,7 @@ class ResetPasswordWithOtpRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.String get passwordValidate => $_getSZ(2);
   @$pb.TagNumber(3)
-  set passwordValidate($core.String v) {
-    $_setString(2, v);
-  }
-
+  set passwordValidate($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasPasswordValidate() => $_has(2);
   @$pb.TagNumber(3)
@@ -495,31 +392,25 @@ class Credentials extends $pb.GeneratedMessage {
     return $result;
   }
   Credentials._() : super();
-  factory Credentials.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory Credentials.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
+  factory Credentials.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Credentials.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'Credentials',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'),
-      createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Credentials', package: const $pb.PackageName(_omitMessageNames ? '' : 'auth'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'token')
     ..aOS(2, _omitFieldNames ? '' : 'refreshToken', protoName: 'refreshToken')
-    ..hasRequiredFields = false;
+    ..hasRequiredFields = false
+  ;
 
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   Credentials clone() => Credentials()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  Credentials copyWith(void Function(Credentials) updates) =>
-      super.copyWith((message) => updates(message as Credentials))
-          as Credentials;
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Credentials copyWith(void Function(Credentials) updates) => super.copyWith((message) => updates(message as Credentials)) as Credentials;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -528,17 +419,13 @@ class Credentials extends $pb.GeneratedMessage {
   Credentials createEmptyInstance() => create();
   static $pb.PbList<Credentials> createRepeated() => $pb.PbList<Credentials>();
   @$core.pragma('dart2js:noInline')
-  static Credentials getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<Credentials>(create);
+  static Credentials getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Credentials>(create);
   static Credentials? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get token => $_getSZ(0);
   @$pb.TagNumber(1)
-  set token($core.String v) {
-    $_setString(0, v);
-  }
-
+  set token($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasToken() => $_has(0);
   @$pb.TagNumber(1)
@@ -547,16 +434,13 @@ class Credentials extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get refreshToken => $_getSZ(1);
   @$pb.TagNumber(2)
-  set refreshToken($core.String v) {
-    $_setString(1, v);
-  }
-
+  set refreshToken($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasRefreshToken() => $_has(1);
   @$pb.TagNumber(2)
   void clearRefreshToken() => clearField(2);
 }
 
+
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames =
-    $core.bool.fromEnvironment('protobuf.omit_message_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

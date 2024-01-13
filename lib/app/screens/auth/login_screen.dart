@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quarterback_flutter/app/widgets/animation/fade_in_intro.dart';
 import 'package:quarterback_flutter/app/widgets/brand/logo.dart';
 import 'package:quarterback_flutter/app/widgets/layout/sized_spacer.dart';
+import 'package:quarterback_flutter/core/extensions/build_context_extensions.dart';
 
 import 'package:quarterback_flutter/core/theme/app_colors.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
@@ -25,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.black.withAlpha(150),
       body: Column(
         children: [
           // Logo
@@ -37,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Container(
             decoration: const BoxDecoration(
-              color: AppColors.surface,
+              color: AppColors.black,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(24),
                 topRight: Radius.circular(24),
@@ -50,9 +52,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Text(
                     "Welcome",
-                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                          color: AppColors.white,
-                        ),
+                    style: context.textTheme.displaySmall?.copyWith(
+                      color: AppColors.white,
+                    ),
                   ),
                   const SizedSpacer.large(),
                   const TextField(
@@ -77,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       child: Text("Forgot password?",
-                          style: Theme.of(context).textTheme.labelSmall),
+                          style: context.textTheme.labelSmall),
                       onPressed: () {},
                     ),
                   ),
@@ -92,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text(
                         "Don't have an account?",
-                        style: Theme.of(context).textTheme.labelMedium,
+                        style: context.textTheme.labelMedium,
                       ),
                       TextButton(
                         child: const Text("Sign up"),

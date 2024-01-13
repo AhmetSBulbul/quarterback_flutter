@@ -279,13 +279,9 @@ class CountryListResponse extends $pb.GeneratedMessage {
 
 class CityListResponse extends $pb.GeneratedMessage {
   factory CityListResponse({
-    Country? country,
     $core.Iterable<City>? cities,
   }) {
     final $result = create();
-    if (country != null) {
-      $result.country = country;
-    }
     if (cities != null) {
       $result.cities.addAll(cities);
     }
@@ -296,7 +292,6 @@ class CityListResponse extends $pb.GeneratedMessage {
   factory CityListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CityListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'region'), createEmptyInstance: create)
-    ..aOM<Country>(1, _omitFieldNames ? '' : 'country', subBuilder: Country.create)
     ..pc<City>(2, _omitFieldNames ? '' : 'cities', $pb.PbFieldType.PM, subBuilder: City.create)
     ..hasRequiredFields = false
   ;
@@ -322,34 +317,15 @@ class CityListResponse extends $pb.GeneratedMessage {
   static CityListResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CityListResponse>(create);
   static CityListResponse? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  Country get country => $_getN(0);
-  @$pb.TagNumber(1)
-  set country(Country v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasCountry() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearCountry() => clearField(1);
-  @$pb.TagNumber(1)
-  Country ensureCountry() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.List<City> get cities => $_getList(1);
+  $core.List<City> get cities => $_getList(0);
 }
 
 class DistrictListResponse extends $pb.GeneratedMessage {
   factory DistrictListResponse({
-    Country? country,
-    City? city,
     $core.Iterable<District>? districts,
   }) {
     final $result = create();
-    if (country != null) {
-      $result.country = country;
-    }
-    if (city != null) {
-      $result.city = city;
-    }
     if (districts != null) {
       $result.districts.addAll(districts);
     }
@@ -360,8 +336,6 @@ class DistrictListResponse extends $pb.GeneratedMessage {
   factory DistrictListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DistrictListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'region'), createEmptyInstance: create)
-    ..aOM<Country>(1, _omitFieldNames ? '' : 'country', subBuilder: Country.create)
-    ..aOM<City>(2, _omitFieldNames ? '' : 'city', subBuilder: City.create)
     ..pc<District>(3, _omitFieldNames ? '' : 'districts', $pb.PbFieldType.PM, subBuilder: District.create)
     ..hasRequiredFields = false
   ;
@@ -387,30 +361,8 @@ class DistrictListResponse extends $pb.GeneratedMessage {
   static DistrictListResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DistrictListResponse>(create);
   static DistrictListResponse? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  Country get country => $_getN(0);
-  @$pb.TagNumber(1)
-  set country(Country v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasCountry() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearCountry() => clearField(1);
-  @$pb.TagNumber(1)
-  Country ensureCountry() => $_ensure(0);
-
-  @$pb.TagNumber(2)
-  City get city => $_getN(1);
-  @$pb.TagNumber(2)
-  set city(City v) { setField(2, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasCity() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearCity() => clearField(2);
-  @$pb.TagNumber(2)
-  City ensureCity() => $_ensure(1);
-
   @$pb.TagNumber(3)
-  $core.List<District> get districts => $_getList(2);
+  $core.List<District> get districts => $_getList(0);
 }
 
 

@@ -73,29 +73,25 @@ final $typed_data.Uint8List countryListResponseDescriptor = $convert.base64Decod
 const CityListResponse$json = {
   '1': 'CityListResponse',
   '2': [
-    {'1': 'country', '3': 1, '4': 1, '5': 11, '6': '.region.Country', '10': 'country'},
     {'1': 'cities', '3': 2, '4': 3, '5': 11, '6': '.region.City', '10': 'cities'},
   ],
 };
 
 /// Descriptor for `CityListResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List cityListResponseDescriptor = $convert.base64Decode(
-    'ChBDaXR5TGlzdFJlc3BvbnNlEikKB2NvdW50cnkYASABKAsyDy5yZWdpb24uQ291bnRyeVIHY2'
-    '91bnRyeRIkCgZjaXRpZXMYAiADKAsyDC5yZWdpb24uQ2l0eVIGY2l0aWVz');
+    'ChBDaXR5TGlzdFJlc3BvbnNlEiQKBmNpdGllcxgCIAMoCzIMLnJlZ2lvbi5DaXR5UgZjaXRpZX'
+    'M=');
 
 @$core.Deprecated('Use districtListResponseDescriptor instead')
 const DistrictListResponse$json = {
   '1': 'DistrictListResponse',
   '2': [
-    {'1': 'country', '3': 1, '4': 1, '5': 11, '6': '.region.Country', '10': 'country'},
-    {'1': 'city', '3': 2, '4': 1, '5': 11, '6': '.region.City', '10': 'city'},
     {'1': 'districts', '3': 3, '4': 3, '5': 11, '6': '.region.District', '10': 'districts'},
   ],
 };
 
 /// Descriptor for `DistrictListResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List districtListResponseDescriptor = $convert.base64Decode(
-    'ChREaXN0cmljdExpc3RSZXNwb25zZRIpCgdjb3VudHJ5GAEgASgLMg8ucmVnaW9uLkNvdW50cn'
-    'lSB2NvdW50cnkSIAoEY2l0eRgCIAEoCzIMLnJlZ2lvbi5DaXR5UgRjaXR5Ei4KCWRpc3RyaWN0'
-    'cxgDIAMoCzIQLnJlZ2lvbi5EaXN0cmljdFIJZGlzdHJpY3Rz');
+    'ChREaXN0cmljdExpc3RSZXNwb25zZRIuCglkaXN0cmljdHMYAyADKAsyEC5yZWdpb24uRGlzdH'
+    'JpY3RSCWRpc3RyaWN0cw==');
 

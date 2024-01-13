@@ -34,9 +34,8 @@ const RegisterRequest$json = {
     {'1': 'email', '3': 1, '4': 1, '5': 9, '10': 'email'},
     {'1': 'username', '3': 2, '4': 1, '5': 9, '10': 'username'},
     {'1': 'password', '3': 3, '4': 1, '5': 9, '10': 'password'},
-    {'1': 'passwordValidate', '3': 4, '4': 1, '5': 9, '10': 'passwordValidate'},
     {'1': 'name', '3': 5, '4': 1, '5': 9, '10': 'name'},
-    {'1': 'lastname', '3': 6, '4': 1, '5': 9, '10': 'lastname'},
+    {'1': 'lastName', '3': 6, '4': 1, '5': 9, '10': 'lastName'},
     {'1': 'districtId', '3': 7, '4': 1, '5': 5, '10': 'districtId'},
   ],
 };
@@ -44,9 +43,9 @@ const RegisterRequest$json = {
 /// Descriptor for `RegisterRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List registerRequestDescriptor = $convert.base64Decode(
     'Cg9SZWdpc3RlclJlcXVlc3QSFAoFZW1haWwYASABKAlSBWVtYWlsEhoKCHVzZXJuYW1lGAIgAS'
-    'gJUgh1c2VybmFtZRIaCghwYXNzd29yZBgDIAEoCVIIcGFzc3dvcmQSKgoQcGFzc3dvcmRWYWxp'
-    'ZGF0ZRgEIAEoCVIQcGFzc3dvcmRWYWxpZGF0ZRISCgRuYW1lGAUgASgJUgRuYW1lEhoKCGxhc3'
-    'RuYW1lGAYgASgJUghsYXN0bmFtZRIeCgpkaXN0cmljdElkGAcgASgFUgpkaXN0cmljdElk');
+    'gJUgh1c2VybmFtZRIaCghwYXNzd29yZBgDIAEoCVIIcGFzc3dvcmQSEgoEbmFtZRgFIAEoCVIE'
+    'bmFtZRIaCghsYXN0TmFtZRgGIAEoCVIIbGFzdE5hbWUSHgoKZGlzdHJpY3RJZBgHIAEoBVIKZG'
+    'lzdHJpY3RJZA==');
 
 @$core.Deprecated('Use refreshTokenRequestDescriptor instead')
 const RefreshTokenRequest$json = {
