@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quarterback_flutter/app/screens/auth/login_screen.dart';
 import 'package:quarterback_flutter/app/screens/auth/onboard_screen.dart';
-import 'package:quarterback_flutter/app/screens/auth/register_screen.dart';
+import 'package:quarterback_flutter/app/screens/auth/register/register_screen.dart';
 import 'package:quarterback_flutter/app/screens/error_screen.dart';
 import 'package:quarterback_flutter/app/screens/fixtures/fixtures_screen.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
