@@ -4,8 +4,10 @@ import 'package:quarterback_flutter/app/widgets/layout/sized_spacer.dart';
 import 'package:quarterback_flutter/core/extensions/build_context_extensions.dart';
 import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/core/theme/app_colors.dart';
+import 'package:quarterback_flutter/features/auth/data/auth_repository.dart';
 import 'package:quarterback_flutter/features/region/bloc/region_bloc.dart';
 import 'package:quarterback_flutter/features/region/data/region_repository.dart';
+import 'package:quarterback_flutter/generated/protos/authpb.pbgrpc.dart';
 import 'package:quarterback_flutter/generated/protos/regionpb.pb.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -162,7 +164,24 @@ class RegisterScreen extends StatelessWidget {
                   },
                 ),
                 const SizedSpacer.large(),
-                ElevatedButton(onPressed: () {}, child: const Text("Sign Up"))
+                ElevatedButton(
+                    onPressed: () async {
+                      try {
+                        final response = await locator<AuthRepository>()
+                            .register(RegisterRequest(
+                          email: "test5@mail.com",
+                          username: "flutterUser5",
+                          password: "12345678",
+                          name: "Flutter",
+                          lastName: "User",
+                          districtId: 1,
+                        ));
+                        print(response.token);
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
+                    child: const Text("Sign Up"))
               ],
             ),
           ),
