@@ -86,7 +86,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedSpacer.small(),
                   ElevatedButton(
                     child: const Text("Login"),
-                    onPressed: () => context.read<AuthCubit>().login(),
+                    // onPressed: () => context.read<AuthCubit>().login(),
+                    onPressed: null,
                   ),
                   const SizedSpacer.medium(),
                   Row(

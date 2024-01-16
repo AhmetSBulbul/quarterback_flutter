@@ -152,7 +152,7 @@ class QuarterbackApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
+    return BlocProvider<AuthCubit>.value(
       value: _authCubit,
       child: MaterialApp.router(
         // routerConfig: _buildRouter(_authCubit),

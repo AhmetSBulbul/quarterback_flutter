@@ -12,13 +12,13 @@ abstract class RegisterModule {
             const ChannelOptions(credentials: ChannelCredentials.insecure()),
       );
 
-  @preResolve
-  Future<AuthCubit> get authCubit async {
-    final authCubit = AuthCubit();
-    // await authCubit.login();
-    await Future.delayed(const Duration(seconds: 1));
-    return authCubit;
-  }
+  // @singleton
+  // Future<AuthCubit> get authCubit async {
+  //   final authCubit = AuthCubit();
+  //   // await authCubit.login();
+  //   await Future.delayed(const Duration(seconds: 1));
+  //   return authCubit;
+  // }
   // @singleton
   // AuthCubit get authCubit => AuthCubit();
 }

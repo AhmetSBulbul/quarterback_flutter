@@ -3,29 +3,43 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 // ignore: unnecessary_import
 import 'package:meta/meta.dart';
+import 'package:quarterback_flutter/features/auth/data/auth_repository.dart';
+import 'package:quarterback_flutter/generated/protos/authpb.pb.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> with ChangeNotifier {
-  AuthCubit() : super(AuthInitial());
+  AuthCubit({required AuthRepository repository})
+      : _repository = repository,
+        super(AuthInitial()) {
+    _repository.status.listen(_onAuthStatusChanged);
+  }
 
-  Future<void> login() async {
-    // await Future.delayed(const Duration(seconds: 3));
-    emit(const AuthAuthenticated('123'));
-    notifyListeners();
+  final AuthRepository _repository;
 
-    //     // final credentials = await _authRepository.login(
-    //     //   LoginRequest(
-    //     //     username: 'admin',
-    //     //     password: '152535',
-    //     //   ),
-    //     // );
-    //     // print(credentials.token);
-    //     // print(credentials.refreshToken);
+  Future<void> login(LoginRequest req) async {
+    return await _repository.login(req);
   }
 
   Future<void> logout() async {
-    emit(AuthUnauthenticated());
+    return await _repository.logout();
+  }
+
+  Future<void> register(RegisterRequest req) async {
+    return await _repository.register(req);
+  }
+
+  Future<void> _onAuthStatusChanged(AuthenticationStatus status) async {
+    switch (status) {
+      case AuthenticationStatus.authenticated:
+        emit(const AuthAuthenticated('123'));
+        break;
+      case AuthenticationStatus.unauthenticated:
+        emit(AuthUnauthenticated());
+        break;
+      default:
+        emit(AuthInitial());
+    }
     notifyListeners();
   }
 }

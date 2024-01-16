@@ -15,6 +15,8 @@ final class AuthUnauthenticated extends AuthState {}
 final class AuthAuthenticated extends AuthState {
   const AuthAuthenticated(this.id);
 
+  // maybe credentials
+
   final String id;
 
   @override
