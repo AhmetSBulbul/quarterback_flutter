@@ -29,16 +29,17 @@ class AuthCubit extends Cubit<AuthState> with ChangeNotifier {
     return await _repository.register(req);
   }
 
-  Future<void> _onAuthStatusChanged(AuthenticationStatus status) async {
+  Future<void> _onAuthStatusChanged(AuthStatus status) async {
     switch (status) {
-      case AuthenticationStatus.authenticated:
-        emit(const AuthAuthenticated('123'));
+      case AuthStatus.unknown:
+        emit(AuthInitial());
         break;
-      case AuthenticationStatus.unauthenticated:
+      case AuthStatus.unauthenticated:
         emit(AuthUnauthenticated());
         break;
-      default:
-        emit(AuthInitial());
+      case AuthStatus.authenticated:
+        emit(AuthAuthenticated());
+        break;
     }
     notifyListeners();
   }

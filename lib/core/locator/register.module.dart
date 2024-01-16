@@ -1,24 +1,20 @@
 import 'package:grpc/grpc.dart';
+import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
-import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
 
 @module
 abstract class RegisterModule {
+  @Named('credentialsBox')
+  @preResolve
+  Future<Box<String>> get credentialsBox =>
+      Hive.openBox<String>('credentialsBox');
+
   @singleton
   ClientChannel get clientChannel => ClientChannel(
-        'localhost',
+        // 'localhost',
+        '192.168.8.173',
         port: 50001,
         options:
             const ChannelOptions(credentials: ChannelCredentials.insecure()),
       );
-
-  // @singleton
-  // Future<AuthCubit> get authCubit async {
-  //   final authCubit = AuthCubit();
-  //   // await authCubit.login();
-  //   await Future.delayed(const Duration(seconds: 1));
-  //   return authCubit;
-  // }
-  // @singleton
-  // AuthCubit get authCubit => AuthCubit();
 }

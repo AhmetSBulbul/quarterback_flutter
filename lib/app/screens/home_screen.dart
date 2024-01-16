@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quarterback_flutter/app/widgets/brand/app_icons.dart';
 import 'package:quarterback_flutter/app/widgets/brand/logo.dart';
+import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
+import 'package:quarterback_flutter/features/user/data/user_repository.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -21,7 +23,7 @@ class HomeScreen extends StatelessWidget {
           IconButton(onPressed: () => {}, icon: const AppIcons.basketball())
         ],
       ),
-      body: const Center(child: Text("Home Screen Test 5")),
+      body: const Text("Home Screen"),
     );
   }
 }
