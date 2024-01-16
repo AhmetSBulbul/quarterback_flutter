@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:grpc/grpc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:quarterback_flutter/core/interceptors/logger_interceptor.dart';
 import 'package:quarterback_flutter/features/auth/data/auth_storage.dart';
 import 'package:quarterback_flutter/generated/protos/authpb.pbgrpc.dart';
 
@@ -30,8 +31,15 @@ class AuthRepository {
   }
 
   AuthRepository(
-      {required ClientChannel channel, required AuthStorage authStorage})
-      : _authServiceClient = AuthServiceClient(channel),
+      {required ClientChannel channel,
+      required AuthStorage authStorage,
+      required LoggerInterceptor loggerInterceptor})
+      : _authServiceClient = AuthServiceClient(
+          channel,
+          interceptors: [
+            loggerInterceptor,
+          ],
+        ),
         _authStorage = authStorage;
 
   Future<void> login(LoginRequest request) async {
