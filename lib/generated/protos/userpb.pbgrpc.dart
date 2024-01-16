@@ -16,40 +16,40 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'commonpb.pb.dart' as $1;
-import 'userpb.pb.dart' as $3;
+import 'userpb.pb.dart' as $4;
 
 export 'userpb.pb.dart';
 
 @$pb.GrpcServiceName('user.UserService')
 class UserServiceClient extends $grpc.Client {
-  static final _$getMe = $grpc.ClientMethod<$1.Empty, $3.UserResponse>(
+  static final _$getMe = $grpc.ClientMethod<$1.Empty, $4.UserResponse>(
       '/user.UserService/GetMe',
       ($1.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.UserResponse.fromBuffer(value));
-  static final _$getUser = $grpc.ClientMethod<$1.GetByIdRequest, $3.UserResponse>(
+      ($core.List<$core.int> value) => $4.UserResponse.fromBuffer(value));
+  static final _$getUser = $grpc.ClientMethod<$1.GetByIdRequest, $4.UserResponse>(
       '/user.UserService/GetUser',
       ($1.GetByIdRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.UserResponse.fromBuffer(value));
-  static final _$searchUsers = $grpc.ClientMethod<$3.UserSearchRequest, $3.UserListResponse>(
+      ($core.List<$core.int> value) => $4.UserResponse.fromBuffer(value));
+  static final _$searchUsers = $grpc.ClientMethod<$4.UserSearchRequest, $4.UserListResponse>(
       '/user.UserService/SearchUsers',
-      ($3.UserSearchRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.UserListResponse.fromBuffer(value));
-  static final _$updateUser = $grpc.ClientMethod<$3.UserUpdateRequest, $3.UserResponse>(
+      ($4.UserSearchRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.UserListResponse.fromBuffer(value));
+  static final _$updateUser = $grpc.ClientMethod<$4.UserUpdateRequest, $4.UserResponse>(
       '/user.UserService/UpdateUser',
-      ($3.UserUpdateRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.UserResponse.fromBuffer(value));
-  static final _$uploadAvatar = $grpc.ClientMethod<$1.File, $3.UserResponse>(
+      ($4.UserUpdateRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.UserResponse.fromBuffer(value));
+  static final _$uploadAvatar = $grpc.ClientMethod<$4.UpdateAvatarRequest, $4.UserResponse>(
       '/user.UserService/UploadAvatar',
-      ($1.File value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.UserResponse.fromBuffer(value));
-  static final _$toggleFollow = $grpc.ClientMethod<$1.GetByIdRequest, $3.FollowResponse>(
+      ($4.UpdateAvatarRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.UserResponse.fromBuffer(value));
+  static final _$toggleFollow = $grpc.ClientMethod<$1.GetByIdRequest, $4.FollowResponse>(
       '/user.UserService/ToggleFollow',
       ($1.GetByIdRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.FollowResponse.fromBuffer(value));
-  static final _$toggleBlock = $grpc.ClientMethod<$1.GetByIdRequest, $3.FollowResponse>(
+      ($core.List<$core.int> value) => $4.FollowResponse.fromBuffer(value));
+  static final _$toggleBlock = $grpc.ClientMethod<$1.GetByIdRequest, $4.FollowResponse>(
       '/user.UserService/ToggleBlock',
       ($1.GetByIdRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.FollowResponse.fromBuffer(value));
+      ($core.List<$core.int> value) => $4.FollowResponse.fromBuffer(value));
   static final _$addComment = $grpc.ClientMethod<$1.CommentRequest, $1.CommentResponse>(
       '/user.UserService/AddComment',
       ($1.CommentRequest value) => value.writeToBuffer(),
@@ -61,31 +61,31 @@ class UserServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$3.UserResponse> getMe($1.Empty request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.UserResponse> getMe($1.Empty request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getMe, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.UserResponse> getUser($1.GetByIdRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.UserResponse> getUser($1.GetByIdRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getUser, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.UserListResponse> searchUsers($3.UserSearchRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.UserListResponse> searchUsers($4.UserSearchRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$searchUsers, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.UserResponse> updateUser($3.UserUpdateRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.UserResponse> updateUser($4.UserUpdateRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$updateUser, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.UserResponse> uploadAvatar($1.File request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.UserResponse> uploadAvatar($4.UpdateAvatarRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$uploadAvatar, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.FollowResponse> toggleFollow($1.GetByIdRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.FollowResponse> toggleFollow($1.GetByIdRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$toggleFollow, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.FollowResponse> toggleBlock($1.GetByIdRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.FollowResponse> toggleBlock($1.GetByIdRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$toggleBlock, request, options: options);
   }
 
@@ -99,55 +99,55 @@ abstract class UserServiceBase extends $grpc.Service {
   $core.String get $name => 'user.UserService';
 
   UserServiceBase() {
-    $addMethod($grpc.ServiceMethod<$1.Empty, $3.UserResponse>(
+    $addMethod($grpc.ServiceMethod<$1.Empty, $4.UserResponse>(
         'GetMe',
         getMe_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
-        ($3.UserResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.GetByIdRequest, $3.UserResponse>(
+        ($4.UserResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.GetByIdRequest, $4.UserResponse>(
         'GetUser',
         getUser_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $1.GetByIdRequest.fromBuffer(value),
-        ($3.UserResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.UserSearchRequest, $3.UserListResponse>(
+        ($4.UserResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.UserSearchRequest, $4.UserListResponse>(
         'SearchUsers',
         searchUsers_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.UserSearchRequest.fromBuffer(value),
-        ($3.UserListResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.UserUpdateRequest, $3.UserResponse>(
+        ($core.List<$core.int> value) => $4.UserSearchRequest.fromBuffer(value),
+        ($4.UserListResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.UserUpdateRequest, $4.UserResponse>(
         'UpdateUser',
         updateUser_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.UserUpdateRequest.fromBuffer(value),
-        ($3.UserResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.File, $3.UserResponse>(
+        ($core.List<$core.int> value) => $4.UserUpdateRequest.fromBuffer(value),
+        ($4.UserResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.UpdateAvatarRequest, $4.UserResponse>(
         'UploadAvatar',
         uploadAvatar_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.File.fromBuffer(value),
-        ($3.UserResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.GetByIdRequest, $3.FollowResponse>(
+        ($core.List<$core.int> value) => $4.UpdateAvatarRequest.fromBuffer(value),
+        ($4.UserResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.GetByIdRequest, $4.FollowResponse>(
         'ToggleFollow',
         toggleFollow_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $1.GetByIdRequest.fromBuffer(value),
-        ($3.FollowResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.GetByIdRequest, $3.FollowResponse>(
+        ($4.FollowResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.GetByIdRequest, $4.FollowResponse>(
         'ToggleBlock',
         toggleBlock_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $1.GetByIdRequest.fromBuffer(value),
-        ($3.FollowResponse value) => value.writeToBuffer()));
+        ($4.FollowResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.CommentRequest, $1.CommentResponse>(
         'AddComment',
         addComment_Pre,
@@ -157,31 +157,31 @@ abstract class UserServiceBase extends $grpc.Service {
         ($1.CommentResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$3.UserResponse> getMe_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
+  $async.Future<$4.UserResponse> getMe_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
     return getMe(call, await request);
   }
 
-  $async.Future<$3.UserResponse> getUser_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdRequest> request) async {
+  $async.Future<$4.UserResponse> getUser_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdRequest> request) async {
     return getUser(call, await request);
   }
 
-  $async.Future<$3.UserListResponse> searchUsers_Pre($grpc.ServiceCall call, $async.Future<$3.UserSearchRequest> request) async {
+  $async.Future<$4.UserListResponse> searchUsers_Pre($grpc.ServiceCall call, $async.Future<$4.UserSearchRequest> request) async {
     return searchUsers(call, await request);
   }
 
-  $async.Future<$3.UserResponse> updateUser_Pre($grpc.ServiceCall call, $async.Future<$3.UserUpdateRequest> request) async {
+  $async.Future<$4.UserResponse> updateUser_Pre($grpc.ServiceCall call, $async.Future<$4.UserUpdateRequest> request) async {
     return updateUser(call, await request);
   }
 
-  $async.Future<$3.UserResponse> uploadAvatar_Pre($grpc.ServiceCall call, $async.Future<$1.File> request) async {
+  $async.Future<$4.UserResponse> uploadAvatar_Pre($grpc.ServiceCall call, $async.Future<$4.UpdateAvatarRequest> request) async {
     return uploadAvatar(call, await request);
   }
 
-  $async.Future<$3.FollowResponse> toggleFollow_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdRequest> request) async {
+  $async.Future<$4.FollowResponse> toggleFollow_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdRequest> request) async {
     return toggleFollow(call, await request);
   }
 
-  $async.Future<$3.FollowResponse> toggleBlock_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdRequest> request) async {
+  $async.Future<$4.FollowResponse> toggleBlock_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdRequest> request) async {
     return toggleBlock(call, await request);
   }
 
@@ -189,12 +189,12 @@ abstract class UserServiceBase extends $grpc.Service {
     return addComment(call, await request);
   }
 
-  $async.Future<$3.UserResponse> getMe($grpc.ServiceCall call, $1.Empty request);
-  $async.Future<$3.UserResponse> getUser($grpc.ServiceCall call, $1.GetByIdRequest request);
-  $async.Future<$3.UserListResponse> searchUsers($grpc.ServiceCall call, $3.UserSearchRequest request);
-  $async.Future<$3.UserResponse> updateUser($grpc.ServiceCall call, $3.UserUpdateRequest request);
-  $async.Future<$3.UserResponse> uploadAvatar($grpc.ServiceCall call, $1.File request);
-  $async.Future<$3.FollowResponse> toggleFollow($grpc.ServiceCall call, $1.GetByIdRequest request);
-  $async.Future<$3.FollowResponse> toggleBlock($grpc.ServiceCall call, $1.GetByIdRequest request);
+  $async.Future<$4.UserResponse> getMe($grpc.ServiceCall call, $1.Empty request);
+  $async.Future<$4.UserResponse> getUser($grpc.ServiceCall call, $1.GetByIdRequest request);
+  $async.Future<$4.UserListResponse> searchUsers($grpc.ServiceCall call, $4.UserSearchRequest request);
+  $async.Future<$4.UserResponse> updateUser($grpc.ServiceCall call, $4.UserUpdateRequest request);
+  $async.Future<$4.UserResponse> uploadAvatar($grpc.ServiceCall call, $4.UpdateAvatarRequest request);
+  $async.Future<$4.FollowResponse> toggleFollow($grpc.ServiceCall call, $1.GetByIdRequest request);
+  $async.Future<$4.FollowResponse> toggleBlock($grpc.ServiceCall call, $1.GetByIdRequest request);
   $async.Future<$1.CommentResponse> addComment($grpc.ServiceCall call, $1.CommentRequest request);
 }

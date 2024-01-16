@@ -32,25 +32,41 @@ final $typed_data.Uint8List userSearchRequestDescriptor = $convert.base64Decode(
 const UserUpdateRequest$json = {
   '1': 'UserUpdateRequest',
   '2': [
-    {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email', '17': true},
-    {'1': 'username', '3': 3, '4': 1, '5': 9, '9': 1, '10': 'username', '17': true},
-    {'1': 'name', '3': 4, '4': 1, '5': 9, '9': 2, '10': 'name', '17': true},
-    {'1': 'lastname', '3': 5, '4': 1, '5': 9, '9': 3, '10': 'lastname', '17': true},
+    {'1': 'name', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'name', '17': true},
+    {'1': 'lastname', '3': 5, '4': 1, '5': 9, '9': 1, '10': 'lastname', '17': true},
+    {'1': 'districtID', '3': 6, '4': 1, '5': 5, '9': 2, '10': 'districtID', '17': true},
   ],
   '8': [
-    {'1': '_email'},
-    {'1': '_username'},
     {'1': '_name'},
     {'1': '_lastname'},
+    {'1': '_districtID'},
+  ],
+  '9': [
+    {'1': 1, '2': 2},
+    {'1': 2, '2': 3},
+    {'1': 3, '2': 4},
   ],
 };
 
 /// Descriptor for `UserUpdateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List userUpdateRequestDescriptor = $convert.base64Decode(
-    'ChFVc2VyVXBkYXRlUmVxdWVzdBIZCgVlbWFpbBgCIAEoCUgAUgVlbWFpbIgBARIfCgh1c2Vybm'
-    'FtZRgDIAEoCUgBUgh1c2VybmFtZYgBARIXCgRuYW1lGAQgASgJSAJSBG5hbWWIAQESHwoIbGFz'
-    'dG5hbWUYBSABKAlIA1IIbGFzdG5hbWWIAQFCCAoGX2VtYWlsQgsKCV91c2VybmFtZUIHCgVfbm'
-    'FtZUILCglfbGFzdG5hbWU=');
+    'ChFVc2VyVXBkYXRlUmVxdWVzdBIXCgRuYW1lGAQgASgJSABSBG5hbWWIAQESHwoIbGFzdG5hbW'
+    'UYBSABKAlIAVIIbGFzdG5hbWWIAQESIwoKZGlzdHJpY3RJRBgGIAEoBUgCUgpkaXN0cmljdElE'
+    'iAEBQgcKBV9uYW1lQgsKCV9sYXN0bmFtZUINCgtfZGlzdHJpY3RJREoECAEQAkoECAIQA0oECA'
+    'MQBA==');
+
+@$core.Deprecated('Use updateAvatarRequestDescriptor instead')
+const UpdateAvatarRequest$json = {
+  '1': 'UpdateAvatarRequest',
+  '2': [
+    {'1': 'avatarFileId', '3': 1, '4': 1, '5': 5, '10': 'avatarFileId'},
+  ],
+};
+
+/// Descriptor for `UpdateAvatarRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateAvatarRequestDescriptor = $convert.base64Decode(
+    'ChNVcGRhdGVBdmF0YXJSZXF1ZXN0EiIKDGF2YXRhckZpbGVJZBgBIAEoBVIMYXZhdGFyRmlsZU'
+    'lk');
 
 @$core.Deprecated('Use userDescriptor instead')
 const User$json = {
@@ -62,6 +78,11 @@ const User$json = {
     {'1': 'name', '3': 4, '4': 1, '5': 9, '10': 'name'},
     {'1': 'lastname', '3': 5, '4': 1, '5': 9, '10': 'lastname'},
     {'1': 'avatarPath', '3': 6, '4': 1, '5': 9, '10': 'avatarPath'},
+    {'1': 'password', '3': 7, '4': 1, '5': 9, '9': 0, '10': 'password', '17': true},
+    {'1': 'districtID', '3': 8, '4': 1, '5': 5, '10': 'districtID'},
+  ],
+  '8': [
+    {'1': '_password'},
   ],
 };
 
@@ -69,7 +90,9 @@ const User$json = {
 final $typed_data.Uint8List userDescriptor = $convert.base64Decode(
     'CgRVc2VyEg4KAmlkGAEgASgFUgJpZBIUCgVlbWFpbBgCIAEoCVIFZW1haWwSGgoIdXNlcm5hbW'
     'UYAyABKAlSCHVzZXJuYW1lEhIKBG5hbWUYBCABKAlSBG5hbWUSGgoIbGFzdG5hbWUYBSABKAlS'
-    'CGxhc3RuYW1lEh4KCmF2YXRhclBhdGgYBiABKAlSCmF2YXRhclBhdGg=');
+    'CGxhc3RuYW1lEh4KCmF2YXRhclBhdGgYBiABKAlSCmF2YXRhclBhdGgSHwoIcGFzc3dvcmQYBy'
+    'ABKAlIAFIIcGFzc3dvcmSIAQESHgoKZGlzdHJpY3RJRBgIIAEoBVIKZGlzdHJpY3RJREILCglf'
+    'cGFzc3dvcmQ=');
 
 @$core.Deprecated('Use userResponseDescriptor instead')
 const UserResponse$json = {
@@ -101,27 +124,33 @@ final $typed_data.Uint8List userListResponseDescriptor = $convert.base64Decode(
 const FollowResponse$json = {
   '1': 'FollowResponse',
   '2': [
-    {'1': 'user', '3': 1, '4': 1, '5': 11, '6': '.user.User', '10': 'user'},
     {'1': 'isFollowing', '3': 2, '4': 1, '5': 8, '10': 'isFollowing'},
+    {'1': 'subjectUserID', '3': 3, '4': 1, '5': 5, '10': 'subjectUserID'},
+  ],
+  '9': [
+    {'1': 1, '2': 2},
   ],
 };
 
 /// Descriptor for `FollowResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List followResponseDescriptor = $convert.base64Decode(
-    'Cg5Gb2xsb3dSZXNwb25zZRIeCgR1c2VyGAEgASgLMgoudXNlci5Vc2VyUgR1c2VyEiAKC2lzRm'
-    '9sbG93aW5nGAIgASgIUgtpc0ZvbGxvd2luZw==');
+    'Cg5Gb2xsb3dSZXNwb25zZRIgCgtpc0ZvbGxvd2luZxgCIAEoCFILaXNGb2xsb3dpbmcSJAoNc3'
+    'ViamVjdFVzZXJJRBgDIAEoBVINc3ViamVjdFVzZXJJREoECAEQAg==');
 
 @$core.Deprecated('Use blockResponseDescriptor instead')
 const BlockResponse$json = {
   '1': 'BlockResponse',
   '2': [
-    {'1': 'user', '3': 1, '4': 1, '5': 11, '6': '.user.User', '10': 'user'},
     {'1': 'isBlocked', '3': 2, '4': 1, '5': 8, '10': 'isBlocked'},
+    {'1': 'subjectUserID', '3': 3, '4': 1, '5': 5, '10': 'subjectUserID'},
+  ],
+  '9': [
+    {'1': 1, '2': 2},
   ],
 };
 
 /// Descriptor for `BlockResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List blockResponseDescriptor = $convert.base64Decode(
-    'Cg1CbG9ja1Jlc3BvbnNlEh4KBHVzZXIYASABKAsyCi51c2VyLlVzZXJSBHVzZXISHAoJaXNCbG'
-    '9ja2VkGAIgASgIUglpc0Jsb2NrZWQ=');
+    'Cg1CbG9ja1Jlc3BvbnNlEhwKCWlzQmxvY2tlZBgCIAEoCFIJaXNCbG9ja2VkEiQKDXN1YmplY3'
+    'RVc2VySUQYAyABKAVSDXN1YmplY3RVc2VySURKBAgBEAI=');
 

@@ -86,23 +86,19 @@ class UserSearchRequest extends $pb.GeneratedMessage {
 /// Be able to update only own user
 class UserUpdateRequest extends $pb.GeneratedMessage {
   factory UserUpdateRequest({
-    $core.String? email,
-    $core.String? username,
     $core.String? name,
     $core.String? lastname,
+    $core.int? districtID,
   }) {
     final $result = create();
-    if (email != null) {
-      $result.email = email;
-    }
-    if (username != null) {
-      $result.username = username;
-    }
     if (name != null) {
       $result.name = name;
     }
     if (lastname != null) {
       $result.lastname = lastname;
+    }
+    if (districtID != null) {
+      $result.districtID = districtID;
     }
     return $result;
   }
@@ -111,10 +107,9 @@ class UserUpdateRequest extends $pb.GeneratedMessage {
   factory UserUpdateRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UserUpdateRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'user'), createEmptyInstance: create)
-    ..aOS(2, _omitFieldNames ? '' : 'email')
-    ..aOS(3, _omitFieldNames ? '' : 'username')
     ..aOS(4, _omitFieldNames ? '' : 'name')
     ..aOS(5, _omitFieldNames ? '' : 'lastname')
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'districtID', $pb.PbFieldType.O3, protoName: 'districtID')
     ..hasRequiredFields = false
   ;
 
@@ -139,41 +134,82 @@ class UserUpdateRequest extends $pb.GeneratedMessage {
   static UserUpdateRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserUpdateRequest>(create);
   static UserUpdateRequest? _defaultInstance;
 
-  @$pb.TagNumber(2)
-  $core.String get email => $_getSZ(0);
-  @$pb.TagNumber(2)
-  set email($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasEmail() => $_has(0);
-  @$pb.TagNumber(2)
-  void clearEmail() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get username => $_getSZ(1);
-  @$pb.TagNumber(3)
-  set username($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasUsername() => $_has(1);
-  @$pb.TagNumber(3)
-  void clearUsername() => clearField(3);
-
   @$pb.TagNumber(4)
-  $core.String get name => $_getSZ(2);
+  $core.String get name => $_getSZ(0);
   @$pb.TagNumber(4)
-  set name($core.String v) { $_setString(2, v); }
+  set name($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(4)
-  $core.bool hasName() => $_has(2);
+  $core.bool hasName() => $_has(0);
   @$pb.TagNumber(4)
   void clearName() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get lastname => $_getSZ(3);
+  $core.String get lastname => $_getSZ(1);
   @$pb.TagNumber(5)
-  set lastname($core.String v) { $_setString(3, v); }
+  set lastname($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(5)
-  $core.bool hasLastname() => $_has(3);
+  $core.bool hasLastname() => $_has(1);
   @$pb.TagNumber(5)
   void clearLastname() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.int get districtID => $_getIZ(2);
+  @$pb.TagNumber(6)
+  set districtID($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasDistrictID() => $_has(2);
+  @$pb.TagNumber(6)
+  void clearDistrictID() => clearField(6);
+}
+
+class UpdateAvatarRequest extends $pb.GeneratedMessage {
+  factory UpdateAvatarRequest({
+    $core.int? avatarFileId,
+  }) {
+    final $result = create();
+    if (avatarFileId != null) {
+      $result.avatarFileId = avatarFileId;
+    }
+    return $result;
+  }
+  UpdateAvatarRequest._() : super();
+  factory UpdateAvatarRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateAvatarRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateAvatarRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'user'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'avatarFileId', $pb.PbFieldType.O3, protoName: 'avatarFileId')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateAvatarRequest clone() => UpdateAvatarRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateAvatarRequest copyWith(void Function(UpdateAvatarRequest) updates) => super.copyWith((message) => updates(message as UpdateAvatarRequest)) as UpdateAvatarRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UpdateAvatarRequest create() => UpdateAvatarRequest._();
+  UpdateAvatarRequest createEmptyInstance() => create();
+  static $pb.PbList<UpdateAvatarRequest> createRepeated() => $pb.PbList<UpdateAvatarRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateAvatarRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateAvatarRequest>(create);
+  static UpdateAvatarRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get avatarFileId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set avatarFileId($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasAvatarFileId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAvatarFileId() => clearField(1);
 }
 
 class User extends $pb.GeneratedMessage {
@@ -184,6 +220,8 @@ class User extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? lastname,
     $core.String? avatarPath,
+    $core.String? password,
+    $core.int? districtID,
   }) {
     final $result = create();
     if (id != null) {
@@ -204,6 +242,12 @@ class User extends $pb.GeneratedMessage {
     if (avatarPath != null) {
       $result.avatarPath = avatarPath;
     }
+    if (password != null) {
+      $result.password = password;
+    }
+    if (districtID != null) {
+      $result.districtID = districtID;
+    }
     return $result;
   }
   User._() : super();
@@ -217,6 +261,8 @@ class User extends $pb.GeneratedMessage {
     ..aOS(4, _omitFieldNames ? '' : 'name')
     ..aOS(5, _omitFieldNames ? '' : 'lastname')
     ..aOS(6, _omitFieldNames ? '' : 'avatarPath', protoName: 'avatarPath')
+    ..aOS(7, _omitFieldNames ? '' : 'password')
+    ..a<$core.int>(8, _omitFieldNames ? '' : 'districtID', $pb.PbFieldType.O3, protoName: 'districtID')
     ..hasRequiredFields = false
   ;
 
@@ -294,6 +340,24 @@ class User extends $pb.GeneratedMessage {
   $core.bool hasAvatarPath() => $_has(5);
   @$pb.TagNumber(6)
   void clearAvatarPath() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get password => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set password($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasPassword() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearPassword() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.int get districtID => $_getIZ(7);
+  @$pb.TagNumber(8)
+  set districtID($core.int v) { $_setSignedInt32(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasDistrictID() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearDistrictID() => clearField(8);
 }
 
 class UserResponse extends $pb.GeneratedMessage {
@@ -410,15 +474,15 @@ class UserListResponse extends $pb.GeneratedMessage {
 
 class FollowResponse extends $pb.GeneratedMessage {
   factory FollowResponse({
-    User? user,
     $core.bool? isFollowing,
+    $core.int? subjectUserID,
   }) {
     final $result = create();
-    if (user != null) {
-      $result.user = user;
-    }
     if (isFollowing != null) {
       $result.isFollowing = isFollowing;
+    }
+    if (subjectUserID != null) {
+      $result.subjectUserID = subjectUserID;
     }
     return $result;
   }
@@ -427,8 +491,8 @@ class FollowResponse extends $pb.GeneratedMessage {
   factory FollowResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FollowResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'user'), createEmptyInstance: create)
-    ..aOM<User>(1, _omitFieldNames ? '' : 'user', subBuilder: User.create)
     ..aOB(2, _omitFieldNames ? '' : 'isFollowing', protoName: 'isFollowing')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'subjectUserID', $pb.PbFieldType.O3, protoName: 'subjectUserID')
     ..hasRequiredFields = false
   ;
 
@@ -453,38 +517,36 @@ class FollowResponse extends $pb.GeneratedMessage {
   static FollowResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FollowResponse>(create);
   static FollowResponse? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  User get user => $_getN(0);
-  @$pb.TagNumber(1)
-  set user(User v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasUser() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearUser() => clearField(1);
-  @$pb.TagNumber(1)
-  User ensureUser() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.bool get isFollowing => $_getBF(1);
+  $core.bool get isFollowing => $_getBF(0);
   @$pb.TagNumber(2)
-  set isFollowing($core.bool v) { $_setBool(1, v); }
+  set isFollowing($core.bool v) { $_setBool(0, v); }
   @$pb.TagNumber(2)
-  $core.bool hasIsFollowing() => $_has(1);
+  $core.bool hasIsFollowing() => $_has(0);
   @$pb.TagNumber(2)
   void clearIsFollowing() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get subjectUserID => $_getIZ(1);
+  @$pb.TagNumber(3)
+  set subjectUserID($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasSubjectUserID() => $_has(1);
+  @$pb.TagNumber(3)
+  void clearSubjectUserID() => clearField(3);
 }
 
 class BlockResponse extends $pb.GeneratedMessage {
   factory BlockResponse({
-    User? user,
     $core.bool? isBlocked,
+    $core.int? subjectUserID,
   }) {
     final $result = create();
-    if (user != null) {
-      $result.user = user;
-    }
     if (isBlocked != null) {
       $result.isBlocked = isBlocked;
+    }
+    if (subjectUserID != null) {
+      $result.subjectUserID = subjectUserID;
     }
     return $result;
   }
@@ -493,8 +555,8 @@ class BlockResponse extends $pb.GeneratedMessage {
   factory BlockResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BlockResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'user'), createEmptyInstance: create)
-    ..aOM<User>(1, _omitFieldNames ? '' : 'user', subBuilder: User.create)
     ..aOB(2, _omitFieldNames ? '' : 'isBlocked', protoName: 'isBlocked')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'subjectUserID', $pb.PbFieldType.O3, protoName: 'subjectUserID')
     ..hasRequiredFields = false
   ;
 
@@ -519,25 +581,23 @@ class BlockResponse extends $pb.GeneratedMessage {
   static BlockResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BlockResponse>(create);
   static BlockResponse? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  User get user => $_getN(0);
-  @$pb.TagNumber(1)
-  set user(User v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasUser() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearUser() => clearField(1);
-  @$pb.TagNumber(1)
-  User ensureUser() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  $core.bool get isBlocked => $_getBF(1);
+  $core.bool get isBlocked => $_getBF(0);
   @$pb.TagNumber(2)
-  set isBlocked($core.bool v) { $_setBool(1, v); }
+  set isBlocked($core.bool v) { $_setBool(0, v); }
   @$pb.TagNumber(2)
-  $core.bool hasIsBlocked() => $_has(1);
+  $core.bool hasIsBlocked() => $_has(0);
   @$pb.TagNumber(2)
   void clearIsBlocked() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get subjectUserID => $_getIZ(1);
+  @$pb.TagNumber(3)
+  set subjectUserID($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasSubjectUserID() => $_has(1);
+  @$pb.TagNumber(3)
+  void clearSubjectUserID() => clearField(3);
 }
 
 
