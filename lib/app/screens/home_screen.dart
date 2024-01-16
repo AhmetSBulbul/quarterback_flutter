@@ -29,7 +29,6 @@ class HomeScreen extends StatelessWidget {
           if (state is AuthAuthenticated) {
             return FutureBuilder(
               future: locator<UserRepository>().getMe(),
-              // future: locator<UserRepository>().getUser(state.credentials, 3),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return Text(snapshot.data.toString());
