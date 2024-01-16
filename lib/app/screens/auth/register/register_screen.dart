@@ -198,7 +198,7 @@ class RegisterScreen extends StatelessWidget {
                       onPressed: registerState.isValid
                           ? () async {
                               try {
-                                context
+                                await context
                                     .read<AuthCubit>()
                                     .register(RegisterRequest(
                                       email: registerState.email.value,
