@@ -51,6 +51,7 @@ dependencies:
   hive_flutter: ^1.1.0
   logger: ^2.0.2+1
   dartz: ^0.10.1
+  file_picker: ^6.1.1
 
 dev_dependencies:
   flutter_test:

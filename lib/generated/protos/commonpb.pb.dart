@@ -337,6 +337,72 @@ class GetByIdRequest extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 }
 
+class GetByIdPaginatedRequest extends $pb.GeneratedMessage {
+  factory GetByIdPaginatedRequest({
+    $core.int? id,
+    PaginationRequest? pagination,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (pagination != null) {
+      $result.pagination = pagination;
+    }
+    return $result;
+  }
+  GetByIdPaginatedRequest._() : super();
+  factory GetByIdPaginatedRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetByIdPaginatedRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetByIdPaginatedRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'common'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
+    ..aOM<PaginationRequest>(2, _omitFieldNames ? '' : 'pagination', subBuilder: PaginationRequest.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetByIdPaginatedRequest clone() => GetByIdPaginatedRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetByIdPaginatedRequest copyWith(void Function(GetByIdPaginatedRequest) updates) => super.copyWith((message) => updates(message as GetByIdPaginatedRequest)) as GetByIdPaginatedRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetByIdPaginatedRequest create() => GetByIdPaginatedRequest._();
+  GetByIdPaginatedRequest createEmptyInstance() => create();
+  static $pb.PbList<GetByIdPaginatedRequest> createRepeated() => $pb.PbList<GetByIdPaginatedRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetByIdPaginatedRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetByIdPaginatedRequest>(create);
+  static GetByIdPaginatedRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get id => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set id($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  PaginationRequest get pagination => $_getN(1);
+  @$pb.TagNumber(2)
+  set pagination(PaginationRequest v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPagination() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPagination() => clearField(2);
+  @$pb.TagNumber(2)
+  PaginationRequest ensurePagination() => $_ensure(1);
+}
+
 class Query extends $pb.GeneratedMessage {
   factory Query({
     $core.String? query,
@@ -875,6 +941,66 @@ class CommentResponse extends $pb.GeneratedMessage {
   void clearComment() => clearField(1);
   @$pb.TagNumber(1)
   Comment ensureComment() => $_ensure(0);
+}
+
+class CommentsResponse extends $pb.GeneratedMessage {
+  factory CommentsResponse({
+    $core.Iterable<Comment>? comments,
+    PaginationResponse? pagination,
+  }) {
+    final $result = create();
+    if (comments != null) {
+      $result.comments.addAll(comments);
+    }
+    if (pagination != null) {
+      $result.pagination = pagination;
+    }
+    return $result;
+  }
+  CommentsResponse._() : super();
+  factory CommentsResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CommentsResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CommentsResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'common'), createEmptyInstance: create)
+    ..pc<Comment>(1, _omitFieldNames ? '' : 'comments', $pb.PbFieldType.PM, subBuilder: Comment.create)
+    ..aOM<PaginationResponse>(2, _omitFieldNames ? '' : 'pagination', subBuilder: PaginationResponse.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CommentsResponse clone() => CommentsResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CommentsResponse copyWith(void Function(CommentsResponse) updates) => super.copyWith((message) => updates(message as CommentsResponse)) as CommentsResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CommentsResponse create() => CommentsResponse._();
+  CommentsResponse createEmptyInstance() => create();
+  static $pb.PbList<CommentsResponse> createRepeated() => $pb.PbList<CommentsResponse>();
+  @$core.pragma('dart2js:noInline')
+  static CommentsResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CommentsResponse>(create);
+  static CommentsResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Comment> get comments => $_getList(0);
+
+  @$pb.TagNumber(2)
+  PaginationResponse get pagination => $_getN(1);
+  @$pb.TagNumber(2)
+  set pagination(PaginationResponse v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPagination() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPagination() => clearField(2);
+  @$pb.TagNumber(2)
+  PaginationResponse ensurePagination() => $_ensure(1);
 }
 
 /// It can be [Country, City, District] ??

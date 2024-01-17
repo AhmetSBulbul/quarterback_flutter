@@ -18,14 +18,14 @@ const UploadRequest$json = {
   '1': 'UploadRequest',
   '2': [
     {'1': 'data', '3': 1, '4': 1, '5': 12, '10': 'data'},
-    {'1': 'contentType', '3': 2, '4': 1, '5': 9, '10': 'contentType'},
+    {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
   ],
 };
 
 /// Descriptor for `UploadRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List uploadRequestDescriptor = $convert.base64Decode(
-    'Cg1VcGxvYWRSZXF1ZXN0EhIKBGRhdGEYASABKAxSBGRhdGESIAoLY29udGVudFR5cGUYAiABKA'
-    'lSC2NvbnRlbnRUeXBl');
+    'Cg1VcGxvYWRSZXF1ZXN0EhIKBGRhdGEYASABKAxSBGRhdGESEgoEbmFtZRgCIAEoCVIEbmFtZQ'
+    '==');
 
 @$core.Deprecated('Use fileIdDescriptor instead')
 const FileId$json = {
@@ -43,7 +43,7 @@ final $typed_data.Uint8List fileIdDescriptor = $convert.base64Decode(
 const GetFileResponse$json = {
   '1': 'GetFileResponse',
   '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
     {'1': 'path', '3': 2, '4': 1, '5': 9, '10': 'path'},
     {'1': 'contentType', '3': 3, '4': 1, '5': 9, '10': 'contentType'},
   ],
@@ -51,6 +51,6 @@ const GetFileResponse$json = {
 
 /// Descriptor for `GetFileResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getFileResponseDescriptor = $convert.base64Decode(
-    'Cg9HZXRGaWxlUmVzcG9uc2USDgoCaWQYASABKAlSAmlkEhIKBHBhdGgYAiABKAlSBHBhdGgSIA'
+    'Cg9HZXRGaWxlUmVzcG9uc2USDgoCaWQYASABKAVSAmlkEhIKBHBhdGgYAiABKAlSBHBhdGgSIA'
     'oLY29udGVudFR5cGUYAyABKAlSC2NvbnRlbnRUeXBl');
 

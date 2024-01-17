@@ -46,14 +46,30 @@ class UserServiceClient extends $grpc.Client {
       '/user.UserService/ToggleFollow',
       ($1.GetByIdRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.FollowResponse.fromBuffer(value));
-  static final _$toggleBlock = $grpc.ClientMethod<$1.GetByIdRequest, $4.FollowResponse>(
+  static final _$getFollowers = $grpc.ClientMethod<$1.GetByIdPaginatedRequest, $4.UserListResponse>(
+      '/user.UserService/GetFollowers',
+      ($1.GetByIdPaginatedRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.UserListResponse.fromBuffer(value));
+  static final _$getFollowing = $grpc.ClientMethod<$1.GetByIdPaginatedRequest, $4.UserListResponse>(
+      '/user.UserService/GetFollowing',
+      ($1.GetByIdPaginatedRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.UserListResponse.fromBuffer(value));
+  static final _$toggleBlock = $grpc.ClientMethod<$1.GetByIdRequest, $4.BlockResponse>(
       '/user.UserService/ToggleBlock',
       ($1.GetByIdRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.FollowResponse.fromBuffer(value));
+      ($core.List<$core.int> value) => $4.BlockResponse.fromBuffer(value));
+  static final _$getBlocked = $grpc.ClientMethod<$1.GetByIdPaginatedRequest, $4.UserListResponse>(
+      '/user.UserService/GetBlocked',
+      ($1.GetByIdPaginatedRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.UserListResponse.fromBuffer(value));
   static final _$addComment = $grpc.ClientMethod<$1.CommentRequest, $1.CommentResponse>(
       '/user.UserService/AddComment',
       ($1.CommentRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.CommentResponse.fromBuffer(value));
+  static final _$getComments = $grpc.ClientMethod<$1.GetByIdPaginatedRequest, $1.CommentsResponse>(
+      '/user.UserService/GetComments',
+      ($1.GetByIdPaginatedRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $1.CommentsResponse.fromBuffer(value));
 
   UserServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -85,12 +101,28 @@ class UserServiceClient extends $grpc.Client {
     return $createUnaryCall(_$toggleFollow, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.FollowResponse> toggleBlock($1.GetByIdRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.UserListResponse> getFollowers($1.GetByIdPaginatedRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getFollowers, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.UserListResponse> getFollowing($1.GetByIdPaginatedRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getFollowing, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.BlockResponse> toggleBlock($1.GetByIdRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$toggleBlock, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.UserListResponse> getBlocked($1.GetByIdPaginatedRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getBlocked, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.CommentResponse> addComment($1.CommentRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$addComment, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.CommentsResponse> getComments($1.GetByIdPaginatedRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getComments, request, options: options);
   }
 }
 
@@ -141,13 +173,34 @@ abstract class UserServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.GetByIdRequest.fromBuffer(value),
         ($4.FollowResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.GetByIdRequest, $4.FollowResponse>(
+    $addMethod($grpc.ServiceMethod<$1.GetByIdPaginatedRequest, $4.UserListResponse>(
+        'GetFollowers',
+        getFollowers_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.GetByIdPaginatedRequest.fromBuffer(value),
+        ($4.UserListResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.GetByIdPaginatedRequest, $4.UserListResponse>(
+        'GetFollowing',
+        getFollowing_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.GetByIdPaginatedRequest.fromBuffer(value),
+        ($4.UserListResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.GetByIdRequest, $4.BlockResponse>(
         'ToggleBlock',
         toggleBlock_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $1.GetByIdRequest.fromBuffer(value),
-        ($4.FollowResponse value) => value.writeToBuffer()));
+        ($4.BlockResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.GetByIdPaginatedRequest, $4.UserListResponse>(
+        'GetBlocked',
+        getBlocked_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.GetByIdPaginatedRequest.fromBuffer(value),
+        ($4.UserListResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.CommentRequest, $1.CommentResponse>(
         'AddComment',
         addComment_Pre,
@@ -155,6 +208,13 @@ abstract class UserServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.CommentRequest.fromBuffer(value),
         ($1.CommentResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.GetByIdPaginatedRequest, $1.CommentsResponse>(
+        'GetComments',
+        getComments_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.GetByIdPaginatedRequest.fromBuffer(value),
+        ($1.CommentsResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.UserResponse> getMe_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
@@ -181,12 +241,28 @@ abstract class UserServiceBase extends $grpc.Service {
     return toggleFollow(call, await request);
   }
 
-  $async.Future<$4.FollowResponse> toggleBlock_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdRequest> request) async {
+  $async.Future<$4.UserListResponse> getFollowers_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdPaginatedRequest> request) async {
+    return getFollowers(call, await request);
+  }
+
+  $async.Future<$4.UserListResponse> getFollowing_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdPaginatedRequest> request) async {
+    return getFollowing(call, await request);
+  }
+
+  $async.Future<$4.BlockResponse> toggleBlock_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdRequest> request) async {
     return toggleBlock(call, await request);
+  }
+
+  $async.Future<$4.UserListResponse> getBlocked_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdPaginatedRequest> request) async {
+    return getBlocked(call, await request);
   }
 
   $async.Future<$1.CommentResponse> addComment_Pre($grpc.ServiceCall call, $async.Future<$1.CommentRequest> request) async {
     return addComment(call, await request);
+  }
+
+  $async.Future<$1.CommentsResponse> getComments_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdPaginatedRequest> request) async {
+    return getComments(call, await request);
   }
 
   $async.Future<$4.UserResponse> getMe($grpc.ServiceCall call, $1.Empty request);
@@ -195,6 +271,10 @@ abstract class UserServiceBase extends $grpc.Service {
   $async.Future<$4.UserResponse> updateUser($grpc.ServiceCall call, $4.UserUpdateRequest request);
   $async.Future<$4.UserResponse> uploadAvatar($grpc.ServiceCall call, $4.UpdateAvatarRequest request);
   $async.Future<$4.FollowResponse> toggleFollow($grpc.ServiceCall call, $1.GetByIdRequest request);
-  $async.Future<$4.FollowResponse> toggleBlock($grpc.ServiceCall call, $1.GetByIdRequest request);
+  $async.Future<$4.UserListResponse> getFollowers($grpc.ServiceCall call, $1.GetByIdPaginatedRequest request);
+  $async.Future<$4.UserListResponse> getFollowing($grpc.ServiceCall call, $1.GetByIdPaginatedRequest request);
+  $async.Future<$4.BlockResponse> toggleBlock($grpc.ServiceCall call, $1.GetByIdRequest request);
+  $async.Future<$4.UserListResponse> getBlocked($grpc.ServiceCall call, $1.GetByIdPaginatedRequest request);
   $async.Future<$1.CommentResponse> addComment($grpc.ServiceCall call, $1.CommentRequest request);
+  $async.Future<$1.CommentsResponse> getComments($grpc.ServiceCall call, $1.GetByIdPaginatedRequest request);
 }

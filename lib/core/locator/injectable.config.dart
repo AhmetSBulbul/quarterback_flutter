@@ -15,11 +15,12 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../../features/auth/data/auth_repository.dart' as _i9;
 import '../../features/auth/data/auth_storage.dart' as _i7;
+import '../../features/media/data/media_repository.dart' as _i10;
 import '../../features/region/data/region_repository.dart' as _i6;
-import '../../features/user/data/user_repository.dart' as _i10;
+import '../../features/user/data/user_repository.dart' as _i11;
 import '../interceptors/auth_interceptor.dart' as _i8;
 import '../interceptors/logger_interceptor.dart' as _i5;
-import 'register.module.dart' as _i11;
+import 'register.module.dart' as _i12;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -51,15 +52,20 @@ extension GetItInjectableX on _i1.GetIt {
       authStorage: gh<_i7.AuthStorage>(),
       loggerInterceptor: gh<_i5.LoggerInterceptor>(),
     ));
-    gh.singleton<_i10.UserRepository>(_i10.UserRepository(
+    gh.lazySingleton<_i10.MediaRepository>(() => _i10.MediaRepository(
+          gh<_i4.ClientChannel>(),
+          gh<_i5.LoggerInterceptor>(),
+          gh<_i8.AuthInterceptor>(),
+        ));
+    gh.singleton<_i11.UserRepository>(_i11.UserRepository(
       gh<_i4.ClientChannel>(),
       gh<_i5.LoggerInterceptor>(),
       gh<_i8.AuthInterceptor>(),
     ));
-    gh.lazySingleton<_i10.UserListUseCase>(
-        () => _i10.UserListUseCase(gh<_i10.UserRepository>()));
+    gh.lazySingleton<_i11.UserListUseCase>(
+        () => _i11.UserListUseCase(gh<_i11.UserRepository>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i11.RegisterModule {}
+class _$RegisterModule extends _i12.RegisterModule {}

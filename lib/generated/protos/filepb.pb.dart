@@ -16,14 +16,14 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class UploadRequest extends $pb.GeneratedMessage {
   factory UploadRequest({
     $core.List<$core.int>? data,
-    $core.String? contentType,
+    $core.String? name,
   }) {
     final $result = create();
     if (data != null) {
       $result.data = data;
     }
-    if (contentType != null) {
-      $result.contentType = contentType;
+    if (name != null) {
+      $result.name = name;
     }
     return $result;
   }
@@ -33,7 +33,7 @@ class UploadRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UploadRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'file'), createEmptyInstance: create)
     ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
-    ..aOS(2, _omitFieldNames ? '' : 'contentType', protoName: 'contentType')
+    ..aOS(2, _omitFieldNames ? '' : 'name')
     ..hasRequiredFields = false
   ;
 
@@ -68,13 +68,13 @@ class UploadRequest extends $pb.GeneratedMessage {
   void clearData() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get contentType => $_getSZ(1);
+  $core.String get name => $_getSZ(1);
   @$pb.TagNumber(2)
-  set contentType($core.String v) { $_setString(1, v); }
+  set name($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasContentType() => $_has(1);
+  $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearContentType() => clearField(2);
+  void clearName() => clearField(2);
 }
 
 class FileId extends $pb.GeneratedMessage {
@@ -129,7 +129,7 @@ class FileId extends $pb.GeneratedMessage {
 
 class GetFileResponse extends $pb.GeneratedMessage {
   factory GetFileResponse({
-    $core.String? id,
+    $core.int? id,
     $core.String? path,
     $core.String? contentType,
   }) {
@@ -150,7 +150,7 @@ class GetFileResponse extends $pb.GeneratedMessage {
   factory GetFileResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetFileResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'file'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
     ..aOS(2, _omitFieldNames ? '' : 'path')
     ..aOS(3, _omitFieldNames ? '' : 'contentType', protoName: 'contentType')
     ..hasRequiredFields = false
@@ -178,9 +178,9 @@ class GetFileResponse extends $pb.GeneratedMessage {
   static GetFileResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.int get id => $_getIZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set id($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)

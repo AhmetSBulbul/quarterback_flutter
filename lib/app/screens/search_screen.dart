@@ -41,7 +41,9 @@ class SearchScreen extends StatelessWidget {
                     return TextField(
                       decoration: const InputDecoration(
                         hintText: 'Search',
-                        prefixIcon: Icon(Icons.search),
+                        prefixIcon: Icon(
+                          Icons.search,
+                        ),
                       ),
                       onChanged: (val) =>
                           context.read<SearchWithQueryCubit>().updateQuery(val),

@@ -92,6 +92,20 @@ const GetByIdRequest$json = {
 final $typed_data.Uint8List getByIdRequestDescriptor = $convert.base64Decode(
     'Cg5HZXRCeUlkUmVxdWVzdBIOCgJpZBgBIAEoBVICaWQ=');
 
+@$core.Deprecated('Use getByIdPaginatedRequestDescriptor instead')
+const GetByIdPaginatedRequest$json = {
+  '1': 'GetByIdPaginatedRequest',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
+    {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.common.PaginationRequest', '10': 'pagination'},
+  ],
+};
+
+/// Descriptor for `GetByIdPaginatedRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getByIdPaginatedRequestDescriptor = $convert.base64Decode(
+    'ChdHZXRCeUlkUGFnaW5hdGVkUmVxdWVzdBIOCgJpZBgBIAEoBVICaWQSOQoKcGFnaW5hdGlvbh'
+    'gCIAEoCzIZLmNvbW1vbi5QYWdpbmF0aW9uUmVxdWVzdFIKcGFnaW5hdGlvbg==');
+
 @$core.Deprecated('Use queryDescriptor instead')
 const Query$json = {
   '1': 'Query',
@@ -209,6 +223,21 @@ const CommentResponse$json = {
 final $typed_data.Uint8List commentResponseDescriptor = $convert.base64Decode(
     'Cg9Db21tZW50UmVzcG9uc2USKQoHY29tbWVudBgBIAEoCzIPLmNvbW1vbi5Db21tZW50Ugdjb2'
     '1tZW50');
+
+@$core.Deprecated('Use commentsResponseDescriptor instead')
+const CommentsResponse$json = {
+  '1': 'CommentsResponse',
+  '2': [
+    {'1': 'comments', '3': 1, '4': 3, '5': 11, '6': '.common.Comment', '10': 'comments'},
+    {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.common.PaginationResponse', '10': 'pagination'},
+  ],
+};
+
+/// Descriptor for `CommentsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List commentsResponseDescriptor = $convert.base64Decode(
+    'ChBDb21tZW50c1Jlc3BvbnNlEisKCGNvbW1lbnRzGAEgAygLMg8uY29tbW9uLkNvbW1lbnRSCG'
+    'NvbW1lbnRzEjoKCnBhZ2luYXRpb24YAiABKAsyGi5jb21tb24uUGFnaW5hdGlvblJlc3BvbnNl'
+    'UgpwYWdpbmF0aW9u');
 
 @$core.Deprecated('Use regionDescriptor instead')
 const Region$json = {
