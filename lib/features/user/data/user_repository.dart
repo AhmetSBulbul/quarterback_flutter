@@ -2,9 +2,34 @@ import 'package:grpc/grpc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:quarterback_flutter/core/interceptors/auth_interceptor.dart';
 import 'package:quarterback_flutter/core/interceptors/logger_interceptor.dart';
-import 'package:quarterback_flutter/generated/protos/authpb.pb.dart';
+import 'package:quarterback_flutter/core/usecase/list_usecase.dart';
 import 'package:quarterback_flutter/generated/protos/commonpb.pb.dart';
 import 'package:quarterback_flutter/generated/protos/userpb.pbgrpc.dart';
+
+@lazySingleton
+class UserListUseCase extends ListUseCase<User> {
+  final UserRepository _repository;
+
+  UserListUseCase(UserRepository repository) : _repository = repository;
+
+  @override
+  Future<ListUseCaseResponse<User>> call(ListUseCaseParams params) async {
+    try {
+      final response = await _repository.listUsers(
+        UserSearchRequest(
+          query: params.query,
+          pagination: params.paginationRequest,
+        ),
+      );
+      return ListUseCaseResponse<User>(
+        items: response.user,
+        totalCount: response.pagination.total,
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+}
 
 @singleton
 class UserRepository {
@@ -35,6 +60,15 @@ class UserRepository {
     try {
       final response = await _userServiceClient.getUser(GetByIdRequest(id: id));
       return response.user;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<UserListResponse> listUsers(UserSearchRequest request) async {
+    try {
+      final response = await _userServiceClient.searchUsers(request);
+      return response;
     } catch (e) {
       rethrow;
     }

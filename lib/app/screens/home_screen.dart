@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quarterback_flutter/app/widgets/brand/app_icons.dart';
 import 'package:quarterback_flutter/app/widgets/brand/logo.dart';
 import 'package:quarterback_flutter/core/locator/injectable.dart';
@@ -17,6 +18,10 @@ class HomeScreen extends StatelessWidget {
         title: const Logo(),
         centerTitle: false,
         actions: [
+          IconButton(
+            onPressed: () => context.go('/search'),
+            icon: const Icon(Icons.search),
+          ),
           IconButton(
             onPressed: () => context.read<AuthCubit>().logout(),
             icon: const Icon(Icons.logout),

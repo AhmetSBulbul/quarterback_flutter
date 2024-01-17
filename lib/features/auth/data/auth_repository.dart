@@ -26,6 +26,8 @@ class AuthRepository {
     final refreshToken = _authStorage.refreshToken;
     if (refreshToken != null) {
       refresh(refreshToken);
+    } else {
+      yield AuthStatus.unauthenticated;
     }
     yield* _controller.stream;
   }

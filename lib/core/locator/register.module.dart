@@ -12,7 +12,8 @@ abstract class RegisterModule {
   @singleton
   ClientChannel get clientChannel => ClientChannel(
         // 'localhost',
-        '192.168.8.173',
+        // '192.168.8.173',
+        '192.168.0.110',
         port: 50001,
         options:
             const ChannelOptions(credentials: ChannelCredentials.insecure()),

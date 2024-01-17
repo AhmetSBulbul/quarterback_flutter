@@ -7,6 +7,8 @@ import 'package:quarterback_flutter/app/screens/auth/register/register_screen.da
 import 'package:quarterback_flutter/app/screens/error_screen.dart';
 import 'package:quarterback_flutter/app/screens/fixtures/fixtures_screen.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
+import 'package:quarterback_flutter/app/screens/loading_screen.dart';
+import 'package:quarterback_flutter/app/screens/search_screen.dart';
 import 'package:quarterback_flutter/app/widgets/layout/bottom_navigation_shell.dart';
 import 'package:quarterback_flutter/core/theme/app_theme.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
@@ -19,68 +21,8 @@ class QuarterbackApp extends StatelessWidget {
   final AuthCubit _authCubit;
   final GoRouter _router;
 
-  // final GoRouter _router = GoRouter(
-  //   routes: [
-  //     ShellRoute(
-  //       builder: (context, state, child) =>
-  //           BottomNavigationShell(state: state, child: child),
-  //       routes: [
-  //         GoRoute(
-  //             path: '/',
-  //             builder: (context, state) => const HomeScreen(),
-  //             routes: [
-  //               GoRoute(
-  //                 path: 'fixtures',
-  //                 builder: (context, state) => const FixturesScreen(),
-  //               ),
-  //               GoRoute(
-  //                 path: 'team',
-  //                 builder: (context, state) => const HomeScreen(),
-  //               ),
-  //               GoRoute(
-  //                 path: 'chat',
-  //                 builder: (context, state) => const HomeScreen(),
-  //               ),
-  //               GoRoute(
-  //                 path: 'profile',
-  //                 builder: (context, state) => const HomeScreen(),
-  //               ),
-  //             ]),
-  //       ],
-  //     ),
-  //     GoRoute(
-  //       path: '/auth',
-  //       builder: (context, state) => const OnboardScreen(),
-  //       routes: [
-  //         GoRoute(
-  //           path: 'login',
-  //           builder: (context, state) => const LoginScreen(),
-  //         ),
-  //         GoRoute(
-  //           path: 'register',
-  //           builder: (context, state) => const RegisterScreen(),
-  //         ),
-  //       ],
-  //     )
-  //   ],
-  //   errorBuilder: (context, state) => const ErrorScreen(),
-  //   refreshListenable: authCubit,
-  //   redirect: (context, state) {
-  //     final authState = authCubit.state;
-  //     final isAuthenticating = state.fullPath?.startsWith('/auth') ?? false;
-  //     if (authState is AuthAuthenticated && isAuthenticating) {
-  //       return '/';
-  //     } else if ((authState is AuthUnauthenticated ||
-  //             authState is AuthInitial) &&
-  //         !isAuthenticating) {
-  //       return '/auth';
-  //     }
-
-  //     return null;
-  //   },
-  // );
-
   static GoRouter _buildRouter(AuthCubit authCubit) => GoRouter(
+        initialLocation: '/',
         routes: [
           ShellRoute(
             builder: (context, state, child) =>
@@ -106,6 +48,10 @@ class QuarterbackApp extends StatelessWidget {
                       path: 'profile',
                       builder: (context, state) => const HomeScreen(),
                     ),
+                    GoRoute(
+                      path: 'search',
+                      builder: (context, state) => const SearchScreen(),
+                    )
                   ]),
             ],
           ),
@@ -122,6 +68,10 @@ class QuarterbackApp extends StatelessWidget {
                 builder: (context, state) => RegisterScreen(),
               ),
             ],
+          ),
+          GoRoute(
+            path: '/loading',
+            builder: (context, state) => const LoadingScreen(),
           )
         ],
         errorBuilder: (context, state) => const ErrorScreen(),
@@ -129,11 +79,13 @@ class QuarterbackApp extends StatelessWidget {
         redirect: (context, state) {
           final authState = authCubit.state;
           final isAuthenticating = state.fullPath?.startsWith('/auth') ?? false;
-          if (authState is AuthAuthenticated && isAuthenticating) {
+          final isAtLoading = state.fullPath?.startsWith('/loading') ?? false;
+          if (authState is AuthInitial && !isAtLoading) {
+            return '/loading';
+          } else if (authState is AuthAuthenticated &&
+              (isAuthenticating || isAtLoading)) {
             return '/';
-          } else if ((authState is AuthUnauthenticated ||
-                  authState is AuthInitial) &&
-              !isAuthenticating) {
+          } else if (authState is AuthUnauthenticated && !isAuthenticating) {
             return '/auth';
           }
 
