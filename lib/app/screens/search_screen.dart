@@ -24,7 +24,8 @@ class SearchScreen extends StatelessWidget {
             create: (context) => SearchWithQueryCubit(),
           ),
           BlocProvider(
-            create: (context) => FetchedListCubit(locator<UserListUseCase>()),
+            create: (context) =>
+                FetchedListCubit<User>(locator<UserListUseCase>()),
           ),
         ],
         child: Scaffold(
