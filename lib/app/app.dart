@@ -8,6 +8,7 @@ import 'package:quarterback_flutter/app/screens/error_screen.dart';
 import 'package:quarterback_flutter/app/screens/fixtures/fixtures_screen.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
 import 'package:quarterback_flutter/app/screens/loading_screen.dart';
+import 'package:quarterback_flutter/app/screens/profile/profile_screen.dart';
 import 'package:quarterback_flutter/app/screens/search_screen.dart';
 import 'package:quarterback_flutter/app/widgets/layout/bottom_navigation_shell.dart';
 import 'package:quarterback_flutter/core/locator/injectable.dart';
@@ -79,7 +80,7 @@ class QuarterbackApp extends StatelessWidget {
                     ),
                     GoRoute(
                       path: 'profile',
-                      builder: (context, state) => const HomeScreen(),
+                      builder: (context, state) => const ProfileScreen(),
                     ),
                     GoRoute(
                       path: 'search',
