@@ -34,6 +34,10 @@ class RegionServiceClient extends $grpc.Client {
       '/region.RegionService/ListDistrict',
       ($1.GetByIdRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $7.DistrictListResponse.fromBuffer(value));
+  static final _$getRegionByDistrictId = $grpc.ClientMethod<$1.GetByIdRequest, $7.Region>(
+      '/region.RegionService/GetRegionByDistrictId',
+      ($1.GetByIdRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $7.Region.fromBuffer(value));
 
   RegionServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -51,6 +55,10 @@ class RegionServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$7.DistrictListResponse> listDistrict($1.GetByIdRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listDistrict, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$7.Region> getRegionByDistrictId($1.GetByIdRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getRegionByDistrictId, request, options: options);
   }
 }
 
@@ -80,6 +88,13 @@ abstract class RegionServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.GetByIdRequest.fromBuffer(value),
         ($7.DistrictListResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.GetByIdRequest, $7.Region>(
+        'GetRegionByDistrictId',
+        getRegionByDistrictId_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.GetByIdRequest.fromBuffer(value),
+        ($7.Region value) => value.writeToBuffer()));
   }
 
   $async.Future<$7.CountryListResponse> listCountry_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
@@ -94,7 +109,12 @@ abstract class RegionServiceBase extends $grpc.Service {
     return listDistrict(call, await request);
   }
 
+  $async.Future<$7.Region> getRegionByDistrictId_Pre($grpc.ServiceCall call, $async.Future<$1.GetByIdRequest> request) async {
+    return getRegionByDistrictId(call, await request);
+  }
+
   $async.Future<$7.CountryListResponse> listCountry($grpc.ServiceCall call, $1.Empty request);
   $async.Future<$7.CityListResponse> listCity($grpc.ServiceCall call, $1.GetByIdRequest request);
   $async.Future<$7.DistrictListResponse> listDistrict($grpc.ServiceCall call, $1.GetByIdRequest request);
+  $async.Future<$7.Region> getRegionByDistrictId($grpc.ServiceCall call, $1.GetByIdRequest request);
 }

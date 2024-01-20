@@ -13,6 +13,7 @@ import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
 import 'package:quarterback_flutter/features/auth/data/auth_storage.dart';
 import 'package:quarterback_flutter/features/media/data/media_repository.dart';
+import 'package:quarterback_flutter/features/user/bloc/current_user_bloc.dart';
 import 'package:quarterback_flutter/features/user/data/user_repository.dart';
 import 'package:quarterback_flutter/generated/protos/filepb.pbgrpc.dart';
 
@@ -42,13 +43,21 @@ class HomeScreen extends StatelessWidget {
           if (state is AuthAuthenticated) {
             return Column(
               children: [
-                FutureBuilder(
-                  future: locator<UserRepository>().getMe(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Text(snapshot.data.toString());
-                    } else if (snapshot.hasError) {
-                      return Text(snapshot.error.toString());
+                BlocBuilder<CurrentUserBloc, CurrentUserState>(
+                  builder: (context, state) {
+                    if (state is CurrentUserLoaded) {
+                      return Column(
+                        children: [
+                          Text(state.user.name),
+                          Text(state.user.lastName),
+                          Text(state.user.email),
+                          Text(state.user.username),
+                          Text(state.user.country.name),
+                          Text(state.user.city.name),
+                          Text(state.user.district.name),
+                          // Image.network(state.user.avatarPath),
+                        ],
+                      );
                     } else {
                       return const CircularProgressIndicator();
                     }

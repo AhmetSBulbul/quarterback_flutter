@@ -10,8 +10,12 @@ import 'package:quarterback_flutter/app/screens/home_screen.dart';
 import 'package:quarterback_flutter/app/screens/loading_screen.dart';
 import 'package:quarterback_flutter/app/screens/search_screen.dart';
 import 'package:quarterback_flutter/app/widgets/layout/bottom_navigation_shell.dart';
+import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/core/theme/app_theme.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
+import 'package:quarterback_flutter/features/region/data/region_repository.dart';
+import 'package:quarterback_flutter/features/user/bloc/current_user_bloc.dart';
+import 'package:quarterback_flutter/features/user/data/user_repository.dart';
 
 class QuarterbackApp extends StatelessWidget {
   QuarterbackApp({super.key, required AuthCubit authCubit})
@@ -25,8 +29,37 @@ class QuarterbackApp extends StatelessWidget {
         initialLocation: '/',
         routes: [
           ShellRoute(
-            builder: (context, state, child) =>
-                BottomNavigationShell(state: state, child: child),
+            builder: (context, state, child) => BlocProvider(
+              create: (context) => CurrentUserBloc(
+                userRepository: locator<UserRepository>(),
+                regionRepository: locator<RegionRepository>(),
+              )..add(CurrentUserRequested()),
+              child: Stack(
+                children: [
+                  BottomNavigationShell(state: state, child: child),
+                  BlocBuilder<CurrentUserBloc, CurrentUserState>(
+                    builder: (context, state) {
+                      if (state is CurrentUserInitial) {
+                        return const Positioned.fill(
+                          child: LoadingScreen(),
+                        );
+                      } else if (state is CurrentUserError) {
+                        return Positioned.fill(
+                          child: Scaffold(
+                            body: Center(
+                              child: Text(
+                                  "Current User State Error by ${state.cause}: ${state.error}"),
+                            ),
+                          ),
+                        );
+                      } else {
+                        return const SizedBox.shrink();
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
             routes: [
               GoRoute(
                   path: '/',

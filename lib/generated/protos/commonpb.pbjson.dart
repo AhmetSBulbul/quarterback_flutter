@@ -239,16 +239,3 @@ final $typed_data.Uint8List commentsResponseDescriptor = $convert.base64Decode(
     'NvbW1lbnRzEjoKCnBhZ2luYXRpb24YAiABKAsyGi5jb21tb24uUGFnaW5hdGlvblJlc3BvbnNl'
     'UgpwYWdpbmF0aW9u');
 
-@$core.Deprecated('Use regionDescriptor instead')
-const Region$json = {
-  '1': 'Region',
-  '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
-    {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
-  ],
-};
-
-/// Descriptor for `Region`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List regionDescriptor = $convert.base64Decode(
-    'CgZSZWdpb24SDgoCaWQYASABKAVSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWU=');
-

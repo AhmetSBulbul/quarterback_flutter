@@ -23,4 +23,8 @@ class RegionRepository {
   Future<DistrictListResponse> listDistrict(GetByIdRequest request) async {
     return await _regionServiceClient.listDistrict(request);
   }
+
+  Future<Region> getRegion(GetByIdRequest request) async {
+    return await _regionServiceClient.getRegionByDistrictId(request);
+  }
 }

@@ -233,6 +233,90 @@ class District extends $pb.GeneratedMessage {
   void clearCityId() => clearField(3);
 }
 
+class Region extends $pb.GeneratedMessage {
+  factory Region({
+    Country? country,
+    City? city,
+    District? district,
+  }) {
+    final $result = create();
+    if (country != null) {
+      $result.country = country;
+    }
+    if (city != null) {
+      $result.city = city;
+    }
+    if (district != null) {
+      $result.district = district;
+    }
+    return $result;
+  }
+  Region._() : super();
+  factory Region.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Region.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Region', package: const $pb.PackageName(_omitMessageNames ? '' : 'region'), createEmptyInstance: create)
+    ..aOM<Country>(1, _omitFieldNames ? '' : 'country', subBuilder: Country.create)
+    ..aOM<City>(2, _omitFieldNames ? '' : 'city', subBuilder: City.create)
+    ..aOM<District>(3, _omitFieldNames ? '' : 'district', subBuilder: District.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Region clone() => Region()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Region copyWith(void Function(Region) updates) => super.copyWith((message) => updates(message as Region)) as Region;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Region create() => Region._();
+  Region createEmptyInstance() => create();
+  static $pb.PbList<Region> createRepeated() => $pb.PbList<Region>();
+  @$core.pragma('dart2js:noInline')
+  static Region getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Region>(create);
+  static Region? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Country get country => $_getN(0);
+  @$pb.TagNumber(1)
+  set country(Country v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCountry() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCountry() => clearField(1);
+  @$pb.TagNumber(1)
+  Country ensureCountry() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  City get city => $_getN(1);
+  @$pb.TagNumber(2)
+  set city(City v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCity() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCity() => clearField(2);
+  @$pb.TagNumber(2)
+  City ensureCity() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  District get district => $_getN(2);
+  @$pb.TagNumber(3)
+  set district(District v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasDistrict() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDistrict() => clearField(3);
+  @$pb.TagNumber(3)
+  District ensureDistrict() => $_ensure(2);
+}
+
 class CountryListResponse extends $pb.GeneratedMessage {
   factory CountryListResponse({
     $core.Iterable<Country>? countries,

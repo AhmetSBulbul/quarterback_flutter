@@ -56,6 +56,22 @@ final $typed_data.Uint8List districtDescriptor = $convert.base64Decode(
     'CghEaXN0cmljdBIOCgJpZBgBIAEoBVICaWQSEgoEbmFtZRgCIAEoCVIEbmFtZRIXCgdjaXR5X2'
     'lkGAMgASgFUgZjaXR5SWQ=');
 
+@$core.Deprecated('Use regionDescriptor instead')
+const Region$json = {
+  '1': 'Region',
+  '2': [
+    {'1': 'country', '3': 1, '4': 1, '5': 11, '6': '.region.Country', '10': 'country'},
+    {'1': 'city', '3': 2, '4': 1, '5': 11, '6': '.region.City', '10': 'city'},
+    {'1': 'district', '3': 3, '4': 1, '5': 11, '6': '.region.District', '10': 'district'},
+  ],
+};
+
+/// Descriptor for `Region`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List regionDescriptor = $convert.base64Decode(
+    'CgZSZWdpb24SKQoHY291bnRyeRgBIAEoCzIPLnJlZ2lvbi5Db3VudHJ5Ugdjb3VudHJ5EiAKBG'
+    'NpdHkYAiABKAsyDC5yZWdpb24uQ2l0eVIEY2l0eRIsCghkaXN0cmljdBgDIAEoCzIQLnJlZ2lv'
+    'bi5EaXN0cmljdFIIZGlzdHJpY3Q=');
+
 @$core.Deprecated('Use countryListResponseDescriptor instead')
 const CountryListResponse$json = {
   '1': 'CountryListResponse',
