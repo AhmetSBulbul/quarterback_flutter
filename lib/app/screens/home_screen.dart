@@ -80,8 +80,9 @@ class HomeScreen extends StatelessWidget {
                           context: context,
                           builder: (context) => AlertDialog(
                                 title: Text(response.path),
-                                content:
-                                    Center(child: Image.network(response.path)),
+                                content: Center(
+                                    child: Image.network(
+                                        'http://0.0.0.0:8080${response.path}')),
                               ));
                     } else {
                       // User canceled the picker

@@ -38,7 +38,12 @@ class QuarterbackApp extends StatelessWidget {
               child: Stack(
                 children: [
                   BottomNavigationShell(state: state, child: child),
-                  BlocBuilder<CurrentUserBloc, CurrentUserState>(
+                  BlocConsumer<CurrentUserBloc, CurrentUserState>(
+                    listener: (context, state) {
+                      if (state is CurrentUserError) {
+                        authCubit.logout();
+                      }
+                    },
                     builder: (context, state) {
                       if (state is CurrentUserInitial) {
                         return const Positioned.fill(
