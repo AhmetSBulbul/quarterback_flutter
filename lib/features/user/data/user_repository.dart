@@ -73,4 +73,13 @@ class UserRepository {
       rethrow;
     }
   }
+
+  Future<User> uploadAvatar(UpdateAvatarRequest request) async {
+    try {
+      final response = await _userServiceClient.uploadAvatar(request);
+      return response.user;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

@@ -16,6 +16,7 @@ import 'package:quarterback_flutter/features/media/data/media_repository.dart';
 import 'package:quarterback_flutter/features/user/bloc/current_user_bloc.dart';
 import 'package:quarterback_flutter/features/user/data/user_repository.dart';
 import 'package:quarterback_flutter/generated/protos/filepb.pbgrpc.dart';
+import 'package:quarterback_flutter/generated/protos/userpb.pbgrpc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -76,6 +77,9 @@ class HomeScreen extends StatelessWidget {
                         name: result.files.single.name,
                       ));
                       print(response);
+                      context.read<CurrentUserBloc>().add(
+                          CurrentUserAvatarUpdated(
+                              UpdateAvatarRequest(avatarFileId: response.id)));
                       showDialog(
                           context: context,
                           builder: (context) => AlertDialog(

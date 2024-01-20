@@ -41,7 +41,7 @@ class QuarterbackApp extends StatelessWidget {
                   BlocConsumer<CurrentUserBloc, CurrentUserState>(
                     listener: (context, state) {
                       if (state is CurrentUserError) {
-                        authCubit.logout();
+                        // authCubit.logout();
                       }
                     },
                     builder: (context, state) {

@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
+
 import 'package:quarterback_flutter/generated/protos/regionpb.pbgrpc.dart';
 
 class CurrentUser extends Equatable {
@@ -36,4 +38,28 @@ class CurrentUser extends Equatable {
         city,
         district,
       ];
+
+  CurrentUser copyWith({
+    int? id,
+    String? email,
+    String? username,
+    String? name,
+    String? lastName,
+    String? avatarPath,
+    Country? country,
+    City? city,
+    District? district,
+  }) {
+    return CurrentUser(
+      id: id ?? this.id,
+      email: email ?? this.email,
+      username: username ?? this.username,
+      name: name ?? this.name,
+      lastName: lastName ?? this.lastName,
+      avatarPath: avatarPath ?? this.avatarPath,
+      country: country ?? this.country,
+      city: city ?? this.city,
+      district: district ?? this.district,
+    );
+  }
 }

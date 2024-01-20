@@ -87,7 +87,20 @@ class SearchScreen extends StatelessWidget {
                               children: [
                                 for (final user in state.items)
                                   ListTile(
-                                    title: Text(user.name),
+                                    title: Text("@${user.username}"),
+                                    leading: CircleAvatar(
+                                      // child: user.avatarPath.isNotEmpty
+                                      //     ? Image.network(
+                                      //         "http://0.0.0.0:8080/${user.avatarPath}")
+                                      //     : const Icon(Icons.person),
+                                      foregroundImage:
+                                          user.avatarPath.isNotEmpty
+                                              ? NetworkImage(
+                                                  "http://0.0.0.0:8080/${user.avatarPath}",
+                                                )
+                                              : null,
+                                      child: Icon(Icons.person),
+                                    ),
                                   ),
                               ],
                             );

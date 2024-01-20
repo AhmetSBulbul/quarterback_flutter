@@ -1,10 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:quarterback_flutter/core/locator/injectable.dart';
+import 'package:quarterback_flutter/features/media/data/media_repository.dart';
 import 'package:quarterback_flutter/features/region/data/region_repository.dart';
 import 'package:quarterback_flutter/features/user/current_user.dart';
 import 'package:quarterback_flutter/features/user/data/user_repository.dart';
 import 'package:quarterback_flutter/generated/protos/commonpb.pb.dart';
-import 'package:quarterback_flutter/generated/protos/regionpb.pbgrpc.dart';
+import 'package:quarterback_flutter/generated/protos/userpb.pbgrpc.dart';
 
 part 'current_user_event.dart';
 part 'current_user_state.dart';
@@ -17,6 +19,7 @@ class CurrentUserBloc extends Bloc<CurrentUserEvent, CurrentUserState> {
         _regionRepository = regionRepository,
         super(CurrentUserInitial()) {
     on<CurrentUserRequested>(_onCurrentUserRequested);
+    on<CurrentUserAvatarUpdated>(_onCurrentUserAvatarUpdated);
   }
 
   final UserRepository _userRepository;
@@ -28,6 +31,12 @@ class CurrentUserBloc extends Bloc<CurrentUserEvent, CurrentUserState> {
       final resp = await _userRepository.getMe();
       final regionResp = await _regionRepository
           .getRegion(GetByIdRequest(id: resp.districtID));
+
+      // if (resp.avatarPath.isNotEmpty) {
+      //   final filePath = await locator<MediaRepository>()
+      //       .getFile(int.parse(resp.avatarPath));
+      //   resp.avatarPath = filePath.path;
+      // }
 
       final user = CurrentUser(
         id: resp.id,
@@ -44,6 +53,24 @@ class CurrentUserBloc extends Bloc<CurrentUserEvent, CurrentUserState> {
     } catch (e) {
       emit(CurrentUserError(
           cause: 'Error happened on Current User Requested', error: e));
+    }
+  }
+
+  Future<void> _onCurrentUserAvatarUpdated(
+      CurrentUserAvatarUpdated event, Emitter<CurrentUserState> emit) async {
+    if (state is CurrentUserLoaded) {
+      try {
+        final resp = await _userRepository.uploadAvatar(event.request);
+        // final filePath = await locator<MediaRepository>()
+        //     .getFile(event.request.avatarFileId);
+        final user = (state as CurrentUserLoaded).user.copyWith(
+              avatarPath: resp.avatarPath,
+            );
+        emit(CurrentUserLoaded(user: user));
+      } catch (e) {
+        emit(CurrentUserError(
+            cause: 'Error happened on Current User Avatar Updated', error: e));
+      }
     }
   }
 }

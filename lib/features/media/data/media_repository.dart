@@ -21,4 +21,13 @@ class MediaRepository {
       rethrow;
     }
   }
+
+  Future<GetFileResponse> getFile(int id) async {
+    try {
+      final response = await _fileServiceClient.getFile(FileId(id: id));
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
