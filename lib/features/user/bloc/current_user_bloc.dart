@@ -98,4 +98,22 @@ class CurrentUserCubit extends Cubit<CurrentUserState> {
       }
     }
   }
+
+  Future<void> toggleFollow(int id) async {
+    if (state is CurrentUserLoaded) {
+      try {
+        final resp = await _userRepository.toggleFollow(id);
+        // TODO: Optimistic Update
+        final following = await _userRepository
+            .getFollowings((state as CurrentUserLoaded).user.id);
+
+        emit(CurrentUserLoaded(
+            user: (state as CurrentUserLoaded).user,
+            followers: (state as CurrentUserLoaded).followers,
+            following: following));
+      } catch (e) {
+        rethrow;
+      }
+    }
+  }
 }
