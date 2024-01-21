@@ -13,6 +13,7 @@ class RegionBloc extends Bloc<RegionEvent, RegionState> {
   RegionBloc({required RegionRepository repository})
       : _repository = repository,
         super(const RegionState()) {
+    on<RegionInitialWithData>(_onRegionInitialWithData);
     on<RegionCountryRequested>(_onCountryRequested);
     on<RegionSelectedCountryChanged>(_onSelectedCountryChanged);
     on<RegionSelectedCityChanged>(_onSelectedCityChanged);
@@ -20,6 +21,31 @@ class RegionBloc extends Bloc<RegionEvent, RegionState> {
   }
 
   final RegionRepository _repository;
+
+  Future<void> _onRegionInitialWithData(
+      RegionInitialWithData event, Emitter<RegionState> emit) async {
+    try {
+      final CountryListResponse countryListResponse =
+          await _repository.listCountry();
+      final CityListResponse cityListResponse =
+          await _repository.listCity(GetByIdRequest(id: event.country.id));
+      final DistrictListResponse districtListResponse =
+          await _repository.listDistrict(GetByIdRequest(id: event.city.id));
+      emit(state.copyWith(
+        countries: countryListResponse.countries,
+        cities: cityListResponse.cities,
+        districts: districtListResponse.districts,
+        selectedCountry: event.country,
+        selectedCity: event.city,
+        selectedDistrict: event.district,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+          failure: FailureWithException(
+              cause: 'Error happened while trying to list Countries',
+              exception: e as Exception)));
+    }
+  }
 
   Future<void> _onCountryRequested(
       RegionCountryRequested event, Emitter<RegionState> emit) async {

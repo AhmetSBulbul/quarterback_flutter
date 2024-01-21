@@ -8,6 +8,8 @@ import 'package:quarterback_flutter/app/screens/error_screen.dart';
 import 'package:quarterback_flutter/app/screens/fixtures/fixtures_screen.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
 import 'package:quarterback_flutter/app/screens/loading_screen.dart';
+import 'package:quarterback_flutter/app/screens/my_profile/edit_my_profile_screen.dart';
+import 'package:quarterback_flutter/app/screens/my_profile/my_profile_screen.dart';
 import 'package:quarterback_flutter/app/screens/profile/profile_screen.dart';
 import 'package:quarterback_flutter/app/screens/search_screen.dart';
 import 'package:quarterback_flutter/app/widgets/layout/bottom_navigation_shell.dart';
@@ -31,14 +33,14 @@ class QuarterbackApp extends StatelessWidget {
         routes: [
           ShellRoute(
             builder: (context, state, child) => BlocProvider(
-              create: (context) => CurrentUserBloc(
+              create: (context) => CurrentUserCubit(
                 userRepository: locator<UserRepository>(),
                 regionRepository: locator<RegionRepository>(),
-              )..add(CurrentUserRequested()),
+              )..requestCurrentUser(),
               child: Stack(
                 children: [
                   BottomNavigationShell(state: state, child: child),
-                  BlocConsumer<CurrentUserBloc, CurrentUserState>(
+                  BlocConsumer<CurrentUserCubit, CurrentUserState>(
                     listener: (context, state) {
                       if (state is CurrentUserError) {
                         // authCubit.logout();
@@ -68,30 +70,42 @@ class QuarterbackApp extends StatelessWidget {
             ),
             routes: [
               GoRoute(
-                  path: '/',
-                  builder: (context, state) => const HomeScreen(),
-                  routes: [
-                    GoRoute(
-                      path: 'fixtures',
-                      builder: (context, state) => const FixturesScreen(),
-                    ),
-                    GoRoute(
-                      path: 'team',
-                      builder: (context, state) => const HomeScreen(),
-                    ),
-                    GoRoute(
-                      path: 'chat',
-                      builder: (context, state) => const HomeScreen(),
-                    ),
-                    GoRoute(
-                      path: 'profile',
-                      builder: (context, state) => const ProfileScreen(),
-                    ),
-                    GoRoute(
-                      path: 'search',
-                      builder: (context, state) => const SearchScreen(),
-                    )
-                  ]),
+                path: '/',
+                builder: (context, state) => const HomeScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'fixtures',
+                    builder: (context, state) => const FixturesScreen(),
+                  ),
+                  GoRoute(
+                    path: 'team',
+                    builder: (context, state) => const HomeScreen(),
+                  ),
+                  GoRoute(
+                    path: 'chat',
+                    builder: (context, state) => const HomeScreen(),
+                  ),
+                  GoRoute(
+                    path: 'me',
+                    builder: (context, state) => const MyProfileScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'edit',
+                        builder: (context, state) =>
+                            const EditMyProfileScreen(),
+                      ),
+                    ],
+                  ),
+                  GoRoute(
+                    path: 'search',
+                    builder: (context, state) => const SearchScreen(),
+                  ),
+                  GoRoute(
+                      path: 'profile/:id',
+                      builder: (context, state) => ProfileScreen(
+                          id: int.parse(state.pathParameters['id']!)))
+                ],
+              ),
             ],
           ),
           GoRoute(

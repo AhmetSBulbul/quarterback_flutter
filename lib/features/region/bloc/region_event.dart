@@ -7,6 +7,17 @@ sealed class RegionEvent extends Equatable {
   List<Object> get props => [];
 }
 
+final class RegionInitialWithData extends RegionEvent {
+  const RegionInitialWithData(
+      {required this.country, required this.city, required this.district});
+  final Country country;
+  final City city;
+  final District district;
+
+  @override
+  List<Object> get props => [country, city, district];
+}
+
 // Requests initial country list data
 final class RegionCountryRequested extends RegionEvent {
   const RegionCountryRequested();

@@ -48,7 +48,7 @@ class NavigationBarButton extends StatelessWidget {
       : title = 'Profile',
         child = null,
         icon = isActive ? Icons.person : Icons.person_outline,
-        route = '/profile';
+        route = '/me';
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +106,7 @@ class BottomNavigationShell extends StatelessWidget {
             ),
             Expanded(
               child: NavigationBarButton.profile(
-                  isActive: state.fullPath == '/profile'),
+                  isActive: state.fullPath == '/me'),
             ),
           ],
         ),

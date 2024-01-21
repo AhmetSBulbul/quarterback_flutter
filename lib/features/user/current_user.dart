@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 
 import 'package:quarterback_flutter/generated/protos/regionpb.pbgrpc.dart';
 
-class CurrentUser extends Equatable {
-  const CurrentUser({
+class Player extends Equatable {
+  const Player({
     required this.id,
     required this.email,
     required this.username,
@@ -39,7 +39,7 @@ class CurrentUser extends Equatable {
         district,
       ];
 
-  CurrentUser copyWith({
+  Player copyWith({
     int? id,
     String? email,
     String? username,
@@ -50,7 +50,7 @@ class CurrentUser extends Equatable {
     City? city,
     District? district,
   }) {
-    return CurrentUser(
+    return Player(
       id: id ?? this.id,
       email: email ?? this.email,
       username: username ?? this.username,

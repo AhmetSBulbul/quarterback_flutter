@@ -12,7 +12,16 @@ final class CurrentUserRequested extends CurrentUserEvent {}
 final class CurrentUserAvatarUpdated extends CurrentUserEvent {
   final UpdateAvatarRequest request;
 
-  CurrentUserAvatarUpdated(this.request);
+  const CurrentUserAvatarUpdated(this.request);
+
+  @override
+  List<Object> get props => [request];
+}
+
+final class CurrentUserUpdateRequested extends CurrentUserEvent {
+  final UserUpdateRequest request;
+
+  const CurrentUserUpdateRequested(this.request);
 
   @override
   List<Object> get props => [request];

@@ -20,10 +20,13 @@ final class CurrentUserError extends CurrentUserState {
 }
 
 final class CurrentUserLoaded extends CurrentUserState {
-  const CurrentUserLoaded({required this.user});
+  const CurrentUserLoaded(
+      {required this.user, required this.followers, required this.following});
 
-  final CurrentUser user;
+  final Player user;
+  final List<User> followers;
+  final List<User> following;
 
   @override
-  List<Object> get props => [user];
+  List<Object> get props => [user, followers, following];
 }

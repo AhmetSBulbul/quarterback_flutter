@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quarterback_flutter/app/widgets/layout/sized_spacer.dart';
 import 'package:quarterback_flutter/app/widgets/modules/fetched_list/cubit/fetched_list_cubit.dart';
 import 'package:quarterback_flutter/app/widgets/modules/search_with_query/cubit/search_with_query_cubit.dart';
+import 'package:quarterback_flutter/app/widgets/profile/avatar.dart';
+import 'package:quarterback_flutter/core/extensions/build_context_extensions.dart';
 import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/core/theme/app_colors.dart';
 import 'package:quarterback_flutter/core/usecase/list_usecase.dart';
@@ -55,6 +58,7 @@ class SearchScreen extends StatelessWidget {
                 TabBar(
                   indicatorSize: TabBarIndicatorSize.tab,
                   unselectedLabelColor: AppColors.grey,
+                  dividerColor: AppColors.white,
                   onTap: (index) {
                     print(index);
                   },
@@ -84,22 +88,29 @@ class SearchScreen extends StatelessWidget {
                           builder: (context, state) {
                             // TODO: Should be notification listener for lazy loading on search
                             return ListView(
+                              padding: const EdgeInsets.symmetric(vertical: 12),
                               children: [
                                 for (final user in state.items)
-                                  ListTile(
-                                    title: Text("@${user.username}"),
-                                    leading: CircleAvatar(
-                                      // child: user.avatarPath.isNotEmpty
-                                      //     ? Image.network(
-                                      //         "http://0.0.0.0:8080/${user.avatarPath}")
-                                      //     : const Icon(Icons.person),
-                                      foregroundImage:
-                                          user.avatarPath.isNotEmpty
-                                              ? NetworkImage(
-                                                  "http://0.0.0.0:8080/${user.avatarPath}",
-                                                )
-                                              : null,
-                                      child: Icon(Icons.person),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 4),
+                                    child: ListTile(
+                                      tileColor: AppColors.surface,
+                                      onTap: () =>
+                                          context.push('/profile/${user.id}'),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      title: Text("@${user.username}",
+                                          style: context.textTheme.labelLarge),
+                                      subtitle: Text(
+                                        "${user.name} ${user.lastname}",
+                                        style: context.textTheme.labelMedium,
+                                      ),
+                                      leading: Avatar(
+                                        path: user.avatarPath,
+                                      ),
+                                      trailing: const Icon(Icons.chevron_right),
                                     ),
                                   ),
                               ],

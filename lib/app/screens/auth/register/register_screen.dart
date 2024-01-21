@@ -218,20 +218,6 @@ class RegisterScreen extends StatelessWidget {
                                   ),
                                 ));
                               }
-                              // try {
-                              //   final response = await locator<AuthRepository>()
-                              //       .register(RegisterRequest(
-                              //     email: "test5@mail.com",
-                              //     username: "flutterUser5",
-                              //     password: "12345678",
-                              //     name: "Flutter",
-                              //     lastName: "User",
-                              //     districtId: 1,
-                              //   ));
-                              //   print(response.token);
-                              // } catch (e) {
-                              //   print(e);
-                              // }
                             }
                           : null,
                       child: const Text("Sign Up"),

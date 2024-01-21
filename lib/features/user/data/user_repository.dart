@@ -82,4 +82,57 @@ class UserRepository {
       rethrow;
     }
   }
+
+  Future<User> updateProfile(UserUpdateRequest request) async {
+    try {
+      final response = await _userServiceClient.updateUser(request);
+      return response.user;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<bool> toggleFollow(int id) async {
+    try {
+      final response = await _userServiceClient.toggleFollow(
+        GetByIdRequest(id: id),
+      );
+      return response.isFollowing;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<bool> toggleBlock(int id) async {
+    try {
+      final response = await _userServiceClient.toggleBlock(
+        GetByIdRequest(id: id),
+      );
+      return response.isBlocked;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<User>> getFollowers(int id) async {
+    try {
+      final response = await _userServiceClient.getFollowers(
+        GetByIdPaginatedRequest(id: id),
+      );
+      return response.user;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<User>> getFollowings(int id) async {
+    try {
+      final response = await _userServiceClient.getFollowing(
+        GetByIdPaginatedRequest(id: id),
+      );
+      return response.user;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
