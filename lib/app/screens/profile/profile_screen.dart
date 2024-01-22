@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quarterback_flutter/app/screens/profile/cubit/profile_cubit.dart';
 import 'package:quarterback_flutter/app/widgets/layout/sized_spacer.dart';
 import 'package:quarterback_flutter/app/widgets/profile/player_card.dart';
@@ -65,25 +66,36 @@ class ProfileView extends StatelessWidget {
                       const SizedSpacer.medium(),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: TextButton(
-                          child: Text((currentUserState as CurrentUserLoaded)
-                                  .following
-                                  .any((element) => element.id == state.user.id)
-                              ? "Unfollow"
-                              : "Follow"),
-                          onPressed: () async {
-                            try {
-                              await context
-                                  .read<CurrentUserCubit>()
-                                  .toggleFollow(state.user.id);
-                            } catch (e) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(e.toString()),
-                                ),
-                              );
-                            }
-                          },
+                        child: Row(
+                          children: [
+                            TextButton(
+                              child: Text(
+                                  (currentUserState as CurrentUserLoaded)
+                                          .following
+                                          .any((element) =>
+                                              element.id == state.user.id)
+                                      ? "Unfollow"
+                                      : "Follow"),
+                              onPressed: () async {
+                                try {
+                                  await context
+                                      .read<CurrentUserCubit>()
+                                      .toggleFollow(state.user.id);
+                                } catch (e) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(e.toString()),
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                            TextButton(
+                              child: const Text("Message"),
+                              onPressed: () =>
+                                  context.push('/chat/${state.user.id}'),
+                            )
+                          ],
                         ),
                       ),
                     ],

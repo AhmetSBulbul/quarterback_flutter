@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:grpc/grpc.dart';
 import 'package:quarterback_flutter/app/screens/auth/login_screen.dart';
 import 'package:quarterback_flutter/app/screens/auth/onboard_screen.dart';
 import 'package:quarterback_flutter/app/screens/auth/register/register_screen.dart';
+import 'package:quarterback_flutter/app/screens/chat_screen.dart';
 import 'package:quarterback_flutter/app/screens/error_screen.dart';
 import 'package:quarterback_flutter/app/screens/fixtures/fixtures_screen.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
@@ -16,6 +18,8 @@ import 'package:quarterback_flutter/app/widgets/layout/bottom_navigation_shell.d
 import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/core/theme/app_theme.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
+import 'package:quarterback_flutter/features/chat/cubit/chat_cubit.dart';
+import 'package:quarterback_flutter/features/chat/data/chat_repository.dart';
 import 'package:quarterback_flutter/features/region/data/region_repository.dart';
 import 'package:quarterback_flutter/features/user/bloc/current_user_bloc.dart';
 import 'package:quarterback_flutter/features/user/data/user_repository.dart';
@@ -32,18 +36,21 @@ class QuarterbackApp extends StatelessWidget {
         initialLocation: '/',
         routes: [
           ShellRoute(
-            builder: (context, state, child) => BlocProvider(
+            builder: (context, routerState, child) => BlocProvider(
               create: (context) => CurrentUserCubit(
                 userRepository: locator<UserRepository>(),
                 regionRepository: locator<RegionRepository>(),
               )..requestCurrentUser(),
               child: Stack(
                 children: [
-                  BottomNavigationShell(state: state, child: child),
+                  // BottomNavigationShell(state: state, child: child),
                   BlocConsumer<CurrentUserCubit, CurrentUserState>(
                     listener: (context, state) {
                       if (state is CurrentUserError) {
-                        // authCubit.logout();
+                        if (state.error is GrpcError &&
+                            (state.error as GrpcError).code == 13) {
+                          authCubit.logout();
+                        }
                       }
                     },
                     builder: (context, state) {
@@ -59,6 +66,16 @@ class QuarterbackApp extends StatelessWidget {
                                   "Current User State Error by ${state.cause}: ${state.error}"),
                             ),
                           ),
+                        );
+                      } else if (state is CurrentUserLoaded) {
+                        // return const SizedBox.shrink();
+                        return BlocProvider(
+                          create: (context) => ChatCubit(
+                            userId: state.user.id,
+                            repository: locator<ChatRepository>(),
+                          ),
+                          child: BottomNavigationShell(
+                              state: routerState, child: child),
                         );
                       } else {
                         return const SizedBox.shrink();
@@ -82,9 +99,16 @@ class QuarterbackApp extends StatelessWidget {
                     builder: (context, state) => const HomeScreen(),
                   ),
                   GoRoute(
-                    path: 'chat',
-                    builder: (context, state) => const HomeScreen(),
-                  ),
+                      path: 'chat',
+                      builder: (context, state) => const HomeScreen(),
+                      routes: [
+                        GoRoute(
+                          path: ':id',
+                          builder: (context, state) => ChatScreen(
+                            userId: int.parse(state.pathParameters['id']!),
+                          ),
+                        ),
+                      ]),
                   GoRoute(
                     path: 'me',
                     builder: (context, state) => const MyProfileScreen(),

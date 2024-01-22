@@ -22,7 +22,7 @@ const Court$json = {
     {'1': 'districtId', '3': 3, '4': 1, '5': 5, '10': 'districtId'},
     {'1': 'address', '3': 4, '4': 1, '5': 9, '10': 'address'},
     {'1': 'location', '3': 5, '4': 1, '5': 11, '6': '.common.Location', '10': 'location'},
-    {'1': 'medias', '3': 6, '4': 3, '5': 11, '6': '.common.Media', '10': 'medias'},
+    {'1': 'media', '3': 6, '4': 3, '5': 11, '6': '.common.Media', '10': 'media'},
   ],
 };
 
@@ -30,8 +30,8 @@ const Court$json = {
 final $typed_data.Uint8List courtDescriptor = $convert.base64Decode(
     'CgVDb3VydBIOCgJpZBgBIAEoBVICaWQSEgoEbmFtZRgCIAEoCVIEbmFtZRIeCgpkaXN0cmljdE'
     'lkGAMgASgFUgpkaXN0cmljdElkEhgKB2FkZHJlc3MYBCABKAlSB2FkZHJlc3MSLAoIbG9jYXRp'
-    'b24YBSABKAsyEC5jb21tb24uTG9jYXRpb25SCGxvY2F0aW9uEiUKBm1lZGlhcxgGIAMoCzINLm'
-    'NvbW1vbi5NZWRpYVIGbWVkaWFz');
+    'b24YBSABKAsyEC5jb21tb24uTG9jYXRpb25SCGxvY2F0aW9uEiMKBW1lZGlhGAYgAygLMg0uY2'
+    '9tbW9uLk1lZGlhUgVtZWRpYQ==');
 
 @$core.Deprecated('Use getCourtRequestDescriptor instead')
 const GetCourtRequest$json = {

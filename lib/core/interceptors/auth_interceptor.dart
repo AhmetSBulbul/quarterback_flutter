@@ -14,7 +14,15 @@ class AuthInterceptor implements ClientInterceptor {
       Stream<Q> requests,
       CallOptions options,
       ClientStreamingInvoker<Q, R> invoker) {
-    throw UnimplementedError();
+    final token = _authStorage.token;
+    if (token != null) {
+      final newOptions = options.mergedWith(CallOptions(
+          metadata: {'Authorization': 'Bearer ${_authStorage.token}'}));
+
+      return invoker(method, requests, newOptions);
+    } else {
+      return invoker(method, requests, options);
+    }
   }
 
   @override

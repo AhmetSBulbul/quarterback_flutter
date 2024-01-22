@@ -14,7 +14,7 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'commonpb.pb.dart' as $1;
-import 'userpb.pb.dart' as $4;
+import 'userpb.pb.dart' as $5;
 
 class TeamResponse extends $pb.GeneratedMessage {
   factory TeamResponse({
@@ -528,7 +528,7 @@ class TeamList extends $pb.GeneratedMessage {
 class TeamWithPlayers extends $pb.GeneratedMessage {
   factory TeamWithPlayers({
     Team? team,
-    $core.Iterable<$4.User>? players,
+    $core.Iterable<$5.User>? players,
   }) {
     final $result = create();
     if (team != null) {
@@ -545,7 +545,7 @@ class TeamWithPlayers extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TeamWithPlayers', package: const $pb.PackageName(_omitMessageNames ? '' : 'team'), createEmptyInstance: create)
     ..aOM<Team>(1, _omitFieldNames ? '' : 'team', subBuilder: Team.create)
-    ..pc<$4.User>(2, _omitFieldNames ? '' : 'players', $pb.PbFieldType.PM, subBuilder: $4.User.create)
+    ..pc<$5.User>(2, _omitFieldNames ? '' : 'players', $pb.PbFieldType.PM, subBuilder: $5.User.create)
     ..hasRequiredFields = false
   ;
 
@@ -582,7 +582,7 @@ class TeamWithPlayers extends $pb.GeneratedMessage {
   Team ensureTeam() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $core.List<$4.User> get players => $_getList(1);
+  $core.List<$5.User> get players => $_getList(1);
 }
 
 

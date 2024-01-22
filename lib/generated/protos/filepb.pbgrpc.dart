@@ -15,20 +15,20 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'filepb.pb.dart' as $3;
+import 'filepb.pb.dart' as $4;
 
 export 'filepb.pb.dart';
 
 @$pb.GrpcServiceName('file.FileService')
 class FileServiceClient extends $grpc.Client {
-  static final _$upload = $grpc.ClientMethod<$3.UploadRequest, $3.GetFileResponse>(
+  static final _$upload = $grpc.ClientMethod<$4.UploadRequest, $4.GetFileResponse>(
       '/file.FileService/Upload',
-      ($3.UploadRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.GetFileResponse.fromBuffer(value));
-  static final _$getFile = $grpc.ClientMethod<$3.FileId, $3.GetFileResponse>(
+      ($4.UploadRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.GetFileResponse.fromBuffer(value));
+  static final _$getFile = $grpc.ClientMethod<$4.FileId, $4.GetFileResponse>(
       '/file.FileService/GetFile',
-      ($3.FileId value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.GetFileResponse.fromBuffer(value));
+      ($4.FileId value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.GetFileResponse.fromBuffer(value));
 
   FileServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -36,11 +36,11 @@ class FileServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$3.GetFileResponse> upload($3.UploadRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.GetFileResponse> upload($4.UploadRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$upload, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.GetFileResponse> getFile($3.FileId request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.GetFileResponse> getFile($4.FileId request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getFile, request, options: options);
   }
 }
@@ -50,30 +50,30 @@ abstract class FileServiceBase extends $grpc.Service {
   $core.String get $name => 'file.FileService';
 
   FileServiceBase() {
-    $addMethod($grpc.ServiceMethod<$3.UploadRequest, $3.GetFileResponse>(
+    $addMethod($grpc.ServiceMethod<$4.UploadRequest, $4.GetFileResponse>(
         'Upload',
         upload_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.UploadRequest.fromBuffer(value),
-        ($3.GetFileResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.FileId, $3.GetFileResponse>(
+        ($core.List<$core.int> value) => $4.UploadRequest.fromBuffer(value),
+        ($4.GetFileResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.FileId, $4.GetFileResponse>(
         'GetFile',
         getFile_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.FileId.fromBuffer(value),
-        ($3.GetFileResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $4.FileId.fromBuffer(value),
+        ($4.GetFileResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$3.GetFileResponse> upload_Pre($grpc.ServiceCall call, $async.Future<$3.UploadRequest> request) async {
+  $async.Future<$4.GetFileResponse> upload_Pre($grpc.ServiceCall call, $async.Future<$4.UploadRequest> request) async {
     return upload(call, await request);
   }
 
-  $async.Future<$3.GetFileResponse> getFile_Pre($grpc.ServiceCall call, $async.Future<$3.FileId> request) async {
+  $async.Future<$4.GetFileResponse> getFile_Pre($grpc.ServiceCall call, $async.Future<$4.FileId> request) async {
     return getFile(call, await request);
   }
 
-  $async.Future<$3.GetFileResponse> upload($grpc.ServiceCall call, $3.UploadRequest request);
-  $async.Future<$3.GetFileResponse> getFile($grpc.ServiceCall call, $3.FileId request);
+  $async.Future<$4.GetFileResponse> upload($grpc.ServiceCall call, $4.UploadRequest request);
+  $async.Future<$4.GetFileResponse> getFile($grpc.ServiceCall call, $4.FileId request);
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
+
 import 'package:quarterback_flutter/app/widgets/brand/app_icons.dart';
 import 'package:quarterback_flutter/app/widgets/brand/logo.dart';
 
@@ -20,7 +22,9 @@ class HomeScreen extends StatelessWidget {
           IconButton(onPressed: () => {}, icon: const AppIcons.basketball())
         ],
       ),
-      body: const Center(child: Text("Home Screen")),
+      body: const Center(
+        child: Text("Home Page"),
+      ),
     );
   }
 }

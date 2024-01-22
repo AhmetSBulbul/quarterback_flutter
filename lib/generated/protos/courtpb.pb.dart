@@ -22,7 +22,7 @@ class Court extends $pb.GeneratedMessage {
     $core.int? districtId,
     $core.String? address,
     $1.Location? location,
-    $core.Iterable<$1.Media>? medias,
+    $core.Iterable<$1.Media>? media,
   }) {
     final $result = create();
     if (id != null) {
@@ -40,8 +40,8 @@ class Court extends $pb.GeneratedMessage {
     if (location != null) {
       $result.location = location;
     }
-    if (medias != null) {
-      $result.medias.addAll(medias);
+    if (media != null) {
+      $result.media.addAll(media);
     }
     return $result;
   }
@@ -55,7 +55,7 @@ class Court extends $pb.GeneratedMessage {
     ..a<$core.int>(3, _omitFieldNames ? '' : 'districtId', $pb.PbFieldType.O3, protoName: 'districtId')
     ..aOS(4, _omitFieldNames ? '' : 'address')
     ..aOM<$1.Location>(5, _omitFieldNames ? '' : 'location', subBuilder: $1.Location.create)
-    ..pc<$1.Media>(6, _omitFieldNames ? '' : 'medias', $pb.PbFieldType.PM, subBuilder: $1.Media.create)
+    ..pc<$1.Media>(6, _omitFieldNames ? '' : 'media', $pb.PbFieldType.PM, subBuilder: $1.Media.create)
     ..hasRequiredFields = false
   ;
 
@@ -128,7 +128,7 @@ class Court extends $pb.GeneratedMessage {
   $1.Location ensureLocation() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $core.List<$1.Media> get medias => $_getList(5);
+  $core.List<$1.Media> get media => $_getList(5);
 }
 
 /// Get Court

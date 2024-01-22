@@ -9,8 +9,10 @@ import 'package:quarterback_flutter/core/extensions/build_context_extensions.dar
 import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/core/theme/app_colors.dart';
 import 'package:quarterback_flutter/core/usecase/list_usecase.dart';
+import 'package:quarterback_flutter/features/court/data/court_repository.dart';
 import 'package:quarterback_flutter/features/user/data/user_repository.dart';
 import 'package:quarterback_flutter/generated/protos/commonpb.pb.dart';
+import 'package:quarterback_flutter/generated/protos/courtpb.pb.dart';
 import 'package:quarterback_flutter/generated/protos/userpb.pbgrpc.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -118,11 +120,41 @@ class SearchScreen extends StatelessWidget {
                           },
                         ),
                       ),
-                      ListView.builder(
-                        itemCount: 10,
-                        itemBuilder: (context, index) => const ListTile(
-                          title: Text('Team //'),
-                        ),
+                      FutureBuilder<List<Court>>(
+                        future: locator<CourtRepository>().listCourt(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return ListView(
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              children: [
+                                for (final court in snapshot.data!)
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 4),
+                                    child: ListTile(
+                                      tileColor: AppColors.surface,
+                                      onTap: () =>
+                                          context.push('/court/${court.id}'),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      title: Text(
+                                        court.name,
+                                        style: context.textTheme.labelLarge,
+                                      ),
+                                      subtitle: Text(
+                                        court.address,
+                                        style: context.textTheme.labelMedium,
+                                      ),
+                                      trailing: const Icon(Icons.chevron_right),
+                                    ),
+                                  ),
+                              ],
+                            );
+                          } else {
+                            return const CircularProgressIndicator();
+                          }
+                        },
                       ),
                     ],
                   ),
