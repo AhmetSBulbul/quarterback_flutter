@@ -16,56 +16,56 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'commonpb.pb.dart' as $1;
-import 'gamepb.pb.dart' as $7;
+import 'gamepb.pb.dart' as $8;
 
 export 'gamepb.pb.dart';
 
 @$pb.GrpcServiceName('game.GameService')
 class GameServiceClient extends $grpc.Client {
-  static final _$getGame = $grpc.ClientMethod<$7.GetGameRequest, $7.GameResponse>(
+  static final _$getGame = $grpc.ClientMethod<$8.GetGameRequest, $8.GameResponse>(
       '/game.GameService/GetGame',
-      ($7.GetGameRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.GameResponse.fromBuffer(value));
-  static final _$listGamesByLocation = $grpc.ClientMethod<$7.ListGamesByLocationRequest, $7.ListGamesResponse>(
+      ($8.GetGameRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
+  static final _$listGamesByLocation = $grpc.ClientMethod<$8.ListGamesByLocationRequest, $8.ListGamesResponse>(
       '/game.GameService/ListGamesByLocation',
-      ($7.ListGamesByLocationRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.ListGamesResponse.fromBuffer(value));
-  static final _$listGamesByUser = $grpc.ClientMethod<$7.ListGamesByUserRequest, $7.ListGamesResponse>(
+      ($8.ListGamesByLocationRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.ListGamesResponse.fromBuffer(value));
+  static final _$listGamesByUser = $grpc.ClientMethod<$8.ListGamesByUserRequest, $8.ListGamesResponse>(
       '/game.GameService/ListGamesByUser',
-      ($7.ListGamesByUserRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.ListGamesResponse.fromBuffer(value));
-  static final _$listGamesByCourt = $grpc.ClientMethod<$7.ListGamesByCourtRequest, $7.ListGamesResponse>(
+      ($8.ListGamesByUserRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.ListGamesResponse.fromBuffer(value));
+  static final _$listGamesByCourt = $grpc.ClientMethod<$8.ListGamesByCourtRequest, $8.ListGamesResponse>(
       '/game.GameService/ListGamesByCourt',
-      ($7.ListGamesByCourtRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.ListGamesResponse.fromBuffer(value));
-  static final _$listGamesByTeam = $grpc.ClientMethod<$7.ListGamesByTeamRequest, $7.ListGamesResponse>(
+      ($8.ListGamesByCourtRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.ListGamesResponse.fromBuffer(value));
+  static final _$listGamesByTeam = $grpc.ClientMethod<$8.ListGamesByTeamRequest, $8.ListGamesResponse>(
       '/game.GameService/ListGamesByTeam',
-      ($7.ListGamesByTeamRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.ListGamesResponse.fromBuffer(value));
-  static final _$createGame = $grpc.ClientMethod<$7.CreateGameRequest, $7.GameResponse>(
+      ($8.ListGamesByTeamRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.ListGamesResponse.fromBuffer(value));
+  static final _$createGame = $grpc.ClientMethod<$8.CreateGameRequest, $8.GameResponse>(
       '/game.GameService/CreateGame',
-      ($7.CreateGameRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.GameResponse.fromBuffer(value));
-  static final _$createGameWithTeam = $grpc.ClientMethod<$7.CreateGameWithTeamRequest, $7.GameResponse>(
+      ($8.CreateGameRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
+  static final _$createGameWithTeam = $grpc.ClientMethod<$8.CreateGameWithTeamRequest, $8.GameResponse>(
       '/game.GameService/CreateGameWithTeam',
-      ($7.CreateGameWithTeamRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.GameResponse.fromBuffer(value));
-  static final _$joinGame = $grpc.ClientMethod<$7.JoinGameRequest, $7.GameResponse>(
+      ($8.CreateGameWithTeamRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
+  static final _$joinGame = $grpc.ClientMethod<$8.JoinGameRequest, $8.GameResponse>(
       '/game.GameService/JoinGame',
-      ($7.JoinGameRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.GameResponse.fromBuffer(value));
-  static final _$startGame = $grpc.ClientMethod<$7.StartGameRequest, $7.GameResponse>(
+      ($8.JoinGameRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
+  static final _$startGame = $grpc.ClientMethod<$8.StartGameRequest, $8.GameResponse>(
       '/game.GameService/StartGame',
-      ($7.StartGameRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.GameResponse.fromBuffer(value));
-  static final _$endGame = $grpc.ClientMethod<$7.EndGameRequest, $7.GameResponse>(
+      ($8.StartGameRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
+  static final _$endGame = $grpc.ClientMethod<$8.EndGameRequest, $8.GameResponse>(
       '/game.GameService/EndGame',
-      ($7.EndGameRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.GameResponse.fromBuffer(value));
-  static final _$cancelGame = $grpc.ClientMethod<$7.CancelGameRequest, $7.GameResponse>(
+      ($8.EndGameRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
+  static final _$cancelGame = $grpc.ClientMethod<$8.CancelGameRequest, $8.GameResponse>(
       '/game.GameService/CancelGame',
-      ($7.CancelGameRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $7.GameResponse.fromBuffer(value));
+      ($8.CancelGameRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
   static final _$addMedia = $grpc.ClientMethod<$1.File, $1.Media>(
       '/game.GameService/AddMedia',
       ($1.File value) => value.writeToBuffer(),
@@ -77,47 +77,47 @@ class GameServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$7.GameResponse> getGame($7.GetGameRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameResponse> getGame($8.GetGameRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getGame, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.ListGamesResponse> listGamesByLocation($7.ListGamesByLocationRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.ListGamesResponse> listGamesByLocation($8.ListGamesByLocationRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listGamesByLocation, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.ListGamesResponse> listGamesByUser($7.ListGamesByUserRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.ListGamesResponse> listGamesByUser($8.ListGamesByUserRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listGamesByUser, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.ListGamesResponse> listGamesByCourt($7.ListGamesByCourtRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.ListGamesResponse> listGamesByCourt($8.ListGamesByCourtRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listGamesByCourt, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.ListGamesResponse> listGamesByTeam($7.ListGamesByTeamRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.ListGamesResponse> listGamesByTeam($8.ListGamesByTeamRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listGamesByTeam, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.GameResponse> createGame($7.CreateGameRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameResponse> createGame($8.CreateGameRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createGame, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.GameResponse> createGameWithTeam($7.CreateGameWithTeamRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameResponse> createGameWithTeam($8.CreateGameWithTeamRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createGameWithTeam, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.GameResponse> joinGame($7.JoinGameRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameResponse> joinGame($8.JoinGameRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$joinGame, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.GameResponse> startGame($7.StartGameRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameResponse> startGame($8.StartGameRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$startGame, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.GameResponse> endGame($7.EndGameRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameResponse> endGame($8.EndGameRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$endGame, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.GameResponse> cancelGame($7.CancelGameRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameResponse> cancelGame($8.CancelGameRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$cancelGame, request, options: options);
   }
 
@@ -131,83 +131,83 @@ abstract class GameServiceBase extends $grpc.Service {
   $core.String get $name => 'game.GameService';
 
   GameServiceBase() {
-    $addMethod($grpc.ServiceMethod<$7.GetGameRequest, $7.GameResponse>(
+    $addMethod($grpc.ServiceMethod<$8.GetGameRequest, $8.GameResponse>(
         'GetGame',
         getGame_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.GetGameRequest.fromBuffer(value),
-        ($7.GameResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.ListGamesByLocationRequest, $7.ListGamesResponse>(
+        ($core.List<$core.int> value) => $8.GetGameRequest.fromBuffer(value),
+        ($8.GameResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.ListGamesByLocationRequest, $8.ListGamesResponse>(
         'ListGamesByLocation',
         listGamesByLocation_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.ListGamesByLocationRequest.fromBuffer(value),
-        ($7.ListGamesResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.ListGamesByUserRequest, $7.ListGamesResponse>(
+        ($core.List<$core.int> value) => $8.ListGamesByLocationRequest.fromBuffer(value),
+        ($8.ListGamesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.ListGamesByUserRequest, $8.ListGamesResponse>(
         'ListGamesByUser',
         listGamesByUser_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.ListGamesByUserRequest.fromBuffer(value),
-        ($7.ListGamesResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.ListGamesByCourtRequest, $7.ListGamesResponse>(
+        ($core.List<$core.int> value) => $8.ListGamesByUserRequest.fromBuffer(value),
+        ($8.ListGamesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.ListGamesByCourtRequest, $8.ListGamesResponse>(
         'ListGamesByCourt',
         listGamesByCourt_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.ListGamesByCourtRequest.fromBuffer(value),
-        ($7.ListGamesResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.ListGamesByTeamRequest, $7.ListGamesResponse>(
+        ($core.List<$core.int> value) => $8.ListGamesByCourtRequest.fromBuffer(value),
+        ($8.ListGamesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.ListGamesByTeamRequest, $8.ListGamesResponse>(
         'ListGamesByTeam',
         listGamesByTeam_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.ListGamesByTeamRequest.fromBuffer(value),
-        ($7.ListGamesResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.CreateGameRequest, $7.GameResponse>(
+        ($core.List<$core.int> value) => $8.ListGamesByTeamRequest.fromBuffer(value),
+        ($8.ListGamesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.CreateGameRequest, $8.GameResponse>(
         'CreateGame',
         createGame_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.CreateGameRequest.fromBuffer(value),
-        ($7.GameResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.CreateGameWithTeamRequest, $7.GameResponse>(
+        ($core.List<$core.int> value) => $8.CreateGameRequest.fromBuffer(value),
+        ($8.GameResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.CreateGameWithTeamRequest, $8.GameResponse>(
         'CreateGameWithTeam',
         createGameWithTeam_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.CreateGameWithTeamRequest.fromBuffer(value),
-        ($7.GameResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.JoinGameRequest, $7.GameResponse>(
+        ($core.List<$core.int> value) => $8.CreateGameWithTeamRequest.fromBuffer(value),
+        ($8.GameResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.JoinGameRequest, $8.GameResponse>(
         'JoinGame',
         joinGame_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.JoinGameRequest.fromBuffer(value),
-        ($7.GameResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.StartGameRequest, $7.GameResponse>(
+        ($core.List<$core.int> value) => $8.JoinGameRequest.fromBuffer(value),
+        ($8.GameResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.StartGameRequest, $8.GameResponse>(
         'StartGame',
         startGame_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.StartGameRequest.fromBuffer(value),
-        ($7.GameResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.EndGameRequest, $7.GameResponse>(
+        ($core.List<$core.int> value) => $8.StartGameRequest.fromBuffer(value),
+        ($8.GameResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.EndGameRequest, $8.GameResponse>(
         'EndGame',
         endGame_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.EndGameRequest.fromBuffer(value),
-        ($7.GameResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.CancelGameRequest, $7.GameResponse>(
+        ($core.List<$core.int> value) => $8.EndGameRequest.fromBuffer(value),
+        ($8.GameResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.CancelGameRequest, $8.GameResponse>(
         'CancelGame',
         cancelGame_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.CancelGameRequest.fromBuffer(value),
-        ($7.GameResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $8.CancelGameRequest.fromBuffer(value),
+        ($8.GameResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.File, $1.Media>(
         'AddMedia',
         addMedia_Pre,
@@ -217,47 +217,47 @@ abstract class GameServiceBase extends $grpc.Service {
         ($1.Media value) => value.writeToBuffer()));
   }
 
-  $async.Future<$7.GameResponse> getGame_Pre($grpc.ServiceCall call, $async.Future<$7.GetGameRequest> request) async {
+  $async.Future<$8.GameResponse> getGame_Pre($grpc.ServiceCall call, $async.Future<$8.GetGameRequest> request) async {
     return getGame(call, await request);
   }
 
-  $async.Future<$7.ListGamesResponse> listGamesByLocation_Pre($grpc.ServiceCall call, $async.Future<$7.ListGamesByLocationRequest> request) async {
+  $async.Future<$8.ListGamesResponse> listGamesByLocation_Pre($grpc.ServiceCall call, $async.Future<$8.ListGamesByLocationRequest> request) async {
     return listGamesByLocation(call, await request);
   }
 
-  $async.Future<$7.ListGamesResponse> listGamesByUser_Pre($grpc.ServiceCall call, $async.Future<$7.ListGamesByUserRequest> request) async {
+  $async.Future<$8.ListGamesResponse> listGamesByUser_Pre($grpc.ServiceCall call, $async.Future<$8.ListGamesByUserRequest> request) async {
     return listGamesByUser(call, await request);
   }
 
-  $async.Future<$7.ListGamesResponse> listGamesByCourt_Pre($grpc.ServiceCall call, $async.Future<$7.ListGamesByCourtRequest> request) async {
+  $async.Future<$8.ListGamesResponse> listGamesByCourt_Pre($grpc.ServiceCall call, $async.Future<$8.ListGamesByCourtRequest> request) async {
     return listGamesByCourt(call, await request);
   }
 
-  $async.Future<$7.ListGamesResponse> listGamesByTeam_Pre($grpc.ServiceCall call, $async.Future<$7.ListGamesByTeamRequest> request) async {
+  $async.Future<$8.ListGamesResponse> listGamesByTeam_Pre($grpc.ServiceCall call, $async.Future<$8.ListGamesByTeamRequest> request) async {
     return listGamesByTeam(call, await request);
   }
 
-  $async.Future<$7.GameResponse> createGame_Pre($grpc.ServiceCall call, $async.Future<$7.CreateGameRequest> request) async {
+  $async.Future<$8.GameResponse> createGame_Pre($grpc.ServiceCall call, $async.Future<$8.CreateGameRequest> request) async {
     return createGame(call, await request);
   }
 
-  $async.Future<$7.GameResponse> createGameWithTeam_Pre($grpc.ServiceCall call, $async.Future<$7.CreateGameWithTeamRequest> request) async {
+  $async.Future<$8.GameResponse> createGameWithTeam_Pre($grpc.ServiceCall call, $async.Future<$8.CreateGameWithTeamRequest> request) async {
     return createGameWithTeam(call, await request);
   }
 
-  $async.Future<$7.GameResponse> joinGame_Pre($grpc.ServiceCall call, $async.Future<$7.JoinGameRequest> request) async {
+  $async.Future<$8.GameResponse> joinGame_Pre($grpc.ServiceCall call, $async.Future<$8.JoinGameRequest> request) async {
     return joinGame(call, await request);
   }
 
-  $async.Future<$7.GameResponse> startGame_Pre($grpc.ServiceCall call, $async.Future<$7.StartGameRequest> request) async {
+  $async.Future<$8.GameResponse> startGame_Pre($grpc.ServiceCall call, $async.Future<$8.StartGameRequest> request) async {
     return startGame(call, await request);
   }
 
-  $async.Future<$7.GameResponse> endGame_Pre($grpc.ServiceCall call, $async.Future<$7.EndGameRequest> request) async {
+  $async.Future<$8.GameResponse> endGame_Pre($grpc.ServiceCall call, $async.Future<$8.EndGameRequest> request) async {
     return endGame(call, await request);
   }
 
-  $async.Future<$7.GameResponse> cancelGame_Pre($grpc.ServiceCall call, $async.Future<$7.CancelGameRequest> request) async {
+  $async.Future<$8.GameResponse> cancelGame_Pre($grpc.ServiceCall call, $async.Future<$8.CancelGameRequest> request) async {
     return cancelGame(call, await request);
   }
 
@@ -265,16 +265,16 @@ abstract class GameServiceBase extends $grpc.Service {
     return addMedia(call, await request);
   }
 
-  $async.Future<$7.GameResponse> getGame($grpc.ServiceCall call, $7.GetGameRequest request);
-  $async.Future<$7.ListGamesResponse> listGamesByLocation($grpc.ServiceCall call, $7.ListGamesByLocationRequest request);
-  $async.Future<$7.ListGamesResponse> listGamesByUser($grpc.ServiceCall call, $7.ListGamesByUserRequest request);
-  $async.Future<$7.ListGamesResponse> listGamesByCourt($grpc.ServiceCall call, $7.ListGamesByCourtRequest request);
-  $async.Future<$7.ListGamesResponse> listGamesByTeam($grpc.ServiceCall call, $7.ListGamesByTeamRequest request);
-  $async.Future<$7.GameResponse> createGame($grpc.ServiceCall call, $7.CreateGameRequest request);
-  $async.Future<$7.GameResponse> createGameWithTeam($grpc.ServiceCall call, $7.CreateGameWithTeamRequest request);
-  $async.Future<$7.GameResponse> joinGame($grpc.ServiceCall call, $7.JoinGameRequest request);
-  $async.Future<$7.GameResponse> startGame($grpc.ServiceCall call, $7.StartGameRequest request);
-  $async.Future<$7.GameResponse> endGame($grpc.ServiceCall call, $7.EndGameRequest request);
-  $async.Future<$7.GameResponse> cancelGame($grpc.ServiceCall call, $7.CancelGameRequest request);
+  $async.Future<$8.GameResponse> getGame($grpc.ServiceCall call, $8.GetGameRequest request);
+  $async.Future<$8.ListGamesResponse> listGamesByLocation($grpc.ServiceCall call, $8.ListGamesByLocationRequest request);
+  $async.Future<$8.ListGamesResponse> listGamesByUser($grpc.ServiceCall call, $8.ListGamesByUserRequest request);
+  $async.Future<$8.ListGamesResponse> listGamesByCourt($grpc.ServiceCall call, $8.ListGamesByCourtRequest request);
+  $async.Future<$8.ListGamesResponse> listGamesByTeam($grpc.ServiceCall call, $8.ListGamesByTeamRequest request);
+  $async.Future<$8.GameResponse> createGame($grpc.ServiceCall call, $8.CreateGameRequest request);
+  $async.Future<$8.GameResponse> createGameWithTeam($grpc.ServiceCall call, $8.CreateGameWithTeamRequest request);
+  $async.Future<$8.GameResponse> joinGame($grpc.ServiceCall call, $8.JoinGameRequest request);
+  $async.Future<$8.GameResponse> startGame($grpc.ServiceCall call, $8.StartGameRequest request);
+  $async.Future<$8.GameResponse> endGame($grpc.ServiceCall call, $8.EndGameRequest request);
+  $async.Future<$8.GameResponse> cancelGame($grpc.ServiceCall call, $8.CancelGameRequest request);
   $async.Future<$1.Media> addMedia($grpc.ServiceCall call, $1.File request);
 }

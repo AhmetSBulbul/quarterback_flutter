@@ -74,6 +74,10 @@ extension GetItInjectableX on _i1.GetIt {
       gh<_i5.LoggerInterceptor>(),
       gh<_i8.AuthInterceptor>(),
     ));
+    gh.lazySingleton<_i11.CourtCommentListUseCase>(
+        () => _i11.CourtCommentListUseCase(gh<_i11.CourtRepository>()));
+    gh.lazySingleton<_i11.CourtListUseCase>(
+        () => _i11.CourtListUseCase(gh<_i11.CourtRepository>()));
     gh.lazySingleton<_i13.UserListUseCase>(
         () => _i13.UserListUseCase(gh<_i13.UserRepository>()));
     return this;

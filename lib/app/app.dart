@@ -7,6 +7,7 @@ import 'package:quarterback_flutter/app/screens/auth/onboard_screen.dart';
 import 'package:quarterback_flutter/app/screens/auth/register/register_screen.dart';
 import 'package:quarterback_flutter/app/screens/chat/chat_screen.dart';
 import 'package:quarterback_flutter/app/screens/chat/chat_session_screen.dart';
+import 'package:quarterback_flutter/app/screens/court/court_screen.dart';
 import 'package:quarterback_flutter/app/screens/error_screen.dart';
 import 'package:quarterback_flutter/app/screens/fixtures/fixtures_screen.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
@@ -180,7 +181,12 @@ class QuarterbackApp extends StatelessWidget {
                   GoRoute(
                       path: 'profile/:id',
                       builder: (context, state) => ProfileScreen(
-                          id: int.parse(state.pathParameters['id']!)))
+                          id: int.parse(state.pathParameters['id']!))),
+                  GoRoute(
+                      path: 'court/:id',
+                      builder: (context, state) => CourtScreen(
+                            courtId: int.parse(state.pathParameters['id']!),
+                          ))
                 ],
               ),
             ],

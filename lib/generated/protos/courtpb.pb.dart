@@ -14,15 +14,19 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'commonpb.pb.dart' as $1;
+import 'regionpb.pb.dart' as $4;
+import 'userpb.pb.dart' as $3;
 
 class Court extends $pb.GeneratedMessage {
   factory Court({
     $core.int? id,
     $core.String? name,
-    $core.int? districtId,
+    $4.District? district,
     $core.String? address,
     $1.Location? location,
     $core.Iterable<$1.Media>? media,
+    $core.int? checkInCount,
+    $core.int? commentCount,
   }) {
     final $result = create();
     if (id != null) {
@@ -31,8 +35,8 @@ class Court extends $pb.GeneratedMessage {
     if (name != null) {
       $result.name = name;
     }
-    if (districtId != null) {
-      $result.districtId = districtId;
+    if (district != null) {
+      $result.district = district;
     }
     if (address != null) {
       $result.address = address;
@@ -43,6 +47,12 @@ class Court extends $pb.GeneratedMessage {
     if (media != null) {
       $result.media.addAll(media);
     }
+    if (checkInCount != null) {
+      $result.checkInCount = checkInCount;
+    }
+    if (commentCount != null) {
+      $result.commentCount = commentCount;
+    }
     return $result;
   }
   Court._() : super();
@@ -52,10 +62,12 @@ class Court extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Court', package: const $pb.PackageName(_omitMessageNames ? '' : 'court'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
     ..aOS(2, _omitFieldNames ? '' : 'name')
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'districtId', $pb.PbFieldType.O3, protoName: 'districtId')
+    ..aOM<$4.District>(3, _omitFieldNames ? '' : 'district', subBuilder: $4.District.create)
     ..aOS(4, _omitFieldNames ? '' : 'address')
     ..aOM<$1.Location>(5, _omitFieldNames ? '' : 'location', subBuilder: $1.Location.create)
     ..pc<$1.Media>(6, _omitFieldNames ? '' : 'media', $pb.PbFieldType.PM, subBuilder: $1.Media.create)
+    ..a<$core.int>(7, _omitFieldNames ? '' : 'checkInCount', $pb.PbFieldType.O3, protoName: 'checkInCount')
+    ..a<$core.int>(8, _omitFieldNames ? '' : 'commentCount', $pb.PbFieldType.O3, protoName: 'commentCount')
     ..hasRequiredFields = false
   ;
 
@@ -99,13 +111,15 @@ class Court extends $pb.GeneratedMessage {
   void clearName() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.int get districtId => $_getIZ(2);
+  $4.District get district => $_getN(2);
   @$pb.TagNumber(3)
-  set districtId($core.int v) { $_setSignedInt32(2, v); }
+  set district($4.District v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasDistrictId() => $_has(2);
+  $core.bool hasDistrict() => $_has(2);
   @$pb.TagNumber(3)
-  void clearDistrictId() => clearField(3);
+  void clearDistrict() => clearField(3);
+  @$pb.TagNumber(3)
+  $4.District ensureDistrict() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $core.String get address => $_getSZ(3);
@@ -129,6 +143,308 @@ class Court extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(6)
   $core.List<$1.Media> get media => $_getList(5);
+
+  @$pb.TagNumber(7)
+  $core.int get checkInCount => $_getIZ(6);
+  @$pb.TagNumber(7)
+  set checkInCount($core.int v) { $_setSignedInt32(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasCheckInCount() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearCheckInCount() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.int get commentCount => $_getIZ(7);
+  @$pb.TagNumber(8)
+  set commentCount($core.int v) { $_setSignedInt32(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasCommentCount() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearCommentCount() => clearField(8);
+}
+
+class CourtCommentRequest extends $pb.GeneratedMessage {
+  factory CourtCommentRequest({
+    $core.int? courtId,
+    $core.String? content,
+  }) {
+    final $result = create();
+    if (courtId != null) {
+      $result.courtId = courtId;
+    }
+    if (content != null) {
+      $result.content = content;
+    }
+    return $result;
+  }
+  CourtCommentRequest._() : super();
+  factory CourtCommentRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CourtCommentRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CourtCommentRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'court'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'courtId', $pb.PbFieldType.O3, protoName: 'courtId')
+    ..aOS(2, _omitFieldNames ? '' : 'content')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CourtCommentRequest clone() => CourtCommentRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CourtCommentRequest copyWith(void Function(CourtCommentRequest) updates) => super.copyWith((message) => updates(message as CourtCommentRequest)) as CourtCommentRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CourtCommentRequest create() => CourtCommentRequest._();
+  CourtCommentRequest createEmptyInstance() => create();
+  static $pb.PbList<CourtCommentRequest> createRepeated() => $pb.PbList<CourtCommentRequest>();
+  @$core.pragma('dart2js:noInline')
+  static CourtCommentRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CourtCommentRequest>(create);
+  static CourtCommentRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get courtId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set courtId($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCourtId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCourtId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get content => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set content($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasContent() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearContent() => clearField(2);
+}
+
+class CourtComment extends $pb.GeneratedMessage {
+  factory CourtComment({
+    $core.int? id,
+    $core.int? courtId,
+    $3.User? sender,
+    $core.String? content,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (courtId != null) {
+      $result.courtId = courtId;
+    }
+    if (sender != null) {
+      $result.sender = sender;
+    }
+    if (content != null) {
+      $result.content = content;
+    }
+    return $result;
+  }
+  CourtComment._() : super();
+  factory CourtComment.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CourtComment.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CourtComment', package: const $pb.PackageName(_omitMessageNames ? '' : 'court'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'courtId', $pb.PbFieldType.O3, protoName: 'courtId')
+    ..aOM<$3.User>(3, _omitFieldNames ? '' : 'sender', subBuilder: $3.User.create)
+    ..aOS(4, _omitFieldNames ? '' : 'content')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CourtComment clone() => CourtComment()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CourtComment copyWith(void Function(CourtComment) updates) => super.copyWith((message) => updates(message as CourtComment)) as CourtComment;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CourtComment create() => CourtComment._();
+  CourtComment createEmptyInstance() => create();
+  static $pb.PbList<CourtComment> createRepeated() => $pb.PbList<CourtComment>();
+  @$core.pragma('dart2js:noInline')
+  static CourtComment getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CourtComment>(create);
+  static CourtComment? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get id => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set id($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get courtId => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set courtId($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCourtId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCourtId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $3.User get sender => $_getN(2);
+  @$pb.TagNumber(3)
+  set sender($3.User v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasSender() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSender() => clearField(3);
+  @$pb.TagNumber(3)
+  $3.User ensureSender() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  $core.String get content => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set content($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasContent() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearContent() => clearField(4);
+}
+
+class CourtCommentListRequest extends $pb.GeneratedMessage {
+  factory CourtCommentListRequest({
+    $core.int? courtId,
+    $1.PaginationRequest? pagination,
+  }) {
+    final $result = create();
+    if (courtId != null) {
+      $result.courtId = courtId;
+    }
+    if (pagination != null) {
+      $result.pagination = pagination;
+    }
+    return $result;
+  }
+  CourtCommentListRequest._() : super();
+  factory CourtCommentListRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CourtCommentListRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CourtCommentListRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'court'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'courtId', $pb.PbFieldType.O3, protoName: 'courtId')
+    ..aOM<$1.PaginationRequest>(2, _omitFieldNames ? '' : 'pagination', subBuilder: $1.PaginationRequest.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CourtCommentListRequest clone() => CourtCommentListRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CourtCommentListRequest copyWith(void Function(CourtCommentListRequest) updates) => super.copyWith((message) => updates(message as CourtCommentListRequest)) as CourtCommentListRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CourtCommentListRequest create() => CourtCommentListRequest._();
+  CourtCommentListRequest createEmptyInstance() => create();
+  static $pb.PbList<CourtCommentListRequest> createRepeated() => $pb.PbList<CourtCommentListRequest>();
+  @$core.pragma('dart2js:noInline')
+  static CourtCommentListRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CourtCommentListRequest>(create);
+  static CourtCommentListRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get courtId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set courtId($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCourtId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCourtId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $1.PaginationRequest get pagination => $_getN(1);
+  @$pb.TagNumber(2)
+  set pagination($1.PaginationRequest v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPagination() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPagination() => clearField(2);
+  @$pb.TagNumber(2)
+  $1.PaginationRequest ensurePagination() => $_ensure(1);
+}
+
+class CourtCommentListResponse extends $pb.GeneratedMessage {
+  factory CourtCommentListResponse({
+    $core.Iterable<CourtComment>? comments,
+    $1.PaginationResponse? pagination,
+  }) {
+    final $result = create();
+    if (comments != null) {
+      $result.comments.addAll(comments);
+    }
+    if (pagination != null) {
+      $result.pagination = pagination;
+    }
+    return $result;
+  }
+  CourtCommentListResponse._() : super();
+  factory CourtCommentListResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CourtCommentListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CourtCommentListResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'court'), createEmptyInstance: create)
+    ..pc<CourtComment>(1, _omitFieldNames ? '' : 'comments', $pb.PbFieldType.PM, subBuilder: CourtComment.create)
+    ..aOM<$1.PaginationResponse>(2, _omitFieldNames ? '' : 'pagination', subBuilder: $1.PaginationResponse.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CourtCommentListResponse clone() => CourtCommentListResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CourtCommentListResponse copyWith(void Function(CourtCommentListResponse) updates) => super.copyWith((message) => updates(message as CourtCommentListResponse)) as CourtCommentListResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CourtCommentListResponse create() => CourtCommentListResponse._();
+  CourtCommentListResponse createEmptyInstance() => create();
+  static $pb.PbList<CourtCommentListResponse> createRepeated() => $pb.PbList<CourtCommentListResponse>();
+  @$core.pragma('dart2js:noInline')
+  static CourtCommentListResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CourtCommentListResponse>(create);
+  static CourtCommentListResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<CourtComment> get comments => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $1.PaginationResponse get pagination => $_getN(1);
+  @$pb.TagNumber(2)
+  set pagination($1.PaginationResponse v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPagination() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPagination() => clearField(2);
+  @$pb.TagNumber(2)
+  $1.PaginationResponse ensurePagination() => $_ensure(1);
 }
 
 /// Get Court
@@ -180,6 +496,70 @@ class GetCourtRequest extends $pb.GeneratedMessage {
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
+}
+
+class CheckInCourtResponse extends $pb.GeneratedMessage {
+  factory CheckInCourtResponse({
+    $core.int? id,
+    $core.bool? checkedIn,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (checkedIn != null) {
+      $result.checkedIn = checkedIn;
+    }
+    return $result;
+  }
+  CheckInCourtResponse._() : super();
+  factory CheckInCourtResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CheckInCourtResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CheckInCourtResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'court'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
+    ..aOB(2, _omitFieldNames ? '' : 'checkedIn', protoName: 'checkedIn')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CheckInCourtResponse clone() => CheckInCourtResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CheckInCourtResponse copyWith(void Function(CheckInCourtResponse) updates) => super.copyWith((message) => updates(message as CheckInCourtResponse)) as CheckInCourtResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CheckInCourtResponse create() => CheckInCourtResponse._();
+  CheckInCourtResponse createEmptyInstance() => create();
+  static $pb.PbList<CheckInCourtResponse> createRepeated() => $pb.PbList<CheckInCourtResponse>();
+  @$core.pragma('dart2js:noInline')
+  static CheckInCourtResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CheckInCourtResponse>(create);
+  static CheckInCourtResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get id => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set id($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.bool get checkedIn => $_getBF(1);
+  @$pb.TagNumber(2)
+  set checkedIn($core.bool v) { $_setBool(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCheckedIn() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCheckedIn() => clearField(2);
 }
 
 class CourtResponse extends $pb.GeneratedMessage {
