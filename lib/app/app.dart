@@ -5,7 +5,8 @@ import 'package:grpc/grpc.dart';
 import 'package:quarterback_flutter/app/screens/auth/login_screen.dart';
 import 'package:quarterback_flutter/app/screens/auth/onboard_screen.dart';
 import 'package:quarterback_flutter/app/screens/auth/register/register_screen.dart';
-import 'package:quarterback_flutter/app/screens/chat_screen.dart';
+import 'package:quarterback_flutter/app/screens/chat/chat_screen.dart';
+import 'package:quarterback_flutter/app/screens/chat/chat_session_screen.dart';
 import 'package:quarterback_flutter/app/screens/error_screen.dart';
 import 'package:quarterback_flutter/app/screens/fixtures/fixtures_screen.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
@@ -14,8 +15,13 @@ import 'package:quarterback_flutter/app/screens/my_profile/edit_my_profile_scree
 import 'package:quarterback_flutter/app/screens/my_profile/my_profile_screen.dart';
 import 'package:quarterback_flutter/app/screens/profile/profile_screen.dart';
 import 'package:quarterback_flutter/app/screens/search_screen.dart';
+import 'package:quarterback_flutter/app/screens/team_screen.dart';
 import 'package:quarterback_flutter/app/widgets/layout/bottom_navigation_shell.dart';
+import 'package:quarterback_flutter/app/widgets/layout/sized_spacer.dart';
+import 'package:quarterback_flutter/app/widgets/profile/avatar.dart';
+import 'package:quarterback_flutter/core/extensions/build_context_extensions.dart';
 import 'package:quarterback_flutter/core/locator/injectable.dart';
+import 'package:quarterback_flutter/core/theme/app_colors.dart';
 import 'package:quarterback_flutter/core/theme/app_theme.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
 import 'package:quarterback_flutter/features/chat/cubit/chat_cubit.dart';
@@ -71,11 +77,58 @@ class QuarterbackApp extends StatelessWidget {
                         // return const SizedBox.shrink();
                         return BlocProvider(
                           create: (context) => ChatCubit(
-                            userId: state.user.id,
+                            meId: state.user.id,
                             repository: locator<ChatRepository>(),
+                            userRepository: locator<UserRepository>(),
                           ),
-                          child: BottomNavigationShell(
-                              state: routerState, child: child),
+                          child: BlocListener<ChatCubit, ChatState>(
+                            listener: (context, chatState) {
+                              if (chatState.newMessage != null &&
+                                  routerState.fullPath != '/chat/:id') {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: AppColors.surface,
+                                    margin: const EdgeInsets.all(8),
+                                    behavior: SnackBarBehavior.floating,
+                                    content: Row(
+                                      children: [
+                                        Avatar(
+                                          path: chatState
+                                              .newMessage!.sender.avatarPath,
+                                        ),
+                                        const SizedSpacer.medium(),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "@${chatState.newMessage!.sender.username}",
+                                                style: context
+                                                    .textTheme.bodyMedium,
+                                              ),
+                                              const SizedSpacer.small(),
+                                              Text(chatState
+                                                  .newMessage!.message.content),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    action: SnackBarAction(
+                                      label: "Open",
+                                      onPressed: () {
+                                        context.push(
+                                            '/chat/${chatState.newMessage!.sender.id}');
+                                      },
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                            child: BottomNavigationShell(
+                                state: routerState, child: child),
+                          ),
                         );
                       } else {
                         return const SizedBox.shrink();
@@ -96,15 +149,15 @@ class QuarterbackApp extends StatelessWidget {
                   ),
                   GoRoute(
                     path: 'team',
-                    builder: (context, state) => const HomeScreen(),
+                    builder: (context, state) => const TeamScreen(),
                   ),
                   GoRoute(
                       path: 'chat',
-                      builder: (context, state) => const HomeScreen(),
+                      builder: (context, state) => const ChatScreen(),
                       routes: [
                         GoRoute(
                           path: ':id',
-                          builder: (context, state) => ChatScreen(
+                          builder: (context, state) => ChatSessionScreen(
                             userId: int.parse(state.pathParameters['id']!),
                           ),
                         ),

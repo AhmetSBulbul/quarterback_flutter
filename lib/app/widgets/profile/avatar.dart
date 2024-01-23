@@ -6,6 +6,7 @@ class Avatar extends StatelessWidget {
   final double radius;
 
   const Avatar.large({required this.path, super.key}) : radius = 45;
+  const Avatar.small({required this.path, super.key}) : radius = 20;
 
   @override
   Widget build(BuildContext context) {
