@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quarterback_flutter/app/widgets/layout/sized_spacer.dart';
 import 'package:quarterback_flutter/app/widgets/modules/fetched_list/cubit/fetched_list_cubit.dart';
 import 'package:quarterback_flutter/app/widgets/profile/avatar.dart';
+import 'package:quarterback_flutter/core/extensions/build_context_extensions.dart';
 import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/core/theme/app_colors.dart';
 import 'package:quarterback_flutter/core/usecase/list_usecase.dart';
@@ -30,13 +31,17 @@ class CourtScreen extends StatelessWidget {
                 ),
         )
       ],
-      child: const CourtView(),
+      child: CourtView(
+        courtId: courtId,
+      ),
     );
   }
 }
 
 class CourtView extends StatelessWidget {
-  const CourtView({super.key});
+  CourtView({super.key, required this.courtId});
+  final int courtId;
+  final TextEditingController _commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,88 +50,152 @@ class CourtView extends StatelessWidget {
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Court"),
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: true,
           centerTitle: false,
         ),
-        body: Column(children: [
-          // Header
-          const SizedSpacer.medium(),
-          // Tabbar
-          TabBar(
-              indicatorSize: TabBarIndicatorSize.tab,
-              unselectedLabelColor: AppColors.grey,
-              dividerColor: AppColors.white,
-              onTap: (index) {},
-              tabs: const [
-                Tab(child: Text("Comments")),
-                Tab(
-                  child: Text("Games"),
-                )
-              ]),
-          Expanded(
-              child: TabBarView(
-            children: [
-              // Comments
-              BlocBuilder<FetchedListCubit<CourtComment>,
-                  FetchedListState<CourtComment>>(builder: (context, state) {
-                return Column(
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: state.items.length,
-                        itemBuilder: (context, index) {
-                          for (var item in state.items) {
-                            return ListTile(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Header
+            FutureBuilder<Court>(
+                future: locator<CourtRepository>().getCourt(courtId),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        // TODO: make it theme
+
+                        surfaceTintColor: AppColors.black,
+                        color: AppColors.surface,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 18, vertical: 24),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                snapshot.data!.name,
+                                style: context.textTheme.titleMedium,
+                              ),
+                              SizedSpacer.medium(),
+                              Text(snapshot.data!.address),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  } else if (snapshot.hasError) {
+                    return const Text("Error");
+                  } else {
+                    return const Text("Loading...");
+                  }
+                }),
+
+            //
+            const SizedSpacer.medium(),
+            // Tabbar
+            TabBar(
+                indicatorSize: TabBarIndicatorSize.tab,
+                unselectedLabelColor: AppColors.grey,
+                dividerColor: AppColors.white,
+                onTap: (index) {},
+                tabs: const [
+                  Tab(child: Text("Comments")),
+                  Tab(
+                    child: Text("Games"),
+                  )
+                ]),
+            Expanded(
+                child: TabBarView(
+              children: [
+                // Comments
+                BlocBuilder<FetchedListCubit<CourtComment>,
+                    FetchedListState<CourtComment>>(builder: (context, state) {
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: ListView(children: [
+                          for (final item in state.items)
+                            ListTile(
                               leading: Avatar(path: item.sender.avatarPath),
                               title: Text("@${item.sender.username}"),
                               subtitle: Text(item.content),
-                            );
-                          }
-                        },
-                        // TODO: add comment input
+                            )
+                        ]
+
+                            // TODO: add comment input
+                            ),
                       ),
-                    ),
-                    Container(
-                      color: AppColors.surface,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const SizedSpacer.medium(),
-                          Row(
-                            children: [
-                              const SizedSpacer.medium(),
-                              const Expanded(
-                                child: TextField(
-                                  maxLines: 3,
-                                  minLines: 2,
-                                  decoration: InputDecoration(
-                                    hintText: "Comment",
-                                    // border: OutlineInputBorder(),
+                      Container(
+                        color: AppColors.surface,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const SizedSpacer.medium(),
+                            Row(
+                              children: [
+                                const SizedSpacer.medium(),
+                                Expanded(
+                                  child: TextField(
+                                    controller: _commentController,
+                                    maxLines: 3,
+                                    minLines: 2,
+                                    decoration: const InputDecoration(
+                                      hintText: "Comment",
+                                      // border: OutlineInputBorder(),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedSpacer.medium(),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.send),
-                              )
-                            ],
-                          ),
-                          const SizedSpacer.large(),
-                        ],
-                      ),
-                    )
-                  ],
-                );
-              }),
-              // Games
-              const Center(
-                child: Text("Under Development"),
-              ),
-            ],
-          )),
-        ]),
+                                const SizedSpacer.medium(),
+                                IconButton(
+                                  onPressed: () async {
+                                    if (_commentController.text.isNotEmpty) {
+                                      try {
+                                        final CourtComment comment =
+                                            await locator<CourtRepository>()
+                                                .addComment(courtId,
+                                                    _commentController.text);
+                                        context
+                                            .read<
+                                                FetchedListCubit<
+                                                    CourtComment>>()
+                                            .fetchList(ListUseCaseParams(
+                                                query:
+                                                    Query(districtId: courtId),
+                                                paginationRequest:
+                                                    PaginationRequest()));
+                                      } catch (e) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(e.toString()),
+                                          ),
+                                        );
+                                      } finally {
+                                        _commentController.clear();
+                                      }
+                                    }
+                                  },
+                                  icon: const Icon(Icons.send),
+                                )
+                              ],
+                            ),
+                            const SizedSpacer.large(),
+                          ],
+                        ),
+                      )
+                    ],
+                  );
+                }),
+                // Games
+                const Center(
+                  child: Text("Under Development"),
+                ),
+              ],
+            )),
+          ],
+        ),
       ),
     );
   }
