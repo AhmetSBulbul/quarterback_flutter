@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quarterback_flutter/app/screens/court/court_screen.dart';
 import 'package:quarterback_flutter/app/widgets/layout/sized_spacer.dart';
 import 'package:quarterback_flutter/app/widgets/modules/fetched_list/cubit/fetched_list_cubit.dart';
 import 'package:quarterback_flutter/app/widgets/modules/search_with_query/cubit/search_with_query_cubit.dart';
@@ -171,24 +172,11 @@ class SearchView extends StatelessWidget {
                                 Padding(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 4),
-                                  child: ListTile(
-                                    tileColor: AppColors.surface,
-                                    onTap: () =>
-                                        context.push('/court/${court.id}'),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    title: Text(court.name,
-                                        style: context.textTheme.labelLarge),
-                                    subtitle: Text(
-                                      court.address,
-                                      style: context.textTheme.labelMedium,
-                                    ),
-                                    // leading: Avatar(
-                                    //   path: user.avatarPath,
-                                    // ),
-                                    trailing: const Icon(Icons.chevron_right),
-                                  ),
+                                  child: InkWell(
+                                      onTap: () =>
+                                          context.push('/court/${court.id}'),
+                                      //TODO: hero
+                                      child: CourtCard(court: court)),
                                 ),
                             ],
                           );

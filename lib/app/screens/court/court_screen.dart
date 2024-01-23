@@ -63,26 +63,8 @@ class CourtView extends StatelessWidget {
                   if (snapshot.hasData) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Card(
-                        // TODO: make it theme
-
-                        surfaceTintColor: AppColors.black,
-                        color: AppColors.surface,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 18, vertical: 24),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                snapshot.data!.name,
-                                style: context.textTheme.titleMedium,
-                              ),
-                              SizedSpacer.medium(),
-                              Text(snapshot.data!.address),
-                            ],
-                          ),
-                        ),
+                      child: CourtCard(
+                        court: snapshot.data!,
                       ),
                     );
                   } else if (snapshot.hasError) {
@@ -194,6 +176,76 @@ class CourtView extends StatelessWidget {
                 ),
               ],
             )),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CourtCard extends StatelessWidget {
+  const CourtCard({
+    super.key,
+    required this.court,
+  });
+  final Court court;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      // TODO: make it theme
+
+      surfaceTintColor: AppColors.black,
+      color: AppColors.surface,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                "https://www.bizimizmir.net/images_haberler/2018/11/12/haber-2018-11-11-1541968659697-bornovada.jpg",
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedSpacer.medium(),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    court.name,
+                    style: context.textTheme.titleSmall
+                        ?.copyWith(color: AppColors.white),
+                  ),
+                  const SizedSpacer.xsmall(),
+                  Text(
+                    court.address,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.textTheme.labelSmall,
+                  ),
+                  const SizedSpacer.xsmall(),
+                  Text(
+                    "${court.commentCount} comments",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.textTheme.labelSmall,
+                  ),
+                  const SizedSpacer.xsmall(),
+                  Text(
+                    "${court.checkInCount} people are here",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.textTheme.labelSmall,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

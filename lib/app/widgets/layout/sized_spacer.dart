@@ -6,6 +6,10 @@ class SizedSpacer extends StatelessWidget {
   final double height;
   final double width;
 
+  const SizedSpacer.xsmall({super.key})
+      : height = 4,
+        width = 4;
+
   const SizedSpacer.small({super.key})
       : height = 8,
         width = 8;
