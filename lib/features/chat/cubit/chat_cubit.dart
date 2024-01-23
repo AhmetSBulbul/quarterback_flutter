@@ -11,6 +11,8 @@ class ChatCubit extends Cubit<ChatState> {
         super(const ChatState(messages: [])) {
     _chatRepository.getMessages(Channel(id: userId)).then((value) {
       emit(ChatState(messages: value.messages));
+    }, onError: (e) {
+      print("Error on get messages: $e");
     });
 
     // TODO: maybe rx?

@@ -72,6 +72,8 @@ class NavigationBarButton extends StatelessWidget {
   }
 }
 
+const parentRoutes = ['/', '/fixtures', '/team', '/chat', '/me'];
+
 class BottomNavigationShell extends StatelessWidget {
   const BottomNavigationShell(
       {super.key, required this.state, required this.child});
@@ -80,6 +82,9 @@ class BottomNavigationShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!parentRoutes.contains(state.fullPath)) {
+      return child;
+    }
     return Scaffold(
       body: child,
       bottomNavigationBar: BottomAppBar(

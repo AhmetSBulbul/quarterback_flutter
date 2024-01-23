@@ -15,6 +15,7 @@ class AuthInterceptor implements ClientInterceptor {
       CallOptions options,
       ClientStreamingInvoker<Q, R> invoker) {
     final token = _authStorage.token;
+    print("Intercepting stream");
     if (token != null) {
       final newOptions = options.mergedWith(CallOptions(
           metadata: {'Authorization': 'Bearer ${_authStorage.token}'}));
