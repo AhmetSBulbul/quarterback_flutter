@@ -164,6 +164,35 @@ final $typed_data.Uint8List searchCourtRequestDescriptor = $convert.base64Decode
     'J5EjkKCnBhZ2luYXRpb24YAiABKAsyGS5jb21tb24uUGFnaW5hdGlvblJlcXVlc3RSCnBhZ2lu'
     'YXRpb24=');
 
+@$core.Deprecated('Use courtWithDistanceDescriptor instead')
+const CourtWithDistance$json = {
+  '1': 'CourtWithDistance',
+  '2': [
+    {'1': 'court', '3': 1, '4': 1, '5': 11, '6': '.court.Court', '10': 'court'},
+    {'1': 'distance', '3': 2, '4': 1, '5': 1, '10': 'distance'},
+  ],
+};
+
+/// Descriptor for `CourtWithDistance`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List courtWithDistanceDescriptor = $convert.base64Decode(
+    'ChFDb3VydFdpdGhEaXN0YW5jZRIiCgVjb3VydBgBIAEoCzIMLmNvdXJ0LkNvdXJ0UgVjb3VydB'
+    'IaCghkaXN0YW5jZRgCIAEoAVIIZGlzdGFuY2U=');
+
+@$core.Deprecated('Use courtsWithDistanceDescriptor instead')
+const CourtsWithDistance$json = {
+  '1': 'CourtsWithDistance',
+  '2': [
+    {'1': 'courts', '3': 1, '4': 3, '5': 11, '6': '.court.CourtWithDistance', '10': 'courts'},
+    {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.common.PaginationResponse', '10': 'pagination'},
+  ],
+};
+
+/// Descriptor for `CourtsWithDistance`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List courtsWithDistanceDescriptor = $convert.base64Decode(
+    'ChJDb3VydHNXaXRoRGlzdGFuY2USMAoGY291cnRzGAEgAygLMhguY291cnQuQ291cnRXaXRoRG'
+    'lzdGFuY2VSBmNvdXJ0cxI6CgpwYWdpbmF0aW9uGAIgASgLMhouY29tbW9uLlBhZ2luYXRpb25S'
+    'ZXNwb25zZVIKcGFnaW5hdGlvbg==');
+
 @$core.Deprecated('Use listCourtResponseDescriptor instead')
 const ListCourtResponse$json = {
   '1': 'ListCourtResponse',

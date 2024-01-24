@@ -183,20 +183,15 @@ class CourtView extends StatelessWidget {
   }
 }
 
+// TODO: rearrange sizes
 class CourtCard extends StatelessWidget {
-  const CourtCard({
-    super.key,
-    required this.court,
-  });
+  const CourtCard({super.key, required this.court, this.distance});
   final Court court;
+  final double? distance;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      // TODO: make it theme
-
-      surfaceTintColor: AppColors.black,
-      color: AppColors.surface,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
         child: Row(
@@ -224,7 +219,9 @@ class CourtCard extends StatelessWidget {
                   ),
                   const SizedSpacer.xsmall(),
                   Text(
-                    court.address,
+                    distance != null
+                        ? "${distance!.toStringAsFixed(2)} km away"
+                        : court.address,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: context.textTheme.labelSmall,

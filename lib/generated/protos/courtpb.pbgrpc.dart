@@ -26,10 +26,10 @@ class CourtServiceClient extends $grpc.Client {
       '/court.CourtService/GetCourt',
       ($5.GetCourtRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $5.CourtResponse.fromBuffer(value));
-  static final _$listCourtByLocation = $grpc.ClientMethod<$5.ListCourtByLocationRequest, $5.ListCourtResponse>(
+  static final _$listCourtByLocation = $grpc.ClientMethod<$5.ListCourtByLocationRequest, $5.CourtsWithDistance>(
       '/court.CourtService/ListCourtByLocation',
       ($5.ListCourtByLocationRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $5.ListCourtResponse.fromBuffer(value));
+      ($core.List<$core.int> value) => $5.CourtsWithDistance.fromBuffer(value));
   static final _$searchCourt = $grpc.ClientMethod<$5.SearchCourtRequest, $5.ListCourtResponse>(
       '/court.CourtService/SearchCourt',
       ($5.SearchCourtRequest value) => value.writeToBuffer(),
@@ -61,7 +61,7 @@ class CourtServiceClient extends $grpc.Client {
     return $createUnaryCall(_$getCourt, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.ListCourtResponse> listCourtByLocation($5.ListCourtByLocationRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$5.CourtsWithDistance> listCourtByLocation($5.ListCourtByLocationRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listCourtByLocation, request, options: options);
   }
 
@@ -98,13 +98,13 @@ abstract class CourtServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $5.GetCourtRequest.fromBuffer(value),
         ($5.CourtResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.ListCourtByLocationRequest, $5.ListCourtResponse>(
+    $addMethod($grpc.ServiceMethod<$5.ListCourtByLocationRequest, $5.CourtsWithDistance>(
         'ListCourtByLocation',
         listCourtByLocation_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $5.ListCourtByLocationRequest.fromBuffer(value),
-        ($5.ListCourtResponse value) => value.writeToBuffer()));
+        ($5.CourtsWithDistance value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$5.SearchCourtRequest, $5.ListCourtResponse>(
         'SearchCourt',
         searchCourt_Pre,
@@ -146,7 +146,7 @@ abstract class CourtServiceBase extends $grpc.Service {
     return getCourt(call, await request);
   }
 
-  $async.Future<$5.ListCourtResponse> listCourtByLocation_Pre($grpc.ServiceCall call, $async.Future<$5.ListCourtByLocationRequest> request) async {
+  $async.Future<$5.CourtsWithDistance> listCourtByLocation_Pre($grpc.ServiceCall call, $async.Future<$5.ListCourtByLocationRequest> request) async {
     return listCourtByLocation(call, await request);
   }
 
@@ -171,7 +171,7 @@ abstract class CourtServiceBase extends $grpc.Service {
   }
 
   $async.Future<$5.CourtResponse> getCourt($grpc.ServiceCall call, $5.GetCourtRequest request);
-  $async.Future<$5.ListCourtResponse> listCourtByLocation($grpc.ServiceCall call, $5.ListCourtByLocationRequest request);
+  $async.Future<$5.CourtsWithDistance> listCourtByLocation($grpc.ServiceCall call, $5.ListCourtByLocationRequest request);
   $async.Future<$5.ListCourtResponse> searchCourt($grpc.ServiceCall call, $5.SearchCourtRequest request);
   $async.Future<$5.CourtResponse> createCourt($grpc.ServiceCall call, $5.Court request);
   $async.Future<$5.CheckInCourtResponse> checkInCourt($grpc.ServiceCall call, $1.GetByIdRequest request);

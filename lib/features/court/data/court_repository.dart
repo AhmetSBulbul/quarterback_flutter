@@ -41,7 +41,7 @@ class CourtListUseCase extends ListUseCase<Court> {
   Future<ListUseCaseResponse<Court>> call(ListUseCaseParams params) async {
     try {
       // TODO: there is no filter for court yet
-      final response = await _repository.listCourt();
+      final response = await _repository.listCourts();
       return ListUseCaseResponse<Court>(
         items: response,
         totalCount: response.length,
@@ -66,7 +66,12 @@ class CourtRepository {
     return (await _courtServiceClient.getCourt(GetCourtRequest(id: id))).court;
   }
 
-  Future<List<Court>> listCourt() async {
+  Future<CourtsWithDistance> listCourtsByLocation(
+      ListCourtByLocationRequest request) {
+    return _courtServiceClient.listCourtByLocation(request);
+  }
+
+  Future<List<Court>> listCourts() async {
     try {
       final response =
           await _courtServiceClient.searchCourt(SearchCourtRequest());

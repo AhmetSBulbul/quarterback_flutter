@@ -109,6 +109,18 @@ const CreateGameRequest$json = {
 final $typed_data.Uint8List createGameRequestDescriptor = $convert.base64Decode(
     'ChFDcmVhdGVHYW1lUmVxdWVzdBIYCgdjb3VydElkGAEgASgFUgdjb3VydElk');
 
+@$core.Deprecated('Use gameIdResponseDescriptor instead')
+const GameIdResponse$json = {
+  '1': 'GameIdResponse',
+  '2': [
+    {'1': 'gameId', '3': 1, '4': 1, '5': 5, '10': 'gameId'},
+  ],
+};
+
+/// Descriptor for `GameIdResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List gameIdResponseDescriptor = $convert.base64Decode(
+    'Cg5HYW1lSWRSZXNwb25zZRIWCgZnYW1lSWQYASABKAVSBmdhbWVJZA==');
+
 @$core.Deprecated('Use createGameWithTeamRequestDescriptor instead')
 const CreateGameWithTeamRequest$json = {
   '1': 'CreateGameWithTeamRequest',

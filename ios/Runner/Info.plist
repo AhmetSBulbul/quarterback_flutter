@@ -49,5 +49,9 @@
 		<false/>
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>Photo Library Usage Permission is required to be able to upload medias and videos</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs access to location to show courts and players that near of you.</string>
+		<!-- <key>NSLocationAlwaysUsageDescription</key>
+		<string>This app needs access to location when in the background.</string> -->
 	</dict>
 </plist>

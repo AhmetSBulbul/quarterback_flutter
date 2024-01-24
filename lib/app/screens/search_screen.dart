@@ -72,9 +72,6 @@ class SearchView extends StatelessWidget {
               ),
               const SizedSpacer.medium(),
               TabBar(
-                indicatorSize: TabBarIndicatorSize.tab,
-                unselectedLabelColor: AppColors.grey,
-                dividerColor: AppColors.white,
                 onTap: (index) {
                   if (index == 1) {
                     context.read<FetchedListCubit<Court>>().fetchList(

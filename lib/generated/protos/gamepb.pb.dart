@@ -451,6 +451,56 @@ class CreateGameRequest extends $pb.GeneratedMessage {
   void clearCourtId() => clearField(1);
 }
 
+class GameIdResponse extends $pb.GeneratedMessage {
+  factory GameIdResponse({
+    $core.int? gameId,
+  }) {
+    final $result = create();
+    if (gameId != null) {
+      $result.gameId = gameId;
+    }
+    return $result;
+  }
+  GameIdResponse._() : super();
+  factory GameIdResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GameIdResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GameIdResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'game'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'gameId', $pb.PbFieldType.O3, protoName: 'gameId')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GameIdResponse clone() => GameIdResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GameIdResponse copyWith(void Function(GameIdResponse) updates) => super.copyWith((message) => updates(message as GameIdResponse)) as GameIdResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GameIdResponse create() => GameIdResponse._();
+  GameIdResponse createEmptyInstance() => create();
+  static $pb.PbList<GameIdResponse> createRepeated() => $pb.PbList<GameIdResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GameIdResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GameIdResponse>(create);
+  static GameIdResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get gameId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set gameId($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasGameId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearGameId() => clearField(1);
+}
+
 class CreateGameWithTeamRequest extends $pb.GeneratedMessage {
   factory CreateGameWithTeamRequest({
     $core.int? courtId,

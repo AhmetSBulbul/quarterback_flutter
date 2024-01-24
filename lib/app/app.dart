@@ -27,6 +27,7 @@ import 'package:quarterback_flutter/core/theme/app_theme.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
 import 'package:quarterback_flutter/features/chat/cubit/chat_cubit.dart';
 import 'package:quarterback_flutter/features/chat/data/chat_repository.dart';
+import 'package:quarterback_flutter/features/location/cubit/location_cubit.dart';
 import 'package:quarterback_flutter/features/region/data/region_repository.dart';
 import 'package:quarterback_flutter/features/user/bloc/current_user_bloc.dart';
 import 'package:quarterback_flutter/features/user/data/user_repository.dart';
@@ -50,90 +51,109 @@ class QuarterbackApp extends StatelessWidget {
               )..requestCurrentUser(),
               child: Stack(
                 children: [
+                  // TODO: Refactor this shit.
                   // BottomNavigationShell(state: state, child: child),
-                  BlocConsumer<CurrentUserCubit, CurrentUserState>(
-                    listener: (context, state) {
-                      if (state is CurrentUserError) {
-                        if (state.error is GrpcError &&
-                            (state.error as GrpcError).code == 13) {
-                          authCubit.logout();
-                        }
-                      }
-                    },
+                  BlocBuilder<LocationCubit, LocationState>(
                     builder: (context, state) {
-                      if (state is CurrentUserInitial) {
-                        return const Positioned.fill(
-                          child: LoadingScreen(),
-                        );
-                      } else if (state is CurrentUserError) {
-                        return Positioned.fill(
-                          child: Scaffold(
-                            body: Center(
-                              child: Text(
-                                  "Current User State Error by ${state.cause}: ${state.error}"),
-                            ),
-                          ),
-                        );
-                      } else if (state is CurrentUserLoaded) {
-                        // return const SizedBox.shrink();
-                        return BlocProvider(
-                          create: (context) => ChatCubit(
-                            meId: state.user.id,
-                            repository: locator<ChatRepository>(),
-                            userRepository: locator<UserRepository>(),
-                          ),
-                          child: BlocListener<ChatCubit, ChatState>(
-                            listener: (context, chatState) {
-                              if (chatState.newMessage != null &&
-                                  routerState.fullPath != '/chat/:id') {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    backgroundColor: AppColors.surface,
-                                    margin: const EdgeInsets.all(8),
-                                    behavior: SnackBarBehavior.floating,
-                                    content: Row(
-                                      children: [
-                                        Avatar(
-                                          path: chatState
-                                              .newMessage!.sender.avatarPath,
-                                        ),
-                                        const SizedSpacer.medium(),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "@${chatState.newMessage!.sender.username}",
-                                                style: context
-                                                    .textTheme.bodyMedium,
-                                              ),
-                                              const SizedSpacer.small(),
-                                              Text(chatState
-                                                  .newMessage!.message.content),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    action: SnackBarAction(
-                                      label: "Open",
-                                      onPressed: () {
-                                        context.push(
-                                            '/chat/${chatState.newMessage!.sender.id}');
-                                      },
-                                    ),
-                                  ),
-                                );
-                              }
-                            },
-                            child: BottomNavigationShell(
-                                state: routerState, child: child),
-                          ),
-                        );
-                      } else {
-                        return const SizedBox.shrink();
+                      // TODO: add refresh location request screen
+                      if (state.isInitial) {
+                        return const LoadingScreen();
                       }
+                      if (!state.isLocationServiceEnabled) {
+                        return const ErrorScreen();
+                      }
+
+                      if (!state.isLocationPermissionGranted) {
+                        return const ErrorScreen();
+                      }
+                      return BlocConsumer<CurrentUserCubit, CurrentUserState>(
+                        listener: (context, state) {
+                          if (state is CurrentUserError) {
+                            if (state.error is GrpcError &&
+                                (state.error as GrpcError).code == 13) {
+                              // TODO: handle it properly
+                              authCubit.logout();
+                            }
+                          }
+                        },
+                        builder: (context, state) {
+                          if (state is CurrentUserInitial) {
+                            return const Positioned.fill(
+                              child: LoadingScreen(),
+                            );
+                          } else if (state is CurrentUserError) {
+                            return Positioned.fill(
+                              child: Scaffold(
+                                body: Center(
+                                  child: Text(
+                                      "Current User State Error by ${state.cause}: ${state.error}"),
+                                ),
+                              ),
+                            );
+                          } else if (state is CurrentUserLoaded) {
+                            // return const SizedBox.shrink();
+                            return BlocProvider(
+                              create: (context) => ChatCubit(
+                                meId: state.user.id,
+                                repository: locator<ChatRepository>(),
+                                userRepository: locator<UserRepository>(),
+                              ),
+                              child: BlocListener<ChatCubit, ChatState>(
+                                listener: (context, chatState) {
+                                  if (chatState.newMessage != null &&
+                                      routerState.fullPath != '/chat/:id') {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: AppColors.surface,
+                                        margin: const EdgeInsets.all(8),
+                                        behavior: SnackBarBehavior.floating,
+                                        content: Row(
+                                          children: [
+                                            Avatar(
+                                              path: chatState.newMessage!.sender
+                                                  .avatarPath,
+                                            ),
+                                            const SizedSpacer.medium(),
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "@${chatState.newMessage!.sender.username}",
+                                                    style: context
+                                                        .textTheme.bodyMedium,
+                                                  ),
+                                                  const SizedSpacer.small(),
+                                                  Text(chatState.newMessage!
+                                                      .message.content),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        action: SnackBarAction(
+                                          label: "Open",
+                                          onPressed: () {
+                                            context.push(
+                                                '/chat/${chatState.newMessage!.sender.id}');
+                                          },
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: BottomNavigationShell(
+                                  state: routerState,
+                                  child: child,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return const SizedBox.shrink();
+                          }
+                        },
+                      );
                     },
                   ),
                 ],
@@ -240,8 +260,15 @@ class QuarterbackApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthCubit>.value(
-      value: _authCubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthCubit>.value(
+          value: _authCubit,
+        ),
+        BlocProvider(
+          create: (context) => LocationCubit()..determinePosition(),
+        ),
+      ],
       child: MaterialApp.router(
         // routerConfig: _buildRouter(_authCubit),
         routerConfig: _router,
