@@ -1,6 +1,7 @@
 import 'package:grpc/grpc.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
+import 'package:quarterback_flutter/core/config.dart';
 
 @module
 abstract class RegisterModule {
@@ -11,10 +12,8 @@ abstract class RegisterModule {
 
   @singleton
   ClientChannel get clientChannel => ClientChannel(
-        '192.168.8.120',
-        // '192.168.8.173',
-        // '192.168.0.110',
-        port: 50001,
+        AppConfig.host,
+        port: AppConfig.port,
         options:
             const ChannelOptions(credentials: ChannelCredentials.insecure()),
       );
