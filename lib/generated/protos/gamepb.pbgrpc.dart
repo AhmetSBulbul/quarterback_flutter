@@ -46,26 +46,30 @@ class GameServiceClient extends $grpc.Client {
       '/game.GameService/CreateGame',
       ($8.CreateGameRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $8.GameIdResponse.fromBuffer(value));
-  static final _$createGameWithTeam = $grpc.ClientMethod<$8.CreateGameWithTeamRequest, $8.GameResponse>(
+  static final _$createGameWithTeam = $grpc.ClientMethod<$8.CreateGameWithTeamRequest, $8.GameIdResponse>(
       '/game.GameService/CreateGameWithTeam',
       ($8.CreateGameWithTeamRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
+      ($core.List<$core.int> value) => $8.GameIdResponse.fromBuffer(value));
   static final _$joinGame = $grpc.ClientMethod<$8.JoinGameRequest, $8.GameIdResponse>(
       '/game.GameService/JoinGame',
       ($8.JoinGameRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $8.GameIdResponse.fromBuffer(value));
-  static final _$startGame = $grpc.ClientMethod<$8.StartGameRequest, $8.GameResponse>(
+  static final _$startGame = $grpc.ClientMethod<$8.StartGameRequest, $8.GameIdResponse>(
       '/game.GameService/StartGame',
       ($8.StartGameRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
-  static final _$endGame = $grpc.ClientMethod<$8.EndGameRequest, $8.GameResponse>(
+      ($core.List<$core.int> value) => $8.GameIdResponse.fromBuffer(value));
+  static final _$endGame = $grpc.ClientMethod<$8.EndGameRequest, $8.GameIdResponse>(
       '/game.GameService/EndGame',
       ($8.EndGameRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
-  static final _$cancelGame = $grpc.ClientMethod<$8.CancelGameRequest, $8.GameResponse>(
+      ($core.List<$core.int> value) => $8.GameIdResponse.fromBuffer(value));
+  static final _$cancelGame = $grpc.ClientMethod<$8.CancelGameRequest, $8.GameIdResponse>(
       '/game.GameService/CancelGame',
       ($8.CancelGameRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $8.GameResponse.fromBuffer(value));
+      ($core.List<$core.int> value) => $8.GameIdResponse.fromBuffer(value));
+  static final _$leaveGame = $grpc.ClientMethod<$8.LeaveGameRequest, $8.GameIdResponse>(
+      '/game.GameService/LeaveGame',
+      ($8.LeaveGameRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $8.GameIdResponse.fromBuffer(value));
   static final _$addMedia = $grpc.ClientMethod<$1.File, $1.Media>(
       '/game.GameService/AddMedia',
       ($1.File value) => value.writeToBuffer(),
@@ -101,7 +105,7 @@ class GameServiceClient extends $grpc.Client {
     return $createUnaryCall(_$createGame, request, options: options);
   }
 
-  $grpc.ResponseFuture<$8.GameResponse> createGameWithTeam($8.CreateGameWithTeamRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameIdResponse> createGameWithTeam($8.CreateGameWithTeamRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createGameWithTeam, request, options: options);
   }
 
@@ -109,16 +113,20 @@ class GameServiceClient extends $grpc.Client {
     return $createUnaryCall(_$joinGame, request, options: options);
   }
 
-  $grpc.ResponseFuture<$8.GameResponse> startGame($8.StartGameRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameIdResponse> startGame($8.StartGameRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$startGame, request, options: options);
   }
 
-  $grpc.ResponseFuture<$8.GameResponse> endGame($8.EndGameRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameIdResponse> endGame($8.EndGameRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$endGame, request, options: options);
   }
 
-  $grpc.ResponseFuture<$8.GameResponse> cancelGame($8.CancelGameRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$8.GameIdResponse> cancelGame($8.CancelGameRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$cancelGame, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$8.GameIdResponse> leaveGame($8.LeaveGameRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$leaveGame, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.Media> addMedia($1.File request, {$grpc.CallOptions? options}) {
@@ -173,13 +181,13 @@ abstract class GameServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $8.CreateGameRequest.fromBuffer(value),
         ($8.GameIdResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$8.CreateGameWithTeamRequest, $8.GameResponse>(
+    $addMethod($grpc.ServiceMethod<$8.CreateGameWithTeamRequest, $8.GameIdResponse>(
         'CreateGameWithTeam',
         createGameWithTeam_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $8.CreateGameWithTeamRequest.fromBuffer(value),
-        ($8.GameResponse value) => value.writeToBuffer()));
+        ($8.GameIdResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$8.JoinGameRequest, $8.GameIdResponse>(
         'JoinGame',
         joinGame_Pre,
@@ -187,27 +195,34 @@ abstract class GameServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $8.JoinGameRequest.fromBuffer(value),
         ($8.GameIdResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$8.StartGameRequest, $8.GameResponse>(
+    $addMethod($grpc.ServiceMethod<$8.StartGameRequest, $8.GameIdResponse>(
         'StartGame',
         startGame_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $8.StartGameRequest.fromBuffer(value),
-        ($8.GameResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$8.EndGameRequest, $8.GameResponse>(
+        ($8.GameIdResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.EndGameRequest, $8.GameIdResponse>(
         'EndGame',
         endGame_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $8.EndGameRequest.fromBuffer(value),
-        ($8.GameResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$8.CancelGameRequest, $8.GameResponse>(
+        ($8.GameIdResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.CancelGameRequest, $8.GameIdResponse>(
         'CancelGame',
         cancelGame_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $8.CancelGameRequest.fromBuffer(value),
-        ($8.GameResponse value) => value.writeToBuffer()));
+        ($8.GameIdResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$8.LeaveGameRequest, $8.GameIdResponse>(
+        'LeaveGame',
+        leaveGame_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $8.LeaveGameRequest.fromBuffer(value),
+        ($8.GameIdResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.File, $1.Media>(
         'AddMedia',
         addMedia_Pre,
@@ -241,7 +256,7 @@ abstract class GameServiceBase extends $grpc.Service {
     return createGame(call, await request);
   }
 
-  $async.Future<$8.GameResponse> createGameWithTeam_Pre($grpc.ServiceCall call, $async.Future<$8.CreateGameWithTeamRequest> request) async {
+  $async.Future<$8.GameIdResponse> createGameWithTeam_Pre($grpc.ServiceCall call, $async.Future<$8.CreateGameWithTeamRequest> request) async {
     return createGameWithTeam(call, await request);
   }
 
@@ -249,16 +264,20 @@ abstract class GameServiceBase extends $grpc.Service {
     return joinGame(call, await request);
   }
 
-  $async.Future<$8.GameResponse> startGame_Pre($grpc.ServiceCall call, $async.Future<$8.StartGameRequest> request) async {
+  $async.Future<$8.GameIdResponse> startGame_Pre($grpc.ServiceCall call, $async.Future<$8.StartGameRequest> request) async {
     return startGame(call, await request);
   }
 
-  $async.Future<$8.GameResponse> endGame_Pre($grpc.ServiceCall call, $async.Future<$8.EndGameRequest> request) async {
+  $async.Future<$8.GameIdResponse> endGame_Pre($grpc.ServiceCall call, $async.Future<$8.EndGameRequest> request) async {
     return endGame(call, await request);
   }
 
-  $async.Future<$8.GameResponse> cancelGame_Pre($grpc.ServiceCall call, $async.Future<$8.CancelGameRequest> request) async {
+  $async.Future<$8.GameIdResponse> cancelGame_Pre($grpc.ServiceCall call, $async.Future<$8.CancelGameRequest> request) async {
     return cancelGame(call, await request);
+  }
+
+  $async.Future<$8.GameIdResponse> leaveGame_Pre($grpc.ServiceCall call, $async.Future<$8.LeaveGameRequest> request) async {
+    return leaveGame(call, await request);
   }
 
   $async.Future<$1.Media> addMedia_Pre($grpc.ServiceCall call, $async.Future<$1.File> request) async {
@@ -271,10 +290,11 @@ abstract class GameServiceBase extends $grpc.Service {
   $async.Future<$8.ListGamesResponse> listGamesByCourt($grpc.ServiceCall call, $8.ListGamesByCourtRequest request);
   $async.Future<$8.ListGamesResponse> listGamesByTeam($grpc.ServiceCall call, $8.ListGamesByTeamRequest request);
   $async.Future<$8.GameIdResponse> createGame($grpc.ServiceCall call, $8.CreateGameRequest request);
-  $async.Future<$8.GameResponse> createGameWithTeam($grpc.ServiceCall call, $8.CreateGameWithTeamRequest request);
+  $async.Future<$8.GameIdResponse> createGameWithTeam($grpc.ServiceCall call, $8.CreateGameWithTeamRequest request);
   $async.Future<$8.GameIdResponse> joinGame($grpc.ServiceCall call, $8.JoinGameRequest request);
-  $async.Future<$8.GameResponse> startGame($grpc.ServiceCall call, $8.StartGameRequest request);
-  $async.Future<$8.GameResponse> endGame($grpc.ServiceCall call, $8.EndGameRequest request);
-  $async.Future<$8.GameResponse> cancelGame($grpc.ServiceCall call, $8.CancelGameRequest request);
+  $async.Future<$8.GameIdResponse> startGame($grpc.ServiceCall call, $8.StartGameRequest request);
+  $async.Future<$8.GameIdResponse> endGame($grpc.ServiceCall call, $8.EndGameRequest request);
+  $async.Future<$8.GameIdResponse> cancelGame($grpc.ServiceCall call, $8.CancelGameRequest request);
+  $async.Future<$8.GameIdResponse> leaveGame($grpc.ServiceCall call, $8.LeaveGameRequest request);
   $async.Future<$1.Media> addMedia($grpc.ServiceCall call, $1.File request);
 }

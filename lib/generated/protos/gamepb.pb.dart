@@ -863,6 +863,57 @@ class CancelGameRequest extends $pb.GeneratedMessage {
   void clearGameId() => clearField(1);
 }
 
+/// Leave Game
+class LeaveGameRequest extends $pb.GeneratedMessage {
+  factory LeaveGameRequest({
+    $core.int? gameId,
+  }) {
+    final $result = create();
+    if (gameId != null) {
+      $result.gameId = gameId;
+    }
+    return $result;
+  }
+  LeaveGameRequest._() : super();
+  factory LeaveGameRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LeaveGameRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LeaveGameRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'game'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'gameId', $pb.PbFieldType.O3, protoName: 'gameId')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LeaveGameRequest clone() => LeaveGameRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LeaveGameRequest copyWith(void Function(LeaveGameRequest) updates) => super.copyWith((message) => updates(message as LeaveGameRequest)) as LeaveGameRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static LeaveGameRequest create() => LeaveGameRequest._();
+  LeaveGameRequest createEmptyInstance() => create();
+  static $pb.PbList<LeaveGameRequest> createRepeated() => $pb.PbList<LeaveGameRequest>();
+  @$core.pragma('dart2js:noInline')
+  static LeaveGameRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LeaveGameRequest>(create);
+  static LeaveGameRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get gameId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set gameId($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasGameId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearGameId() => clearField(1);
+}
+
 enum Game_Status {
   inProgress, 
   started, 
@@ -874,14 +925,13 @@ class Game extends $pb.GeneratedMessage {
   factory Game({
     $core.int? id,
     $5.Court? court,
-    $3.User? createdBy,
     GameInProgress? inProgress,
     GameStarted? started,
     GameEnded? ended,
     Teams? teams,
     $core.Iterable<$3.User>? homePlayers,
     $core.Iterable<$3.User>? awayPlayers,
-    $core.Iterable<$core.int>? cancelledBy,
+    $core.Iterable<$3.User>? canceledBy,
   }) {
     final $result = create();
     if (id != null) {
@@ -889,9 +939,6 @@ class Game extends $pb.GeneratedMessage {
     }
     if (court != null) {
       $result.court = court;
-    }
-    if (createdBy != null) {
-      $result.createdBy = createdBy;
     }
     if (inProgress != null) {
       $result.inProgress = inProgress;
@@ -911,8 +958,8 @@ class Game extends $pb.GeneratedMessage {
     if (awayPlayers != null) {
       $result.awayPlayers.addAll(awayPlayers);
     }
-    if (cancelledBy != null) {
-      $result.cancelledBy.addAll(cancelledBy);
+    if (canceledBy != null) {
+      $result.canceledBy.addAll(canceledBy);
     }
     return $result;
   }
@@ -930,14 +977,13 @@ class Game extends $pb.GeneratedMessage {
     ..oo(0, [4, 5, 6])
     ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
     ..aOM<$5.Court>(2, _omitFieldNames ? '' : 'court', subBuilder: $5.Court.create)
-    ..aOM<$3.User>(3, _omitFieldNames ? '' : 'createdBy', protoName: 'createdBy', subBuilder: $3.User.create)
     ..aOM<GameInProgress>(4, _omitFieldNames ? '' : 'inProgress', protoName: 'inProgress', subBuilder: GameInProgress.create)
     ..aOM<GameStarted>(5, _omitFieldNames ? '' : 'started', subBuilder: GameStarted.create)
     ..aOM<GameEnded>(6, _omitFieldNames ? '' : 'ended', subBuilder: GameEnded.create)
     ..aOM<Teams>(7, _omitFieldNames ? '' : 'teams', subBuilder: Teams.create)
     ..pc<$3.User>(8, _omitFieldNames ? '' : 'homePlayers', $pb.PbFieldType.PM, protoName: 'homePlayers', subBuilder: $3.User.create)
     ..pc<$3.User>(9, _omitFieldNames ? '' : 'awayPlayers', $pb.PbFieldType.PM, protoName: 'awayPlayers', subBuilder: $3.User.create)
-    ..p<$core.int>(10, _omitFieldNames ? '' : 'cancelledBy', $pb.PbFieldType.K3, protoName: 'cancelledBy')
+    ..pc<$3.User>(10, _omitFieldNames ? '' : 'canceledBy', $pb.PbFieldType.PM, protoName: 'canceledBy', subBuilder: $3.User.create)
     ..hasRequiredFields = false
   ;
 
@@ -985,71 +1031,60 @@ class Game extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $5.Court ensureCourt() => $_ensure(1);
 
-  @$pb.TagNumber(3)
-  $3.User get createdBy => $_getN(2);
-  @$pb.TagNumber(3)
-  set createdBy($3.User v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasCreatedBy() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearCreatedBy() => clearField(3);
-  @$pb.TagNumber(3)
-  $3.User ensureCreatedBy() => $_ensure(2);
-
   @$pb.TagNumber(4)
-  GameInProgress get inProgress => $_getN(3);
+  GameInProgress get inProgress => $_getN(2);
   @$pb.TagNumber(4)
   set inProgress(GameInProgress v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasInProgress() => $_has(3);
+  $core.bool hasInProgress() => $_has(2);
   @$pb.TagNumber(4)
   void clearInProgress() => clearField(4);
   @$pb.TagNumber(4)
-  GameInProgress ensureInProgress() => $_ensure(3);
+  GameInProgress ensureInProgress() => $_ensure(2);
 
   @$pb.TagNumber(5)
-  GameStarted get started => $_getN(4);
+  GameStarted get started => $_getN(3);
   @$pb.TagNumber(5)
   set started(GameStarted v) { setField(5, v); }
   @$pb.TagNumber(5)
-  $core.bool hasStarted() => $_has(4);
+  $core.bool hasStarted() => $_has(3);
   @$pb.TagNumber(5)
   void clearStarted() => clearField(5);
   @$pb.TagNumber(5)
-  GameStarted ensureStarted() => $_ensure(4);
+  GameStarted ensureStarted() => $_ensure(3);
 
   @$pb.TagNumber(6)
-  GameEnded get ended => $_getN(5);
+  GameEnded get ended => $_getN(4);
   @$pb.TagNumber(6)
   set ended(GameEnded v) { setField(6, v); }
   @$pb.TagNumber(6)
-  $core.bool hasEnded() => $_has(5);
+  $core.bool hasEnded() => $_has(4);
   @$pb.TagNumber(6)
   void clearEnded() => clearField(6);
   @$pb.TagNumber(6)
-  GameEnded ensureEnded() => $_ensure(5);
+  GameEnded ensureEnded() => $_ensure(4);
 
   /// If [Game] is created by a team, then [teams] should be set
   /// If [Game] has teams, that means it is a team game
   @$pb.TagNumber(7)
-  Teams get teams => $_getN(6);
+  Teams get teams => $_getN(5);
   @$pb.TagNumber(7)
   set teams(Teams v) { setField(7, v); }
   @$pb.TagNumber(7)
-  $core.bool hasTeams() => $_has(6);
+  $core.bool hasTeams() => $_has(5);
   @$pb.TagNumber(7)
   void clearTeams() => clearField(7);
   @$pb.TagNumber(7)
-  Teams ensureTeams() => $_ensure(6);
+  Teams ensureTeams() => $_ensure(5);
 
   @$pb.TagNumber(8)
-  $core.List<$3.User> get homePlayers => $_getList(7);
+  $core.List<$3.User> get homePlayers => $_getList(6);
 
   @$pb.TagNumber(9)
-  $core.List<$3.User> get awayPlayers => $_getList(8);
+  $core.List<$3.User> get awayPlayers => $_getList(7);
 
   @$pb.TagNumber(10)
-  $core.List<$core.int> get cancelledBy => $_getList(9);
+  $core.List<$3.User> get canceledBy => $_getList(8);
 }
 
 /// Game status

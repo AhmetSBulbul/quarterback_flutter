@@ -200,37 +200,51 @@ const CancelGameRequest$json = {
 final $typed_data.Uint8List cancelGameRequestDescriptor = $convert.base64Decode(
     'ChFDYW5jZWxHYW1lUmVxdWVzdBIWCgZnYW1lSWQYASABKAVSBmdhbWVJZA==');
 
+@$core.Deprecated('Use leaveGameRequestDescriptor instead')
+const LeaveGameRequest$json = {
+  '1': 'LeaveGameRequest',
+  '2': [
+    {'1': 'gameId', '3': 1, '4': 1, '5': 5, '10': 'gameId'},
+  ],
+};
+
+/// Descriptor for `LeaveGameRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List leaveGameRequestDescriptor = $convert.base64Decode(
+    'ChBMZWF2ZUdhbWVSZXF1ZXN0EhYKBmdhbWVJZBgBIAEoBVIGZ2FtZUlk');
+
 @$core.Deprecated('Use gameDescriptor instead')
 const Game$json = {
   '1': 'Game',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
     {'1': 'court', '3': 2, '4': 1, '5': 11, '6': '.court.Court', '10': 'court'},
-    {'1': 'createdBy', '3': 3, '4': 1, '5': 11, '6': '.user.User', '10': 'createdBy'},
     {'1': 'inProgress', '3': 4, '4': 1, '5': 11, '6': '.game.GameInProgress', '9': 0, '10': 'inProgress'},
     {'1': 'started', '3': 5, '4': 1, '5': 11, '6': '.game.GameStarted', '9': 0, '10': 'started'},
     {'1': 'ended', '3': 6, '4': 1, '5': 11, '6': '.game.GameEnded', '9': 0, '10': 'ended'},
     {'1': 'teams', '3': 7, '4': 1, '5': 11, '6': '.game.Teams', '9': 1, '10': 'teams', '17': true},
     {'1': 'homePlayers', '3': 8, '4': 3, '5': 11, '6': '.user.User', '10': 'homePlayers'},
     {'1': 'awayPlayers', '3': 9, '4': 3, '5': 11, '6': '.user.User', '10': 'awayPlayers'},
-    {'1': 'cancelledBy', '3': 10, '4': 3, '5': 5, '10': 'cancelledBy'},
+    {'1': 'canceledBy', '3': 10, '4': 3, '5': 11, '6': '.user.User', '10': 'canceledBy'},
   ],
   '8': [
     {'1': 'status'},
     {'1': '_teams'},
+  ],
+  '9': [
+    {'1': 3, '2': 4},
   ],
 };
 
 /// Descriptor for `Game`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List gameDescriptor = $convert.base64Decode(
     'CgRHYW1lEg4KAmlkGAEgASgFUgJpZBIiCgVjb3VydBgCIAEoCzIMLmNvdXJ0LkNvdXJ0UgVjb3'
-    'VydBIoCgljcmVhdGVkQnkYAyABKAsyCi51c2VyLlVzZXJSCWNyZWF0ZWRCeRI2CgppblByb2dy'
-    'ZXNzGAQgASgLMhQuZ2FtZS5HYW1lSW5Qcm9ncmVzc0gAUgppblByb2dyZXNzEi0KB3N0YXJ0ZW'
-    'QYBSABKAsyES5nYW1lLkdhbWVTdGFydGVkSABSB3N0YXJ0ZWQSJwoFZW5kZWQYBiABKAsyDy5n'
-    'YW1lLkdhbWVFbmRlZEgAUgVlbmRlZBImCgV0ZWFtcxgHIAEoCzILLmdhbWUuVGVhbXNIAVIFdG'
-    'VhbXOIAQESLAoLaG9tZVBsYXllcnMYCCADKAsyCi51c2VyLlVzZXJSC2hvbWVQbGF5ZXJzEiwK'
-    'C2F3YXlQbGF5ZXJzGAkgAygLMgoudXNlci5Vc2VyUgthd2F5UGxheWVycxIgCgtjYW5jZWxsZW'
-    'RCeRgKIAMoBVILY2FuY2VsbGVkQnlCCAoGc3RhdHVzQggKBl90ZWFtcw==');
+    'VydBI2CgppblByb2dyZXNzGAQgASgLMhQuZ2FtZS5HYW1lSW5Qcm9ncmVzc0gAUgppblByb2dy'
+    'ZXNzEi0KB3N0YXJ0ZWQYBSABKAsyES5nYW1lLkdhbWVTdGFydGVkSABSB3N0YXJ0ZWQSJwoFZW'
+    '5kZWQYBiABKAsyDy5nYW1lLkdhbWVFbmRlZEgAUgVlbmRlZBImCgV0ZWFtcxgHIAEoCzILLmdh'
+    'bWUuVGVhbXNIAVIFdGVhbXOIAQESLAoLaG9tZVBsYXllcnMYCCADKAsyCi51c2VyLlVzZXJSC2'
+    'hvbWVQbGF5ZXJzEiwKC2F3YXlQbGF5ZXJzGAkgAygLMgoudXNlci5Vc2VyUgthd2F5UGxheWVy'
+    'cxIqCgpjYW5jZWxlZEJ5GAogAygLMgoudXNlci5Vc2VyUgpjYW5jZWxlZEJ5QggKBnN0YXR1c0'
+    'IICgZfdGVhbXNKBAgDEAQ=');
 
 @$core.Deprecated('Use gameInProgressDescriptor instead')
 const GameInProgress$json = {
