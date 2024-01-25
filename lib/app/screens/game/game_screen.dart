@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quarterback_flutter/app/screens/error_screen.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
 import 'package:quarterback_flutter/app/screens/loading_screen.dart';
@@ -45,9 +46,18 @@ class GameView extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 title: const Text('Game'),
+                actions: [
+                  if (state.isPlayer(userState.user.id) && state.isWaiting)
+                    IconButton(
+                      onPressed: () => context.read<GameCubit>().leaveGame(),
+                      icon: const Icon(Icons.exit_to_app),
+                    ),
+                ],
               ),
-              bottomNavigationBar: state.isPlayer(userState.user.id) ||
-                      state.isWaiting
+              bottomNavigationBar: (state.isPlayer(userState.user.id) ||
+                          state.isWaiting) &&
+                      !state.game.canceledBy
+                          .any((element) => element.id == userState.user.id)
                   ? SafeArea(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -65,9 +75,9 @@ class GameView extends StatelessWidget {
                                       child: const Text("Cancel Game"))
                                   : state.isStarted
                                       ? ElevatedButton(
-                                          onPressed: () {
-                                            // show dialog to update score
-                                          },
+                                          onPressed: () => context
+                                              .read<GameCubit>()
+                                              .endGame(13, 5),
                                           child: const Text("End Game"))
                                       : state.isPlayer(userState.user.id)
                                           ? ElevatedButton(
@@ -75,13 +85,46 @@ class GameView extends StatelessWidget {
                                                           .isNotEmpty &&
                                                       state.game.awayPlayers
                                                           .isNotEmpty
-                                                  ? () {}
+                                                  ? () => context
+                                                      .read<GameCubit>()
+                                                      .startGame()
                                                   : null,
                                               child: const Text("Start Game"))
                                           : ElevatedButton(
-                                              onPressed: () => context
-                                                  .read<GameCubit>()
-                                                  .joinGame(),
+                                              onPressed: () async {
+                                                final isHomeSide =
+                                                    await showDialog<bool?>(
+                                                  context: context,
+                                                  builder: (context) =>
+                                                      AlertDialog(
+                                                    title:
+                                                        const Text("Join Game"),
+                                                    content: const Text(
+                                                        "Which side would you like to join?"),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                context, true),
+                                                        child:
+                                                            const Text("Home"),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                context, false),
+                                                        child:
+                                                            const Text("Away"),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                                if (isHomeSide != null) {
+                                                  context
+                                                      .read<GameCubit>()
+                                                      .joinGame(isHomeSide);
+                                                }
+                                              },
                                               child: const Text("Join Game"),
                                             ),
                             ),

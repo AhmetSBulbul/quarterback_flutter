@@ -30,10 +30,10 @@ class GameRepository {
     }
   }
 
-  Future<Game> joinGame(int gameId) async {
+  Future<Game> joinGame(int gameId, bool isHomeSide) async {
     try {
-      final resp =
-          await _gameServiceClient.joinGame(JoinGameRequest(gameId: gameId));
+      final resp = await _gameServiceClient
+          .joinGame(JoinGameRequest(gameId: gameId, isHomeSide: isHomeSide));
       // What is the difference
       // return await getGame(resp.gameId);
       return getGame(resp.gameId);

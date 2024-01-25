@@ -22,9 +22,9 @@ class GameCubit extends Cubit<GameState> {
     }
   }
 
-  Future<void> joinGame() async {
+  Future<void> joinGame(bool isHomeSide) async {
     try {
-      final game = await _gameRepository.joinGame(state.game.id);
+      final game = await _gameRepository.joinGame(state.game.id, isHomeSide);
       emit(state.copyWith(game: game));
     } catch (e) {
       emit(state.copyWith(error: e));
@@ -40,9 +40,10 @@ class GameCubit extends Cubit<GameState> {
     }
   }
 
-  Future<void> endGame(EndGameRequest req) async {
+  Future<void> endGame(int homeScore, int awayScore) async {
     try {
-      final game = await _gameRepository.endGame(req);
+      final game = await _gameRepository.endGame(EndGameRequest(
+          gameId: state.game.id, homeScore: homeScore, awayScore: awayScore));
       emit(state.copyWith(game: game));
     } catch (e) {
       emit(state.copyWith(error: e));
