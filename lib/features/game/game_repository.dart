@@ -54,10 +54,9 @@ class GameRepository {
     }
   }
 
-  Future<Game> endGame(int gameId) async {
+  Future<Game> endGame(EndGameRequest req) async {
     try {
-      final resp =
-          await _gameServiceClient.endGame(EndGameRequest(gameId: gameId));
+      final resp = await _gameServiceClient.endGame(req);
       // What is the difference
       // return await getGame(resp.gameId);
       return getGame(resp.gameId);

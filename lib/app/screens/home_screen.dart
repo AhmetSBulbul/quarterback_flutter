@@ -19,6 +19,7 @@ import 'package:quarterback_flutter/features/location/cubit/location_cubit.dart'
 import 'package:quarterback_flutter/generated/protos/courtpb.pb.dart';
 import 'package:quarterback_flutter/generated/protos/gamepb.pb.dart';
 
+// TODO: Show current games of the user
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -164,7 +165,7 @@ class HomeScreen extends StatelessWidget {
                   if (courtId != null) {
                     final createdGame =
                         await locator<GameRepository>().createGame(courtId);
-                    print(createdGame.homePlayers);
+                    context.push('/game/${createdGame.id}', extra: createdGame);
                   }
                 },
                 icon: const AppIcons.basketball(),
@@ -471,8 +472,7 @@ class GameCard extends StatelessWidget {
             SizedSpacer.large(),
 
             ElevatedButton(
-              // TODO: Maybe add game as extra
-              onPressed: () => context.push('/game/${game.id}'),
+              onPressed: () => context.push('/game/${game.id}', extra: game),
               child: Text("Details"),
             ),
           ],

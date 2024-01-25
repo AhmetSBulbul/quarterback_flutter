@@ -33,6 +33,7 @@ import 'package:quarterback_flutter/features/location/cubit/location_cubit.dart'
 import 'package:quarterback_flutter/features/region/data/region_repository.dart';
 import 'package:quarterback_flutter/features/user/bloc/current_user_bloc.dart';
 import 'package:quarterback_flutter/features/user/data/user_repository.dart';
+import 'package:quarterback_flutter/generated/protos/gamepb.pb.dart';
 
 class QuarterbackApp extends StatelessWidget {
   QuarterbackApp({super.key, required AuthCubit authCubit})
@@ -216,7 +217,11 @@ class QuarterbackApp extends StatelessWidget {
                   GoRoute(
                     path: 'game/:id',
                     builder: (context, state) => GameScreen(
-                      gameId: int.parse(state.pathParameters['id']!),
+                      // TODO: handle null data
+                      game: state.extra as Game,
+                      gameId: int.parse(
+                        state.pathParameters['id']!,
+                      ),
                     ),
                   ),
                   // Create Game
