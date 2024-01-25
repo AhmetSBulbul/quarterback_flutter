@@ -185,15 +185,27 @@ class CourtView extends StatelessWidget {
 
 // TODO: rearrange sizes
 class CourtCard extends StatelessWidget {
-  const CourtCard({super.key, required this.court, this.distance});
+  const CourtCard(
+      {super.key, required this.court, this.distance, this.featured = false});
   final Court court;
+  final bool featured;
   final double? distance;
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: !featured
+            ? BorderSide.none
+            : const BorderSide(
+                color: AppColors.white,
+                width: 1.2,
+              ),
+      ),
+      elevation: featured ? 4 : 0,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

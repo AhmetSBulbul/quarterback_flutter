@@ -125,6 +125,7 @@ abstract final class AppTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.black,
       elevation: 0,
+      centerTitle: false,
       titleTextStyle: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.w800,

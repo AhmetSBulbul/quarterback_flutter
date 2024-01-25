@@ -17,12 +17,13 @@ import '../../features/auth/data/auth_repository.dart' as _i9;
 import '../../features/auth/data/auth_storage.dart' as _i7;
 import '../../features/chat/data/chat_repository.dart' as _i10;
 import '../../features/court/data/court_repository.dart' as _i11;
-import '../../features/media/data/media_repository.dart' as _i12;
+import '../../features/game/game_repository.dart' as _i12;
+import '../../features/media/data/media_repository.dart' as _i13;
 import '../../features/region/data/region_repository.dart' as _i6;
-import '../../features/user/data/user_repository.dart' as _i13;
+import '../../features/user/data/user_repository.dart' as _i14;
 import '../interceptors/auth_interceptor.dart' as _i8;
 import '../interceptors/logger_interceptor.dart' as _i5;
-import 'register.module.dart' as _i14;
+import 'register.module.dart' as _i15;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -64,12 +65,17 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i5.LoggerInterceptor>(),
           gh<_i8.AuthInterceptor>(),
         ));
-    gh.lazySingleton<_i12.MediaRepository>(() => _i12.MediaRepository(
+    gh.lazySingleton<_i12.GameRepository>(() => _i12.GameRepository(
           gh<_i4.ClientChannel>(),
           gh<_i5.LoggerInterceptor>(),
           gh<_i8.AuthInterceptor>(),
         ));
-    gh.singleton<_i13.UserRepository>(_i13.UserRepository(
+    gh.lazySingleton<_i13.MediaRepository>(() => _i13.MediaRepository(
+          gh<_i4.ClientChannel>(),
+          gh<_i5.LoggerInterceptor>(),
+          gh<_i8.AuthInterceptor>(),
+        ));
+    gh.singleton<_i14.UserRepository>(_i14.UserRepository(
       gh<_i4.ClientChannel>(),
       gh<_i5.LoggerInterceptor>(),
       gh<_i8.AuthInterceptor>(),
@@ -78,10 +84,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i11.CourtCommentListUseCase(gh<_i11.CourtRepository>()));
     gh.lazySingleton<_i11.CourtListUseCase>(
         () => _i11.CourtListUseCase(gh<_i11.CourtRepository>()));
-    gh.lazySingleton<_i13.UserListUseCase>(
-        () => _i13.UserListUseCase(gh<_i13.UserRepository>()));
+    gh.lazySingleton<_i14.UserListUseCase>(
+        () => _i14.UserListUseCase(gh<_i14.UserRepository>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i14.RegisterModule {}
+class _$RegisterModule extends _i15.RegisterModule {}

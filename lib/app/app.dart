@@ -10,6 +10,8 @@ import 'package:quarterback_flutter/app/screens/chat/chat_session_screen.dart';
 import 'package:quarterback_flutter/app/screens/court/court_screen.dart';
 import 'package:quarterback_flutter/app/screens/error_screen.dart';
 import 'package:quarterback_flutter/app/screens/fixtures/fixtures_screen.dart';
+import 'package:quarterback_flutter/app/screens/game/create_game_screen.dart';
+import 'package:quarterback_flutter/app/screens/game/game_screen.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
 import 'package:quarterback_flutter/app/screens/loading_screen.dart';
 import 'package:quarterback_flutter/app/screens/my_profile/edit_my_profile_screen.dart';
@@ -203,10 +205,25 @@ class QuarterbackApp extends StatelessWidget {
                       builder: (context, state) => ProfileScreen(
                           id: int.parse(state.pathParameters['id']!))),
                   GoRoute(
-                      path: 'court/:id',
-                      builder: (context, state) => CourtScreen(
-                            courtId: int.parse(state.pathParameters['id']!),
-                          ))
+                    path: 'court/:id',
+                    builder: (context, state) => CourtScreen(
+                      courtId: int.parse(state.pathParameters['id']!),
+                    ),
+                  ),
+                  //
+                  // Game
+                  //
+                  GoRoute(
+                    path: 'game/:id',
+                    builder: (context, state) => GameScreen(
+                      gameId: int.parse(state.pathParameters['id']!),
+                    ),
+                  ),
+                  // Create Game
+                  GoRoute(
+                    path: 'game',
+                    builder: (context, state) => const CreateGameScreen(),
+                  ),
                 ],
               ),
             ],

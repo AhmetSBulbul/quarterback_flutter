@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SizedSpacer extends StatelessWidget {
-  const SizedSpacer({super.key, required this.height, required this.width});
+  const SizedSpacer._({required this.height, required this.width});
 
   final double height;
   final double width;
