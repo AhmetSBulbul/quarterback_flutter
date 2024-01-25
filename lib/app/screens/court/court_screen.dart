@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quarterback_flutter/app/screens/home_screen.dart';
 import 'package:quarterback_flutter/app/widgets/layout/sized_spacer.dart';
 import 'package:quarterback_flutter/app/widgets/modules/fetched_list/cubit/fetched_list_cubit.dart';
 import 'package:quarterback_flutter/app/widgets/profile/avatar.dart';
@@ -8,6 +9,7 @@ import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/core/theme/app_colors.dart';
 import 'package:quarterback_flutter/core/usecase/list_usecase.dart';
 import 'package:quarterback_flutter/features/court/data/court_repository.dart';
+import 'package:quarterback_flutter/features/game/game_repository.dart';
 import 'package:quarterback_flutter/generated/protos/commonpb.pb.dart';
 import 'package:quarterback_flutter/generated/protos/courtpb.pbgrpc.dart';
 
@@ -171,9 +173,15 @@ class CourtView extends StatelessWidget {
                   );
                 }),
                 // Games
-                const Center(
-                  child: Text("Under Development"),
-                ),
+                FutureLoader(
+                    future: locator<GameRepository>().listGamesByCourt(courtId),
+                    builder: (context, data) {
+                      return ListView(
+                        children: [
+                          for (final game in data) GameCard(game: game)
+                        ],
+                      );
+                    }),
               ],
             )),
           ],

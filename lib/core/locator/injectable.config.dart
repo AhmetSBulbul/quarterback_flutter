@@ -17,13 +17,14 @@ import '../../features/auth/data/auth_repository.dart' as _i9;
 import '../../features/auth/data/auth_storage.dart' as _i7;
 import '../../features/chat/data/chat_repository.dart' as _i10;
 import '../../features/court/data/court_repository.dart' as _i11;
-import '../../features/game/game_repository.dart' as _i12;
-import '../../features/media/data/media_repository.dart' as _i13;
+import '../../features/fixture/fixture_repository.dart' as _i12;
+import '../../features/game/game_repository.dart' as _i13;
+import '../../features/media/data/media_repository.dart' as _i14;
 import '../../features/region/data/region_repository.dart' as _i6;
-import '../../features/user/data/user_repository.dart' as _i14;
+import '../../features/user/data/user_repository.dart' as _i15;
 import '../interceptors/auth_interceptor.dart' as _i8;
 import '../interceptors/logger_interceptor.dart' as _i5;
-import 'register.module.dart' as _i15;
+import 'register.module.dart' as _i16;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -65,17 +66,22 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i5.LoggerInterceptor>(),
           gh<_i8.AuthInterceptor>(),
         ));
-    gh.lazySingleton<_i12.GameRepository>(() => _i12.GameRepository(
+    gh.lazySingleton<_i12.FixtureRepository>(() => _i12.FixtureRepository(
+          channel: gh<_i4.ClientChannel>(),
+          loggerInterceptor: gh<_i5.LoggerInterceptor>(),
+          authInterceptor: gh<_i8.AuthInterceptor>(),
+        ));
+    gh.lazySingleton<_i13.GameRepository>(() => _i13.GameRepository(
           gh<_i4.ClientChannel>(),
           gh<_i5.LoggerInterceptor>(),
           gh<_i8.AuthInterceptor>(),
         ));
-    gh.lazySingleton<_i13.MediaRepository>(() => _i13.MediaRepository(
+    gh.lazySingleton<_i14.MediaRepository>(() => _i14.MediaRepository(
           gh<_i4.ClientChannel>(),
           gh<_i5.LoggerInterceptor>(),
           gh<_i8.AuthInterceptor>(),
         ));
-    gh.singleton<_i14.UserRepository>(_i14.UserRepository(
+    gh.singleton<_i15.UserRepository>(_i15.UserRepository(
       gh<_i4.ClientChannel>(),
       gh<_i5.LoggerInterceptor>(),
       gh<_i8.AuthInterceptor>(),
@@ -84,10 +90,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i11.CourtCommentListUseCase(gh<_i11.CourtRepository>()));
     gh.lazySingleton<_i11.CourtListUseCase>(
         () => _i11.CourtListUseCase(gh<_i11.CourtRepository>()));
-    gh.lazySingleton<_i14.UserListUseCase>(
-        () => _i14.UserListUseCase(gh<_i14.UserRepository>()));
+    gh.lazySingleton<_i15.UserListUseCase>(
+        () => _i15.UserListUseCase(gh<_i15.UserRepository>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i15.RegisterModule {}
+class _$RegisterModule extends _i16.RegisterModule {}

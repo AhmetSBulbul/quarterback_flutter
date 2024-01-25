@@ -105,7 +105,10 @@ class GameRepository {
           await _gameServiceClient.listGamesByCourt(ListGamesByCourtRequest(
         courtId: courtId,
       ));
-      return response.games;
+      return response.games
+          .where((element) =>
+              element.homePlayers.isNotEmpty && element.awayPlayers.isNotEmpty)
+          .toList();
     } catch (e) {
       rethrow;
     }
@@ -117,7 +120,10 @@ class GameRepository {
           await _gameServiceClient.listGamesByUser(ListGamesByUserRequest(
         userId: userId,
       ));
-      return response.games;
+      return response.games
+          .where((element) =>
+              element.homePlayers.isNotEmpty && element.awayPlayers.isNotEmpty)
+          .toList();
     } catch (e) {
       rethrow;
     }

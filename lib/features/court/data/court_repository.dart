@@ -43,7 +43,11 @@ class CourtListUseCase extends ListUseCase<Court> {
       // TODO: there is no filter for court yet
       final response = await _repository.listCourts();
       return ListUseCaseResponse<Court>(
-        items: response,
+        items: response
+            .where((element) => element.name
+                .toLowerCase()
+                .startsWith(params.query.query.toLowerCase()))
+            .toList(),
         totalCount: response.length,
       );
     } catch (e) {

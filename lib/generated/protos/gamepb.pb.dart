@@ -15,7 +15,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'commonpb.pb.dart' as $1;
 import 'courtpb.pb.dart' as $5;
-import 'google/protobuf/timestamp.pb.dart' as $9;
+import 'google/protobuf/timestamp.pb.dart' as $10;
 import 'teampb.pb.dart' as $7;
 import 'userpb.pb.dart' as $3;
 
@@ -1122,7 +1122,7 @@ class GameInProgress extends $pb.GeneratedMessage {
 
 class GameStarted extends $pb.GeneratedMessage {
   factory GameStarted({
-    $9.Timestamp? startedAt,
+    $10.Timestamp? startedAt,
   }) {
     final $result = create();
     if (startedAt != null) {
@@ -1135,7 +1135,7 @@ class GameStarted extends $pb.GeneratedMessage {
   factory GameStarted.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GameStarted', package: const $pb.PackageName(_omitMessageNames ? '' : 'game'), createEmptyInstance: create)
-    ..aOM<$9.Timestamp>(1, _omitFieldNames ? '' : 'startedAt', protoName: 'startedAt', subBuilder: $9.Timestamp.create)
+    ..aOM<$10.Timestamp>(1, _omitFieldNames ? '' : 'startedAt', protoName: 'startedAt', subBuilder: $10.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -1161,21 +1161,21 @@ class GameStarted extends $pb.GeneratedMessage {
   static GameStarted? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $9.Timestamp get startedAt => $_getN(0);
+  $10.Timestamp get startedAt => $_getN(0);
   @$pb.TagNumber(1)
-  set startedAt($9.Timestamp v) { setField(1, v); }
+  set startedAt($10.Timestamp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasStartedAt() => $_has(0);
   @$pb.TagNumber(1)
   void clearStartedAt() => clearField(1);
   @$pb.TagNumber(1)
-  $9.Timestamp ensureStartedAt() => $_ensure(0);
+  $10.Timestamp ensureStartedAt() => $_ensure(0);
 }
 
 class GameEnded extends $pb.GeneratedMessage {
   factory GameEnded({
-    $9.Timestamp? startedAt,
-    $9.Timestamp? endedAt,
+    $10.Timestamp? startedAt,
+    $10.Timestamp? endedAt,
     $core.int? homeScore,
     $core.int? awayScore,
   }) {
@@ -1199,8 +1199,8 @@ class GameEnded extends $pb.GeneratedMessage {
   factory GameEnded.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GameEnded', package: const $pb.PackageName(_omitMessageNames ? '' : 'game'), createEmptyInstance: create)
-    ..aOM<$9.Timestamp>(1, _omitFieldNames ? '' : 'startedAt', protoName: 'startedAt', subBuilder: $9.Timestamp.create)
-    ..aOM<$9.Timestamp>(2, _omitFieldNames ? '' : 'endedAt', protoName: 'endedAt', subBuilder: $9.Timestamp.create)
+    ..aOM<$10.Timestamp>(1, _omitFieldNames ? '' : 'startedAt', protoName: 'startedAt', subBuilder: $10.Timestamp.create)
+    ..aOM<$10.Timestamp>(2, _omitFieldNames ? '' : 'endedAt', protoName: 'endedAt', subBuilder: $10.Timestamp.create)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'homeScore', $pb.PbFieldType.O3, protoName: 'homeScore')
     ..a<$core.int>(4, _omitFieldNames ? '' : 'awayScore', $pb.PbFieldType.O3, protoName: 'awayScore')
     ..hasRequiredFields = false
@@ -1228,26 +1228,26 @@ class GameEnded extends $pb.GeneratedMessage {
   static GameEnded? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $9.Timestamp get startedAt => $_getN(0);
+  $10.Timestamp get startedAt => $_getN(0);
   @$pb.TagNumber(1)
-  set startedAt($9.Timestamp v) { setField(1, v); }
+  set startedAt($10.Timestamp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasStartedAt() => $_has(0);
   @$pb.TagNumber(1)
   void clearStartedAt() => clearField(1);
   @$pb.TagNumber(1)
-  $9.Timestamp ensureStartedAt() => $_ensure(0);
+  $10.Timestamp ensureStartedAt() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $9.Timestamp get endedAt => $_getN(1);
+  $10.Timestamp get endedAt => $_getN(1);
   @$pb.TagNumber(2)
-  set endedAt($9.Timestamp v) { setField(2, v); }
+  set endedAt($10.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasEndedAt() => $_has(1);
   @$pb.TagNumber(2)
   void clearEndedAt() => clearField(2);
   @$pb.TagNumber(2)
-  $9.Timestamp ensureEndedAt() => $_ensure(1);
+  $10.Timestamp ensureEndedAt() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.int get homeScore => $_getIZ(2);

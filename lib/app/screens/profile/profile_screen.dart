@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quarterback_flutter/app/screens/home_screen.dart';
 import 'package:quarterback_flutter/app/screens/profile/cubit/profile_cubit.dart';
 import 'package:quarterback_flutter/app/widgets/layout/sized_spacer.dart';
 import 'package:quarterback_flutter/app/widgets/profile/player_card.dart';
 import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/core/theme/app_colors.dart';
+import 'package:quarterback_flutter/features/fixture/fixture_repository.dart';
+import 'package:quarterback_flutter/features/game/game_repository.dart';
 import 'package:quarterback_flutter/features/region/data/region_repository.dart';
 import 'package:quarterback_flutter/features/user/bloc/current_user_bloc.dart';
 import 'package:quarterback_flutter/features/user/data/user_repository.dart';
@@ -62,7 +65,20 @@ class ProfileView extends StatelessWidget {
                 if (state is ProfileLoaded) {
                   return Column(
                     children: [
-                      PlayerCard(player: state.user),
+                      PlayerCard(
+                        player: state.user,
+                        stats: FutureBuilder(
+                          future: locator<FixtureRepository>()
+                              .getUserStats(state.user.id),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return PlayerStats(stats: snapshot.data!);
+                            } else {
+                              return const SizedBox.shrink();
+                            }
+                          },
+                        ),
+                      ),
                       const SizedSpacer.medium(),
                       Align(
                         alignment: Alignment.centerRight,
@@ -98,6 +114,20 @@ class ProfileView extends StatelessWidget {
                           ],
                         ),
                       ),
+                      Expanded(
+                        child: FutureLoader(
+                          future: locator<GameRepository>()
+                              .listGamesByUser(state.user.id),
+                          builder: (context, data) {
+                            return ListView(
+                              children: [
+                                for (final game in data) GameCard(game: game)
+                              ],
+                            );
+                          },
+                          emptyMessage: "Hasn't played any games yet.",
+                        ),
+                      )
                     ],
                   );
                 } else if (state is ProfileError) {

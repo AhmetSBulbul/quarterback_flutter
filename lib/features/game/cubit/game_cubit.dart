@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:quarterback_flutter/features/game/game_repository.dart';
@@ -9,9 +11,12 @@ part 'game_state.dart';
 class GameCubit extends Cubit<GameState> {
   GameCubit({required Game initial, required GameRepository gameRepository})
       : _gameRepository = gameRepository,
-        super(GameState(game: initial));
+        super(GameState(game: initial)) {
+    _timer = Timer.periodic(const Duration(seconds: 5), (_) => refresh());
+  }
 
   final GameRepository _gameRepository;
+  late final Timer _timer;
 
   Future<void> refresh() async {
     try {
@@ -71,5 +76,11 @@ class GameCubit extends Cubit<GameState> {
     } catch (e) {
       emit(state.copyWith(error: e));
     }
+  }
+
+  @override
+  Future<void> close() {
+    _timer.cancel();
+    return super.close();
   }
 }

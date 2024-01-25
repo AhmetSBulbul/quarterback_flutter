@@ -98,7 +98,7 @@ class SearchView extends StatelessWidget {
                     child: Text("Players"),
                   ),
                   Tab(
-                    child: Text("Teams"),
+                    child: Text("Courts"),
                   ),
                 ],
               ),
