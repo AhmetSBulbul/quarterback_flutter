@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -29,6 +31,8 @@ class GameScreen extends StatelessWidget {
   }
 }
 
+final rng = Random();
+
 class GameView extends StatelessWidget {
   const GameView({super.key});
 
@@ -37,12 +41,18 @@ class GameView extends StatelessWidget {
     return BlocBuilder<CurrentUserCubit, CurrentUserState>(
       builder: (context, userState) {
         if (userState is! CurrentUserLoaded) return const LoadingScreen();
-        return BlocBuilder<GameCubit, GameState>(
-          builder: (context, state) {
+        return BlocConsumer<GameCubit, GameState>(
+          listener: (context, state) {
             if (state.error != null) {
-              // TODO: handle properly
-              return const ErrorScreen();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.error.toString()),
+                  // backgroundColor: AppColors.error,
+                ),
+              );
             }
+          },
+          builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
                 title: const Text('Game'),
@@ -77,7 +87,8 @@ class GameView extends StatelessWidget {
                                       ? ElevatedButton(
                                           onPressed: () => context
                                               .read<GameCubit>()
-                                              .endGame(13, 5),
+                                              .endGame(rng.nextInt(30),
+                                                  rng.nextInt(30)),
                                           child: const Text("End Game"))
                                       : state.isPlayer(userState.user.id)
                                           ? ElevatedButton(

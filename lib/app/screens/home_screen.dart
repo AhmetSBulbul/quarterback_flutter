@@ -142,7 +142,8 @@ class HomeScreen extends StatelessWidget {
                                             thickness: 2,
                                           ),
                                           const SizedSpacer.medium(),
-                                          ...data.courts.skip(1).map(
+                                          ...data.courts
+                                              .map(
                                                 (c) => InkWell(
                                                   onTap: () =>
                                                       context.pop(c.court.id),
@@ -151,7 +152,8 @@ class HomeScreen extends StatelessWidget {
                                                     distance: c.distance,
                                                   ),
                                                 ),
-                                              ),
+                                              )
+                                              .toList(),
                                         ],
                                       ));
                                 },
@@ -166,6 +168,7 @@ class HomeScreen extends StatelessWidget {
                     final createdGame =
                         await locator<GameRepository>().createGame(courtId);
                     context.push('/game/${createdGame.id}', extra: createdGame);
+                    print("Court: $courtId");
                   }
                 },
                 icon: const AppIcons.basketball(),
@@ -235,9 +238,13 @@ class HomeScreen extends StatelessWidget {
                                 return Padding(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 4.0),
-                                  child: CourtCard(
-                                    court: data.courts[index].court,
-                                    distance: data.courts[index].distance,
+                                  child: InkWell(
+                                    onTap: () => print(
+                                        "Court: ${data.courts[index].court.id}"),
+                                    child: CourtCard(
+                                      court: data.courts[index].court,
+                                      distance: data.courts[index].distance,
+                                    ),
                                   ),
                                 );
                               },

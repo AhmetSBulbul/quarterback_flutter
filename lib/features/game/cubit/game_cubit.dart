@@ -41,6 +41,10 @@ class GameCubit extends Cubit<GameState> {
   }
 
   Future<void> endGame(int homeScore, int awayScore) async {
+    if (homeScore == awayScore) {
+      emit(state.copyWith(error: 'Score cannot be equal'));
+      return;
+    }
     try {
       final game = await _gameRepository.endGame(EndGameRequest(
           gameId: state.game.id, homeScore: homeScore, awayScore: awayScore));
