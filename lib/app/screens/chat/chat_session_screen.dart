@@ -72,6 +72,7 @@ class ChatSessionScreen extends StatelessWidget {
     return BlocBuilder<ChatCubit, ChatState>(
       builder: (context, state) {
         return Scaffold(
+            resizeToAvoidBottomInset: true,
             appBar: AppBar(
               titleSpacing: 0,
               title: state.users.any((element) => element.id == userId)
@@ -114,6 +115,7 @@ class ChatSessionScreen extends StatelessWidget {
                     .toList()
                     .reversed
                     .toList()),
+            // TODO: Make it stack
             bottomNavigationBar: BottomAppBar(
               color: AppColors.surface,
               child: Row(
