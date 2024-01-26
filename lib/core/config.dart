@@ -2,6 +2,6 @@
 
 abstract final class AppConfig {
   // static const String host = '192.168.1.101';
-  static const String host = 'localhost';
+  static const String host = '192.168.8.120';
   static const int port = 50001;
 }

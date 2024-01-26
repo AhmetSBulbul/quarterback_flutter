@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quarterback_flutter/app/screens/home_screen.dart';
 import 'package:quarterback_flutter/app/widgets/profile/player_card.dart';
+import 'package:quarterback_flutter/core/extensions/build_context_extensions.dart';
 import 'package:quarterback_flutter/core/locator/injectable.dart';
 import 'package:quarterback_flutter/features/auth/cubit/auth_cubit.dart';
 import 'package:quarterback_flutter/features/fixture/fixture_repository.dart';
@@ -46,7 +47,9 @@ class MyProfileScreen extends StatelessWidget {
                         if (snapshot.hasData) {
                           return PlayerStats(stats: snapshot.data!);
                         } else {
-                          return const SizedBox.shrink();
+                          return SizedBox(
+                            width: context.screen.width,
+                          );
                         }
                       },
                     ),
@@ -56,11 +59,39 @@ class MyProfileScreen extends StatelessWidget {
                 }
               },
             ),
-            // Expanded(
-            //   child: FutureLoader(
-            //     future: locator<GameRepository>().get,
-            //   ),
-            // )
+            Expanded(
+              child: BlocBuilder<CurrentUserCubit, CurrentUserState>(
+                builder: (context, state) {
+                  if (state is! CurrentUserLoaded) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else {
+                    return FutureLoader(
+                      future: locator<GameRepository>()
+                          .listGamesByUser(state.user.id),
+                      builder: (context, data) {
+                        return ListView.builder(
+                          itemCount: data.length,
+                          itemBuilder: (context, index) {
+                            return GameCard(game: data[index]);
+                          },
+                        );
+                      },
+                      emptyWidget: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 50.0),
+                          child: Text(
+                            "Let's create a game and list here!",
+                            style: context.textTheme.titleMedium,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                },
+              ),
+            )
           ],
         ),
       ),
