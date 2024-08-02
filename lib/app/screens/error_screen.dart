@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 
 class ErrorScreen extends StatelessWidget {
-  const ErrorScreen({super.key});
+  const ErrorScreen({super.key, this.message, this.actions});
+  final String? message;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text("404"),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(message ?? "404"),
+              const SizedBox(height: 20),
+              if (actions != null) ...actions!
+            ]),
       ),
     );
   }

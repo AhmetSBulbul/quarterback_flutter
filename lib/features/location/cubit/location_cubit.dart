@@ -70,4 +70,11 @@ class LocationCubit extends Cubit<LocationState> {
       isLocationPermissionGranted: true,
     ));
   }
+
+  Future<void> openSettingsForPermission() async {
+    final bool isOpened = await Geolocator.openAppSettings();
+    if (isOpened) {
+      await determinePosition();
+    }
+  }
 }

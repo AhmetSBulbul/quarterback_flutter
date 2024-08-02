@@ -271,8 +271,10 @@ class HomeScreen extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 4.0),
                                       child: InkWell(
-                                        onTap: () => print(
-                                            "Court: ${data.courts[index].court.id}"),
+                                        // onTap: () => print(
+                                        //     "Court: ${data.courts[index].court.id}"),
+                                        onTap: () => context.push(
+                                            '/court/${data.courts[index].court.id}'),
                                         child: CourtCard(
                                           court: data.courts[index].court,
                                           distance: data.courts[index].distance,

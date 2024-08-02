@@ -63,11 +63,32 @@ class QuarterbackApp extends StatelessWidget {
                         return const LoadingScreen();
                       }
                       if (!state.isLocationServiceEnabled) {
-                        return const ErrorScreen();
+                        return ErrorScreen(
+                          message:
+                              "Location services are disabled. Please enable them",
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () => context
+                                  .read<LocationCubit>()
+                                  .determinePosition(),
+                              child: const Text("Try Again"),
+                            ),
+                          ],
+                        );
                       }
 
                       if (!state.isLocationPermissionGranted) {
-                        return const ErrorScreen();
+                        return ErrorScreen(
+                          message: "Location permissions are denied",
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () => context
+                                  .read<LocationCubit>()
+                                  .openSettingsForPermission(),
+                              child: const Text("Open App Settings"),
+                            ),
+                          ],
+                        );
                       }
                       return BlocConsumer<CurrentUserCubit, CurrentUserState>(
                         listener: (context, state) {
